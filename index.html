@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Education Matters</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1B4332;
+  --forest2: #2D6A4F;
+  --forest3: #40916C;
+  --sage: #74C69D;
+  --cream: #FAF7F2;
+  --warm: #F5EFE6;
+  --tan: #D4A96A;
+  --rust: #C1440E;
+  --text: #1A1A1A;
+  --muted: #6B6B6B;
+  --border: rgba(27,67,50,0.12);
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── TOP ANNOUNCEMENT BAR ── */
+.topbar {
+  background: var(--forest);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  font-family: 'DM Sans', sans-serif;
+}
+.topbar a { color: var(--sage); text-decoration: none; font-weight: 600; }
+.topbar strong { color: var(--tan); }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 2px solid var(--forest);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+.nav-emblem {
+  width: 46px;
+  height: 46px;
+  background: var(--forest);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.nav-brand-text {
+  line-height: 1.1;
+}
+.nav-brand-text .n1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--forest);
+  letter-spacing: 0.02em;
+}
+.nav-brand-text .n2 {
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border-radius: 3px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-links a:hover { background: var(--warm); color: var(--forest); }
+.nav-links .active { color: var(--forest); font-weight: 600; }
+.nav-join {
+  background: var(--forest) !important;
+  color: var(--white) !important;
+  font-weight: 600 !important;
+}
+.nav-join:hover { background: var(--forest2) !important; }
+
+.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; border:none; background:none; }
+.hamburger span { display:block; width:24px; height:2px; background: var(--forest); border-radius:2px; transition:0.3s; }
+
+/* ── HERO ── */
+#hero {
+  background: var(--forest);
+  position: relative;
+  overflow: hidden;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(64,145,108,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,169,106,0.1) 0%, transparent 60%);
+}
+
+/* Decorative pattern */
+.hero-pattern {
+  position: absolute;
+  right: 0; top: 0;
+  width: 52%;
+  height: 100%;
+  opacity: 0.07;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.5) 0px,
+    rgba(255,255,255,0.5) 1px,
+    transparent 1px,
+    transparent 40px
+  ), repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.5) 0px,
+    rgba(255,255,255,0.5) 1px,
+    transparent 1px,
+    transparent 40px
+  );
+}
+
+.hero-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--sage);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  margin-bottom: 1.75rem;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.06;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--tan);
+}
+
+.hero-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+  font-weight: 300;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+
+.btn-forest {
+  background: var(--tan);
+  color: var(--forest);
+  padding: 0.85rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+  border-radius: 3px;
+}
+.btn-forest:hover { background: #e0b878; transform: translateY(-2px); }
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: inline-block;
+  border-radius: 3px;
+}
+.btn-outline-light:hover { border-color: var(--sage); background: rgba(116,198,157,0.08); }
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 3.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.05);
+  padding: 1.25rem;
+  text-align: center;
+}
+.hero-stat .sn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--tan);
+  line-height: 1;
+}
+.hero-stat .sl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+
+/* Hero right — featured card */
+.hero-right {
+  animation: fadeIn 1s ease 0.4s both;
+}
+
+.featured-post {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+
+.fp-thumb {
+  background: linear-gradient(135deg, var(--forest2), var(--forest3));
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.fp-thumb-label {
+  position: absolute;
+  top: 1rem; left: 1rem;
+  background: var(--tan);
+  color: var(--forest);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+}
+
+.fp-body { padding: 1.5rem; }
+.fp-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest3);
+  margin-bottom: 0.5rem;
+}
+.fp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+.fp-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.fp-meta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+.fp-author { display: flex; align-items: center; gap: 0.5rem; }
+.fp-avatar {
+  width: 28px; height: 28px;
+  background: var(--forest2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+/* ── SECTION BASE ── */
+.container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+section { padding: 5.5rem 0; }
+
+.section-header { margin-bottom: 3rem; }
+.section-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest3);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.section-kicker::before {
+  content:'';
+  display:inline-block;
+  width:24px; height:2px;
+  background: var(--forest3);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.15;
+}
+
+.section-sub {
+  font-family: 'Source Serif 4', serif;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+  max-width: 580px;
+  font-weight: 300;
+}
+
+.text-center .section-kicker { justify-content: center; }
+.text-center .section-kicker::before { display:none; }
+.text-center .section-sub { margin: 0.75rem auto 0; }
+
+/* ── DISCUSSION FORUM ── */
+#forum { background: var(--white); }
+
+.forum-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.forum-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 2rem;
+}
+.tab-btn {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.03em;
+}
+.tab-btn.active { color: var(--forest); border-bottom-color: var(--forest); }
+.tab-btn:hover { color: var(--forest); }
+
+.forum-post {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.forum-post:first-of-type { padding-top: 0; }
+
+.post-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--forest2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+.post-avatar.av2 { background: var(--rust); }
+.post-avatar.av3 { background: #7B5EA7; }
+.post-avatar.av4 { background: #1A6B8A; }
+.post-avatar.av5 { background: var(--forest3); }
+
+.post-body { flex: 1; }
+.post-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.post-author { font-weight: 600; font-size: 0.88rem; color: var(--forest); }
+.post-meta { font-size: 0.72rem; color: #aaa; margin-top: 0.15rem; }
+.post-time { font-size: 0.72rem; color: #bbb; white-space: nowrap; }
+.post-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.4rem 0;
+  cursor: pointer;
+  line-height: 1.3;
+}
+.post-title:hover { color: var(--forest); }
+.post-preview { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.post-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+.post-tag {
+  background: var(--warm);
+  color: var(--forest);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+.post-action {
+  font-size: 0.76rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+.post-action:hover { color: var(--forest3); }
+
+/* New Post Form */
+.new-post-form {
+  background: var(--warm);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.new-post-form h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--forest);
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+.form-field label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.7rem 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  border-radius: 3px;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--forest3); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+/* Sidebar */
+.forum-sidebar { position: sticky; top: 80px; }
+
+.sidebar-widget {
+  background: var(--warm);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.sw-header {
+  background: var(--forest);
+  color: var(--white);
+  padding: 0.85rem 1.25rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.sw-body { padding: 1.25rem; }
+
+.category-list { list-style: none; }
+.category-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+.category-list li:last-child { border: none; }
+.category-list li:hover { color: var(--forest); }
+.cat-count {
+  background: var(--forest);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.member-item:last-child { border: none; }
+.mi-av {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--forest2);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mi-name { font-size: 0.82rem; font-weight: 600; }
+.mi-district { font-size: 0.72rem; color: var(--muted); }
+
+/* ── RESOURCES ── */
+#resources { background: var(--forest); color: var(--white); }
+#resources .section-kicker { color: var(--sage); }
+#resources .section-kicker::before { background: var(--sage); }
+#resources .section-title { color: var(--white); }
+#resources .section-sub { color: rgba(255,255,255,0.6); }
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* Standard Notes Badges */
+.standard-badge {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  color: var(--white);
+  text-align: center;
+  transition: background 0.3s, transform 0.3s, border-color 0.3s;
+  position: relative;
+  user-select: none;
+}
+.standard-badge:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+  border-color: var(--sage);
+}
+.standard-badge.active {
+  background: rgba(116,198,157,0.15);
+  border-color: var(--sage);
+  transform: translateY(-2px);
+}
+.sb-icon { font-size: 2.4rem; margin-bottom: 0.85rem; }
+.sb-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.sb-sub {
+  font-size: 0.72rem;
+  color: var(--sage);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.sb-arrow {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  color: var(--tan);
+  letter-spacing: 0.08em;
+  transition: transform 0.3s;
+}
+.standard-badge.active .sb-arrow { transform: rotate(180deg); }
+
+/* Subject Panel */
+.subjects-panel {
+  grid-column: 1 / -1;
+  display: none;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 2rem 2rem 1.5rem;
+  animation: fadeUp 0.4s ease forwards;
+  margin-top: -0.5rem;
+}
+.subjects-panel.show { display: block; }
+.sp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tan);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.03em;
+}
+.subjects-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+}
+.subject-item {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 1.2rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.subject-item:hover {
+  background: rgba(116,198,157,0.2);
+  border-color: var(--sage);
+  transform: translateY(-3px);
+}
+.si-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+.si-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.rc-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+.rc-category {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.4rem;
+}
+.rc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+.rc-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.rc-count { font-size: 0.72rem; color: var(--tan); margin-top: 0.75rem; }
+
+/* ── NEWS / ARTICLES ── */
+#news { background: var(--white); }
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.article-card {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+.article-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.1); }
+.article-card.lead { grid-row: 1 / 3; }
+
+.article-thumb {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+.article-card.lead .article-thumb { height: 280px; }
+.at1 { background: linear-gradient(135deg, #1B4332, #2D6A4F); }
+.at2 { background: linear-gradient(135deg, #4A1942, #7B5EA7); }
+.at3 { background: linear-gradient(135deg, #7B3F00, #C1440E); }
+.at4 { background: linear-gradient(135deg, #1A3A5C, #1A6B8A); }
+
+.article-body { padding: 1.25rem; }
+.article-category {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest3);
+  margin-bottom: 0.4rem;
+}
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.article-card.lead .article-title { font-size: 1.25rem; }
+.article-card:not(.lead) .article-title { font-size: 0.95rem; }
+.article-excerpt { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+.success-banner {
+  display: none;
+  background: rgba(116,198,157,0.15);
+  border: 1px solid var(--sage);
+  color: var(--sage);
+  padding: 0.85rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+}
+.success-banner.show { display: block; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0D2B1F;
+  color: rgba(255,255,255,0.7);
+}
+
+.footer-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand-section .logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.footer-brand-section .logo-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+}
+.footer-brand-section p { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+
+.footer-col h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--sage); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 1.5rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── MOBILE NAV ── */
+/* ── SIDE DRAWER OVERLAY ── */
+.drawer-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 299;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.drawer-backdrop.open {
+  display: block;
+  opacity: 1;
+}
+
+/* ── SIDE DRAWER ── */
+.mobile-menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 290px;
+  max-width: 85vw;
+  height: 100%;
+  background: var(--forest);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Drawer header */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.drawer-brand-icon {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.drawer-brand-text .db1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.drawer-brand-text .db2 {
+  font-size: 0.6rem;
+  color: var(--sage);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mobile-close {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--white);
+  width: 34px; height: 34px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.mobile-close:hover { background: rgba(255,255,255,0.15); }
+
+/* Nav section label */
+.drawer-section-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 1.2rem 1.25rem 0.4rem;
+}
+
+/* Nav links */
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.25rem;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.07);
+  color: var(--white);
+  border-left-color: var(--sage);
+}
+.mobile-menu a .nav-icon {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Drawer footer */
+.drawer-footer {
+  margin-top: auto;
+  padding: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.drawer-footer a {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--tan) !important;
+  color: var(--forest) !important;
+  padding: 0.85rem 1rem !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  text-align: center;
+  border-left: none !important;
+  text-decoration: none;
+}
+.drawer-footer-note {
+  text-align: center;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── RESPONSIVE ── */
+/* ── SCHEMES DOWNLOAD CARD ── */
+.schemes-card {
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.schemes-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+.schemes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--tan);
+  color: var(--forest);
+  padding: 0.85rem 1.75rem;
+  border-radius: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (max-width: 480px) {
+  .schemes-card { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+  .schemes-btn { width: 100%; justify-content: center; }
+}
+
+  .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-right { display: none; }
+  .resources-grid { grid-template-columns: repeat(2, 1fr); }
+  .articles-grid { grid-template-columns: 1fr 1fr; }
+  .article-card.lead { grid-column: 1 / -1; }
+  .cpd-grid { grid-template-columns: 1fr 1fr; }
+  .footer-main { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  /* ── NAV ── */
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  nav .nav-inner { padding: 0.8rem 1.1rem; }
+  .nav-brand-text .n1 { font-size: 0.95rem; }
+  .nav-brand-text .n2 { font-size: 0.6rem; }
+  .nav-emblem { width: 38px; height: 38px; font-size: 1.1rem; }
+
+  /* ── GLOBAL ── */
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1rem; }
+  .section-title { font-size: 1.6rem; }
+  .section-sub { font-size: 0.9rem; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* ── TOPBAR ── */
+  .topbar { font-size: 0.72rem; padding: 0.5rem 0.75rem; }
+
+  /* ── HERO ── */
+  #hero { min-height: auto; }
+  .hero-content { padding: 3.5rem 1rem; }
+  .hero-title { font-size: 2.6rem; }
+  .hero-tagline { font-size: 0.95rem; }
+  .hero-eyebrow { font-size: 0.65rem; padding: 0.35rem 0.75rem; }
+  .hero-actions { gap: 0.75rem; }
+  .btn-forest, .btn-outline-light { padding: 0.75rem 1.4rem; font-size: 0.85rem; }
+  .hero-stats { margin-top: 2.5rem; }
+  .hero-stat .sn { font-size: 1.5rem; }
+  .hero-stat .sl { font-size: 0.65rem; }
+
+  /* ── NOTICES ── */
+  .notices-grid { grid-template-columns: 1fr; }
+  .notice-card { padding: 1.2rem; }
+  .notice-title { font-size: 0.95rem; }
+  .notice-body { font-size: 0.8rem; }
+  .ticker-inner { font-size: 0.75rem; }
+  .ticker-label { font-size: 0.68rem; padding: 0.5rem 0.85rem; }
+
+  /* ── FORUM ── */
+  .forum-layout { grid-template-columns: 1fr; }
+  .forum-sidebar { position: static; display: none; }
+  .new-post-form { padding: 1.2rem; }
+  .new-post-form h4 { font-size: 0.95rem; }
+  .forum-tabs { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .tab-btn { font-size: 0.78rem; padding: 0.55rem 0.9rem; }
+  .post-avatar { width: 36px; height: 36px; font-size: 0.78rem; }
+  .post-author { font-size: 0.82rem; }
+  .post-meta { font-size: 0.68rem; }
+  .post-title { font-size: 0.92rem; }
+  .post-preview { font-size: 0.78rem; }
+  .post-footer { gap: 0.75rem; flex-wrap: wrap; }
+  .post-action { font-size: 0.72rem; }
+  .post-tag { font-size: 0.62rem; }
+  #forumSearch { font-size: 0.85rem; }
+
+  /* ── REPLY MODAL ── */
+  #replyOverlay { padding: 0.5rem; align-items: flex-end; }
+  #replyOverlay > div { border-radius: 12px 12px 0 0; max-height: 90vh; overflow-y: auto; }
+
+  /* ── RESOURCES ── */
+  .resources-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .standard-badge { padding: 1.25rem 1rem; }
+  .sb-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .sb-label { font-size: 0.9rem; }
+  .sb-sub { font-size: 0.65rem; }
+  .sb-arrow { font-size: 0.65rem; }
+  .subjects-list { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .subject-item { padding: 1rem 0.5rem; }
+  .si-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .si-name { font-size: 0.65rem; }
+
+  /* ── FOOTER ── */
+  .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; font-size: 0.78rem; }
+  .logo-text { font-size: 2rem; }
+  .footer-col h5 { font-size: 0.8rem; }
+  .footer-col li, .footer-col a { font-size: 0.82rem; }
+}
+
+@media (max-width: 420px) {
+  /* ── Extra small phones ── */
+  .hero-title { font-size: 2.1rem; }
+  .hero-tagline { font-size: 0.88rem; }
+  .hero-actions { flex-direction: column; }
+  .btn-forest, .btn-outline-light { width: 100%; text-align: center; }
+  .resources-grid { grid-template-columns: repeat(2, 1fr); }
+  .subjects-list { grid-template-columns: repeat(2, 1fr); }
+  .notices-grid { grid-template-columns: 1fr; }
+  .forum-tabs { gap: 0; }
+  .tab-btn { font-size: 0.72rem; padding: 0.5rem 0.7rem; }
+  .section-title { font-size: 1.4rem; }
+  .post-footer { gap: 0.5rem; }
+  .hero-stat .sn { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <div class="nav-emblem">📚</div>
+      <div class="nav-brand-text">
+        <div class="n1">EDUCATION MATTERS</div>
+        <div class="n2">Education Portal · Malawi</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#forum">Forum</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <button class="hamburger" onclick="openMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- DRAWER BACKDROP -->
+<div class="drawer-backdrop" id="drawerBackdrop" onclick="closeMenu()"></div>
+
+<!-- SIDE DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+
+  <!-- Header -->
+  <div class="drawer-header">
+    <div class="drawer-brand">
+      <div class="drawer-brand-icon">📚</div>
+      <div class="drawer-brand-text">
+        <div class="db1">Education Matters</div>
+        <div class="db2">Malawi Teachers Portal</div>
+      </div>
+    </div>
+    <button class="mobile-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
+  </div>
+
+  <!-- Nav links -->
+  <div class="drawer-section-label">Navigation</div>
+  <a href="#forum" onclick="closeMenu()">
+    <span class="nav-icon">💬</span> Discussion Forum
+  </a>
+  <a href="#resources" onclick="closeMenu()">
+    <span class="nav-icon">📂</span> Teaching Resources
+  </a>
+
+  <div class="drawer-section-label">Quick Links</div>
+  <a href="https://www.maneb.edu.mw" target="_blank" onclick="closeMenu()">
+    <span class="nav-icon">📝</span> MANEB Examinations
+  </a>
+  <a href="#" onclick="closeMenu()">
+    <span class="nav-icon">🏛️</span> Ministry of Education
+  </a>
+
+  <!-- Footer CTA -->
+  <div class="drawer-footer">
+    <div class="drawer-footer-note">© 2025 Education Matters · Malawi 🇲🇼</div>
+  </div>
+
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">📚 Kuphunzitsa Ndi Ulemu — Teaching with Dignity</div>
+      <h1 class="hero-title">
+        Education<br><em>Matters</em>
+      </h1>
+      <p class="hero-tagline">
+        A unified platform for teachers across all 28 districts of Malawi — to share knowledge, access resources, discuss challenges, grow professionally, and speak with one voice.
+      </p>
+      <div class="hero-actions">
+        <a href="#forum" class="btn-forest">Join the Discussion</a>
+        <a href="#resources" class="btn-outline-light">Teaching Resources</a>
+      </div>
+      
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="featured-post">
+        <div class="fp-thumb">
+          📖
+          <div class="fp-thumb-label">Featured Discussion</div>
+        </div>
+        <div class="fp-body">
+          <div class="fp-category">Professional Development</div>
+          <div class="fp-title">How are you adapting teaching methods for overcrowded classrooms in Standard 1–4?</div>
+          <div class="fp-excerpt">Teachers from Dedza, Ntchisi, and Mchinji share practical strategies that work even with 80+ pupils per class...</div>
+          <div class="fp-meta">
+            <div class="fp-author">
+              <div class="fp-avatar">TM</div>
+              <span>Thandiwe Mwale · Dedza</span>
+            </div>
+            <span>💬 47 replies</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCUSSION FORUM -->
+<section id="forum">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-kicker">Community Discussions</div>
+      <h2 class="section-title">Let's Talk</h2>
+      <p class="section-sub">Share your experiences, ask questions, and discuss the challenges and successes of teaching in Malawi.</p>
+    </div>
+
+    <div class="forum-layout reveal">
+      <div>
+        <!-- New Post Form -->
+        <div class="new-post-form" id="newPostForm">
+          <h4>✏️ Start a New Discussion</h4>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Your Name</label>
+              <input type="text" id="pname" placeholder="e.g. Thandiwe Phiri"/>
+            </div>
+            <div class="form-field">
+              <label>Your District</label>
+              <select id="pdistrict">
+                <option value="">— Select District —</option>
+                <option>Balaka</option><option>Blantyre</option><option>Chikwawa</option>
+                <option>Chiradzulu</option><option>Chitipa</option><option>Dedza</option>
+                <option>Dowa</option><option>Karonga</option><option>Kasungu</option>
+                <option>Lilongwe</option><option>Likoma</option><option>Machinga</option>
+                <option>Mangochi</option><option>Mchinji</option><option>Mulanje</option>
+                <option>Mwanza</option><option>Mzimba</option><option>Neno</option>
+                <option>Nkhata Bay</option><option>Nkhotakota</option><option>Nsanje</option>
+                <option>Ntcheu</option><option>Ntchisi</option><option>Phalombe</option>
+                <option>Rumphi</option><option>Salima</option><option>Thyolo</option>
+                <option>Zomba</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Topic Category</label>
+            <select id="pcategory">
+              <option value="">— Select Category —</option>
+              <option>Classroom Management</option>
+              <option>Professional Development</option>
+              <option>Special Needs Education</option>
+              <option>Early Childhood Education</option>
+              <option>MSCE / Examinations</option>
+              <option>General Discussion</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Discussion Title</label>
+            <input type="text" id="ptitle" placeholder="State your topic clearly..."/>
+          </div>
+          <div class="form-field">
+            <label>Your Message</label>
+            <textarea id="pmessage" rows="4" placeholder="Share your thoughts, questions, or experiences..."></textarea>
+          </div>
+          <button class="btn-forest" onclick="submitPost()" style="width:100%; text-align:center; padding:0.9rem; border-radius:3px;">
+            Post Discussion 💬
+          </button>
+          <div class="success-banner" id="postSuccess" style="border:1px solid var(--forest3); color:var(--forest); background:rgba(64,145,108,0.08);">
+            ✅ Your discussion has been posted! Other teachers can now reply.
+          </div>
+        </div>
+
+        <!-- Search bar -->
+        <div style="margin-bottom:1rem;">
+          <input type="text" id="forumSearch" placeholder="🔍 Search discussions..." oninput="filterPosts()" style="width:100%; padding:0.7rem 1rem; border:1px solid var(--border); border-radius:4px; font-family:'DM Sans',sans-serif; font-size:0.88rem; background:var(--white); color:var(--text); outline:none;"/>
+        </div>
+
+        <!-- Forum tabs -->
+        <div class="forum-tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'latest')">🔥 Latest</button>
+          <button class="tab-btn" onclick="switchTab(this,'top')">💬 Most Replied</button>
+          <button class="tab-btn" onclick="switchTab(this,'pinned')">📌 Pinned</button>
+          <button class="tab-btn" onclick="switchTab(this,'unanswered')">👁 Unanswered</button>
+        </div>
+
+        <!-- Posts -->
+        <div id="forumPosts"></div>
+
+        <!-- Pagination -->
+        <div id="forumPagination" style="display:flex; gap:0.5rem; align-items:center; padding:1.5rem 0 0; flex-wrap:wrap;"></div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="forum-sidebar">
+        <!-- Category filter -->
+        <div class="sidebar-widget">
+          <div class="sw-header">📂 Discussion Categories</div>
+          <div class="sw-body">
+            <ul class="category-list" id="categoryFilter">
+              <li onclick="filterByCategory('')" style="cursor:pointer; font-weight:600; color:var(--forest)"><span>All Categories</span><span class="cat-count" id="catAll">—</span></li>
+              <li onclick="filterByCategory('Classroom Management')"><span>Classroom Management</span><span class="cat-count">214</span></li>
+              <li onclick="filterByCategory('Professional Development')"><span>Professional Development</span><span class="cat-count">142</span></li>
+              <li onclick="filterByCategory('Special Needs')"><span>Special Needs Education</span><span class="cat-count">88</span></li>
+              <li onclick="filterByCategory('Technology')"><span>Technology in Education</span><span class="cat-count">67</span></li>
+              <li onclick="filterByCategory('Early Childhood')"><span>Early Childhood (ECCD)</span><span class="cat-count">94</span></li>
+              <li onclick="filterByCategory('General')"><span>General Discussion</span><span class="cat-count">528</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sw-header">🏆 Active Contributors</div>
+          <div class="sw-body">
+            <div class="member-item">
+              <div class="mi-av">TM</div>
+              <div><div class="mi-name">Thandiwe Mwale</div><div class="mi-district">Dedza · 312 posts</div></div>
+            </div>
+            <div class="member-item">
+              <div class="mi-av" style="background:var(--rust);">JB</div>
+              <div><div class="mi-name">James Banda</div><div class="mi-district">Blantyre · 287 posts</div></div>
+            </div>
+            <div class="member-item">
+              <div class="mi-av" style="background:#7B5EA7;">GN</div>
+              <div><div class="mi-name">Grace Njobvu</div><div class="mi-district">Mzimba · 265 posts</div></div>
+            </div>
+            <div class="member-item">
+              <div class="mi-av" style="background:#1A6B8A;">PM</div>
+              <div><div class="mi-name">Patrick Msowoya</div><div class="mi-district">Nkhotakota · 241 posts</div></div>
+            </div>
+            <div class="member-item">
+              <div class="mi-av">LK</div>
+              <div><div class="mi-name">Lyness Kachingwe</div><div class="mi-district">Zomba · 218 posts</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="sw-header">📊 Forum Stats</div>
+          <div class="sw-body">
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
+                <span style="color:var(--muted)">Total Discussions</span>
+                <strong id="statTotal">4,218</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
+                <span style="color:var(--muted)">Total Replies</span>
+                <strong id="statReplies">31,847</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
+                <span style="color:var(--muted)">Active Today</span>
+                <strong style="color:var(--forest3)">847 teachers</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
+                <span style="color:var(--muted)">Districts Active</span>
+                <strong>28 / 28</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPLY MODAL OVERLAY -->
+<div id="replyOverlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:500; align-items:center; justify-content:center; padding:1rem;">
+  <div style="background:var(--white); border-radius:8px; width:100%; max-width:600px; box-shadow:0 20px 60px rgba(0,0,0,0.25); overflow:hidden;">
+    <div style="background:var(--forest); color:var(--white); padding:1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;" id="replyModalTitle">Reply to Discussion</span>
+      <button onclick="closeReply()" style="background:none; border:none; color:var(--white); font-size:1.4rem; cursor:pointer; line-height:1;">×</button>
+    </div>
+    <div style="padding:1.5rem;">
+      <div id="replyThread" style="max-height:240px; overflow-y:auto; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.75rem;"></div>
+      <div class="form-row" style="margin-bottom:0.75rem;">
+        <div class="form-field">
+          <label>Your Name</label>
+          <input type="text" id="rname" placeholder="Your name"/>
+        </div>
+        <div class="form-field">
+          <label>District</label>
+          <select id="rdistrict">
+            <option value="">— District —</option>
+            <option>Balaka</option><option>Blantyre</option><option>Chikwawa</option>
+            <option>Chiradzulu</option><option>Chitipa</option><option>Dedza</option>
+            <option>Dowa</option><option>Karonga</option><option>Kasungu</option>
+            <option>Lilongwe</option><option>Likoma</option><option>Machinga</option>
+            <option>Mangochi</option><option>Mchinji</option><option>Mulanje</option>
+            <option>Mwanza</option><option>Mzimba</option><option>Neno</option>
+            <option>Nkhata Bay</option><option>Nkhotakota</option><option>Nsanje</option>
+            <option>Ntcheu</option><option>Ntchisi</option><option>Phalombe</option>
+            <option>Rumphi</option><option>Salima</option><option>Thyolo</option>
+            <option>Zomba</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field" style="margin-bottom:1rem;">
+        <label>Your Reply</label>
+        <textarea id="rtext" rows="3" placeholder="Write your reply..."></textarea>
+      </div>
+      <button class="btn-forest" onclick="submitReply()" style="width:100%; text-align:center; padding:0.85rem; border-radius:3px; font-size:0.9rem;">
+        Post Reply 💬
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- LATEST NEWS -->
+<section id="news">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-kicker">Latest Updates</div>
+      <h2 class="section-title">Latest News</h2>
+      <p class="section-sub">Stay informed with the most recent education news from across Malawi.</p>
+    </div>
+    <div id="dynamic-news-container">
+      <div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.9rem;">Loading latest news…</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-kicker">Teaching Materials</div>
+      <h2 class="section-title">Resources for Every Teacher</h2>
+      <p class="section-sub">Free downloadable materials, lesson plans, past papers, and guides for Malawian teachers from Standard 1 to Form 4.</p>
+    </div>
+
+    <div class="resources-grid">
+
+      <!-- STANDARD 5 -->
+      <div class="standard-badge reveal" onclick="toggleStandard('std5', this)">
+        <div class="sb-icon">📗</div>
+        <div class="sb-label">Standard 5 Notes</div>
+        <div class="sb-sub">Primary · Year 5</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+      </div>
+
+      <!-- STANDARD 6 -->
+      <div class="standard-badge reveal" onclick="toggleStandard('std6', this)">
+        <div class="sb-icon">📘</div>
+        <div class="sb-label">Standard 6 Notes</div>
+        <div class="sb-sub">Primary · Year 6</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+      </div>
+
+      <!-- STANDARD 7 -->
+      <div class="standard-badge reveal" onclick="toggleStandard('std7', this)">
+        <div class="sb-icon">📙</div>
+        <div class="sb-label">Standard 7 Notes</div>
+        <div class="sb-sub">Primary · Year 7</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+      </div>
+
+      <!-- STANDARD 8 -->
+      <div class="standard-badge reveal" onclick="toggleStandard('std8', this)">
+        <div class="sb-icon">📕</div>
+        <div class="sb-label">Standard 8 Notes</div>
+        <div class="sb-sub">Primary · Year 8</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+      </div>
+
+      <!-- Subject Panels (one per standard, all share same subjects) -->
+      <div class="subjects-panel" id="panel-std5">
+        <div class="sp-title">📗 Standard 5 — Select a Subject</div>
+        <div class="subjects-list">
+          <a href="NOTES/Std 5 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
+          <a href="NOTES/Std 5 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
+          <a href="NOTES/Std 5 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
+          <a href="NOTES/Std 5 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
+          <a href="NOTES/Std 5 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+          <a href="NOTES/Std 5 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
+          <a href="NOTES/Std 5 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+        </div>
+      </div>
+
+      <div class="subjects-panel" id="panel-std6">
+        <div class="sp-title">📘 Standard 6 — Select a Subject</div>
+        <div class="subjects-list">
+          <a href="NOTES/Std 6 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
+          <a href="NOTES/Std 6 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
+          <a href="NOTES/Std 6 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
+          <a href="NOTES/Std 6 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
+          <a href="NOTES/Std 6 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+          <a href="NOTES/Std 6 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
+          <a href="NOTES/Std 6 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+        </div>
+      </div>
+
+      <div class="subjects-panel" id="panel-std7">
+        <div class="sp-title">📙 Standard 7 — Select a Subject</div>
+        <div class="subjects-list">
+          <a href="NOTES/Std 7 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
+          <a href="NOTES/Std 7 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
+          <a href="NOTES/Std 7 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
+          <a href="NOTES/Std 7 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
+          <a href="NOTES/Std 7 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+          <a href="NOTES/Std 7 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
+          <a href="NOTES/Std 7 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+        </div>
+      </div>
+
+      <div class="subjects-panel" id="panel-std8">
+        <div class="sp-title">📕 Standard 8 — Select a Subject</div>
+        <div class="subjects-list">
+          <a href="NOTES/Std 8 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
+          <a href="NOTES/Std 8 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
+          <a href="NOTES/Std 8 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
+          <a href="NOTES/Std 8 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
+          <a href="NOTES/Std 8 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+          <a href="NOTES/Std 8 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
+          <a href="NOTES/Std 8 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCHEMES OF WORK DOWNLOAD -->
+    <div class="reveal schemes-card">
+      <div class="schemes-info">
+        <div style="font-size:2.5rem; line-height:1; flex-shrink:0;">📦</div>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.3rem;">Schemes of Work — Term 3</div>
+          <div style="font-size:0.82rem; color:var(--sage); margin-bottom:0.2rem;">Complete schemes of work for all subjects · Term 3</div>
+          <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); letter-spacing:0.05em;">📁 schemes-of-work-term3.zip</div>
+        </div>
+      </div>
+      <a href="schemes-of-work-term3.zip" download class="schemes-btn">⬇️ Download ZIP</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand-section">
+      <div class="logo-text">Education</div>
+      <div class="logo-text" style="color:var(--tan);">Matters</div>
+      <div class="logo-sub">Quality Education for Every Child in Malawi</div>
+      <p>A community-driven platform uniting teachers across all 28 districts of Malawi to share knowledge, support each other, and advocate for quality education and teacher welfare.</p>
+      <div style="display:flex;gap:0.75rem;margin-top:1.25rem;">
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;text-decoration:none;">📘</a>
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;text-decoration:none;">📱</a>
+        <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:1rem;text-decoration:none;">💬</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#forum">Discussion Forum</a></li>
+        <li><a href="#resources">Teaching Resources</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Useful Links</h5>
+      <ul>
+        <li><a href="#">Ministry of Education</a></li>
+        <li><a href="#">MANEB (Examinations Board)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Education Matters. All rights reserved.</div>
+    <div>Built by Juma Ali of 0888592312, for Teachers · Malawi 🇲🇼</div>
+  </div>
+</footer>
+
+<!-- Firebase compat SDKs (no ES module imports needed) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script>
+// ── REPLACE these values with your own Firebase project config ──────────────
+// Go to console.firebase.google.com → your project → Project Settings → Web app
+const firebaseConfig = {
+  apiKey:            "AIzaSyC3nExOatpWW1xOMbWCS9fposQp2MU9vL4",
+  authDomain:        "teachers-tikambe.firebaseapp.com",
+  databaseURL:       "https://teachers-tikambe-default-rtdb.firebaseio.com",
+  projectId:         "teachers-tikambe",
+  storageBucket:     "teachers-tikambe.firebasestorage.app",
+  messagingSenderId: "1064613594567",
+  appId:             "1:1064613594567:web:dd19276d36935745e185e2"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ── CONSTANTS & STATE ────────────────────────────────────────────────────────
+const POSTS_PER_PAGE = 5;
+const avatarColors   = ['#2D6A4F','#C1440E','#7B5EA7','#1A6B8A','#40916C','#B8860B','#8B3A3A'];
+let allPosts         = [];
+let activeTab        = 'latest';
+let activeCatFilter  = '';
+let currentPage      = 1;
+let searchTerm       = '';
+let activeReplyPostId = null;
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function timeAgo(ts) {
+  if (!ts) return 'Just now';
+  const ms   = ts.toMillis ? ts.toMillis() : (typeof ts === 'number' ? ts : Date.now());
+  const diff = Date.now() - ms;
+  const m    = Math.floor(diff / 60000);
+  if (m < 1)  return 'Just now';
+  if (m < 60) return m + ' min ago';
+  const h = Math.floor(m / 60);
+  if (h < 24) return h + ' hr' + (h > 1 ? 's' : '') + ' ago';
+  const d = Math.floor(h / 24);
+  if (d < 7)  return d + ' day' + (d > 1 ? 's' : '') + ' ago';
+  return Math.floor(d / 7) + ' wk ago';
+}
+
+function getInitials(name) {
+  return name.trim().split(/\s+/).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+}
+
+function randomColor() {
+  return avatarColors[Math.floor(Math.random() * avatarColors.length)];
+}
+
+function getSession() {
+  let s = localStorage.getItem('em_session');
+  if (!s) { s = Math.random().toString(36).slice(2); localStorage.setItem('em_session', s); }
+  return s;
+}
+
+// ── REAL-TIME LISTENER ────────────────────────────────────────────────────────
+function startListening() {
+  db.collection('forum_posts')
+    .orderBy('createdAt', 'desc')
+    .onSnapshot(function(snapshot) {
+      allPosts = snapshot.docs.map(function(d) { return Object.assign({ id: d.id }, d.data()); });
+      var catEl = document.getElementById('catAll');
+      if (catEl) catEl.textContent = allPosts.length;
+      var statEl = document.getElementById('statTotal');
+      if (statEl) statEl.textContent = (4218 + allPosts.length).toLocaleString();
+      renderPosts();
+    }, function(err) {
+      console.error('Firestore error:', err);
+      showDbError();
+    });
+}
+
+function showDbError() {
+  document.getElementById('forumPosts').innerHTML =
+    '<div style="padding:2rem;text-align:center;background:#fff3cd;border:1px solid #ffc107;border-radius:4px;font-size:0.88rem;color:#856404;">' +
+    '<strong>⚠️ Firebase not configured yet.</strong><br><br>' +
+    'Open the HTML file, find the <code>firebaseConfig</code> block and replace the placeholder values with your own Firebase project credentials.<br><br>' +
+    '<a href="https://console.firebase.google.com" target="_blank" style="color:#1B4332;font-weight:600;">→ Go to Firebase Console</a>' +
+    '</div>';
+}
+
+// ── FILTERING ─────────────────────────────────────────────────────────────────
+function getFiltered() {
+  var p = allPosts.slice();
+  if (activeTab === 'pinned')     p = p.filter(function(x) { return x.pinned; });
+  if (activeTab === 'unanswered') p = p.filter(function(x) { return (x.replyCount || 0) === 0; });
+  if (activeTab === 'top')        p.sort(function(a,b) { return (b.replyCount||0) - (a.replyCount||0); });
+  if (activeCatFilter) {
+    var cf = activeCatFilter.toLowerCase();
+    p = p.filter(function(x) { return (x.category||'').toLowerCase().indexOf(cf) !== -1; });
+  }
+  if (searchTerm) {
+    var s = searchTerm.toLowerCase();
+    p = p.filter(function(x) {
+      return (x.title||'').toLowerCase().indexOf(s) !== -1 ||
+             (x.preview||'').toLowerCase().indexOf(s) !== -1 ||
+             (x.author||'').toLowerCase().indexOf(s) !== -1;
+    });
+  }
+  return p;
+}
+
+// ── RENDER POSTS ──────────────────────────────────────────────────────────────
+function renderPosts() {
+  var filtered   = getFiltered();
+  var totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
+  if (currentPage > totalPages) currentPage = 1;
+  var slice = filtered.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+  var fp = document.getElementById('forumPosts');
+  fp.innerHTML = '';
+
+  if (slice.length === 0) {
+    fp.innerHTML = '<div style="padding:2.5rem 0;text-align:center;color:var(--muted);font-size:0.9rem;">No discussions found. Be the first to start one! ✍️</div>';
+  } else {
+    slice.forEach(function(post) {
+      var el = document.createElement('div');
+      el.className = 'forum-post';
+      var saved    = post.savedBy && post.savedBy.indexOf(getSession()) !== -1;
+      var pinBadge = post.pinned
+        ? ' <span style="background:var(--tan);color:var(--forest);font-size:0.6rem;font-weight:700;padding:0.15rem 0.45rem;border-radius:2px;letter-spacing:0.06em;vertical-align:middle;">📌 PINNED</span>'
+        : '';
+      el.innerHTML =
+        '<div class="post-avatar" style="background:' + (post.color||'var(--forest2)') + ';flex-shrink:0;">' + (post.initials||'?') + '</div>' +
+        '<div class="post-body">' +
+          '<div class="post-header">' +
+            '<div>' +
+              '<div class="post-author">' + (post.author||'Anonymous') + pinBadge + '</div>' +
+              '<div class="post-meta">'   + (post.meta||'') + '</div>' +
+            '</div>' +
+            '<div class="post-time">' + timeAgo(post.createdAt) + '</div>' +
+          '</div>' +
+          '<div class="post-title" onclick="openReply(\'' + post.id + '\')" style="cursor:pointer;">' + (post.title||'') + '</div>' +
+          '<div class="post-preview">' + (post.preview||'').substring(0,220) + ((post.preview||'').length>220?'…':'') + '</div>' +
+          '<div class="post-footer">' +
+            '<span class="post-tag">' + (post.category||'') + '</span>' +
+            '<span class="post-action" onclick="openReply(\'' + post.id + '\')">💬 ' + (post.replyCount||0) + ' ' + ((post.replyCount||0)===1?'reply':'replies') + '</span>' +
+            '<span class="post-action" onclick="handleLike(\'' + post.id + '\')">👍 ' + (post.likeCount||0) + '</span>' +
+            '<span class="post-action" onclick="handleSave(\'' + post.id + '\')">' + (saved ? '🔖 Saved' : '🔖 Save') + '</span>' +
+          '</div>' +
+        '</div>';
+      fp.appendChild(el);
+    });
+  }
+  renderPagination(filtered.length, totalPages);
+}
+
+function renderPagination(total, totalPages) {
+  var pg = document.getElementById('forumPagination');
+  pg.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  function mkBtn(label, page, disabled, active) {
+    var b = document.createElement('button');
+    b.textContent = label;
+    b.disabled    = disabled;
+    b.style.cssText = 'padding:0.4rem 0.8rem;font-size:0.78rem;border:1px solid ' +
+      (active ? 'var(--forest)' : 'var(--border)') + ';border-radius:3px;background:' +
+      (active ? 'var(--forest)' : 'var(--white)') + ';color:' +
+      (active ? 'var(--white)' : disabled ? '#aaa' : 'var(--forest)') +
+      ';cursor:' + (disabled ? 'default' : 'pointer') + ';font-family:\'DM Sans\',sans-serif;margin:0 2px;';
+    if (!disabled) b.onclick = (function(p) { return function() { currentPage = p; renderPosts(); }; })(page);
+    return b;
+  }
+
+  pg.appendChild(mkBtn('← Prev', currentPage - 1, currentPage === 1, false));
+  for (var i = 1; i <= totalPages; i++) {
+    pg.appendChild(mkBtn(i, i, false, i === currentPage));
+  }
+  pg.appendChild(mkBtn('Next →', currentPage + 1, currentPage === totalPages, false));
+}
+
+// ── TAB & FILTER CONTROLS ─────────────────────────────────────────────────────
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  activeTab = tab; currentPage = 1; renderPosts();
+}
+
+function filterByCategory(cat) {
+  activeCatFilter = cat; currentPage = 1;
+  document.querySelectorAll('#categoryFilter li').forEach(function(li) { li.style.fontWeight = ''; });
+  event.currentTarget.style.fontWeight = '600';
+  renderPosts();
+}
+
+function filterPosts() {
+  searchTerm = document.getElementById('forumSearch').value;
+  currentPage = 1; renderPosts();
+}
+
+// ── INTERACTIONS ──────────────────────────────────────────────────────────────
+function handleLike(postId) {
+  db.collection('forum_posts').doc(postId).update({
+    likeCount: firebase.firestore.FieldValue.increment(1)
+  }).catch(function(e) { console.error(e); });
+}
+
+function handleSave(postId) {
+  db.collection('forum_posts').doc(postId).update({
+    savedBy: firebase.firestore.FieldValue.arrayUnion(getSession())
+  }).catch(function(e) { console.error(e); });
+}
+
+// ── REPLY MODAL ───────────────────────────────────────────────────────────────
+function openReply(postId) {
+  activeReplyPostId = postId;
+  document.getElementById('replyOverlay').style.display = 'flex';
+  var thread = document.getElementById('replyThread');
+  thread.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--muted);font-size:0.82rem;">Loading replies…</div>';
+
+  db.collection('forum_posts').doc(postId).get().then(function(snap) {
+    if (!snap.exists) return;
+    var post = snap.data();
+    document.getElementById('replyModalTitle').textContent =
+      'Replies — ' + (post.title||'').substring(0,50) + ((post.title||'').length > 50 ? '…' : '');
+  });
+
+  db.collection('forum_posts').doc(postId).collection('replies')
+    .orderBy('createdAt', 'asc')
+    .get()
+    .then(function(snapshot) {
+      thread.innerHTML = '';
+      if (snapshot.empty) {
+        thread.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--muted);font-size:0.82rem;">No replies yet — be the first! 👇</div>';
+        return;
+      }
+      snapshot.forEach(function(r) {
+        var d  = r.data();
+        var el = document.createElement('div');
+        el.style.cssText = 'display:flex;gap:0.75rem;padding:0.85rem;background:var(--warm);border-radius:4px;border-left:3px solid var(--forest3);margin-bottom:0.5rem;';
+        el.innerHTML =
+          '<div style="width:32px;height:32px;border-radius:50%;background:' + (d.color||'var(--forest2)') + ';color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;">' + (d.initials||'?') + '</div>' +
+          '<div style="flex:1;">' +
+            '<div style="font-weight:600;font-size:0.82rem;color:var(--forest);">' + (d.author||'Anonymous') + '</div>' +
+            '<div style="font-size:0.7rem;color:#aaa;margin-bottom:0.3rem;">' + (d.district ? d.district + ' · ' : '') + timeAgo(d.createdAt) + '</div>' +
+            '<div style="font-size:0.84rem;color:var(--text);line-height:1.55;">' + (d.text||'') + '</div>' +
+          '</div>';
+        thread.appendChild(el);
+      });
+      thread.scrollTop = thread.scrollHeight;
+    })
+    .catch(function(e) { console.error(e); });
+}
+
+function closeReply() {
+  document.getElementById('replyOverlay').style.display = 'none';
+  activeReplyPostId = null;
+}
+
+document.getElementById('replyOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeReply();
+});
+
+function submitReply() {
+  var name     = document.getElementById('rname').value.trim();
+  var text     = document.getElementById('rtext').value.trim();
+  var district = document.getElementById('rdistrict').value;
+  if (!name || !text) { alert('Please enter your name and a reply.'); return; }
+  if (!activeReplyPostId) return;
+
+  var btn = document.querySelector('#replyOverlay .btn-forest');
+  btn.textContent = 'Posting…'; btn.disabled = true;
+
+  db.collection('forum_posts').doc(activeReplyPostId).collection('replies').add({
+    author:    name,
+    initials:  getInitials(name),
+    color:     randomColor(),
+    district:  district,
+    text:      text,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(function() {
+    return db.collection('forum_posts').doc(activeReplyPostId).update({
+      replyCount: firebase.firestore.FieldValue.increment(1)
+    });
+  }).then(function() {
+    document.getElementById('rname').value = '';
+    document.getElementById('rtext').value = '';
+    document.getElementById('rdistrict').selectedIndex = 0;
+    openReply(activeReplyPostId);
+  }).catch(function(e) {
+    alert('Could not post reply. Check your Firebase config.');
+    console.error(e);
+  }).finally(function() {
+    btn.textContent = 'Post Reply 💬'; btn.disabled = false;
+  });
+}
+
+// ── SUBMIT NEW POST ───────────────────────────────────────────────────────────
+function submitPost() {
+  var name  = document.getElementById('pname').value.trim();
+  var cat   = document.getElementById('pcategory').value;
+  var title = document.getElementById('ptitle').value.trim();
+  var msg   = document.getElementById('pmessage').value.trim();
+
+  if (!name || !cat || !title || !msg) {
+    alert('Please fill in your name, category, title, and message.');
+    return;
+  }
+
+  var district = document.getElementById('pdistrict').value || 'Malawi';
+  var btn = document.querySelector('#newPostForm .btn-forest');
+  btn.textContent = 'Posting…'; btn.disabled = true;
+
+  db.collection('forum_posts').add({
+    author:     name,
+    initials:   getInitials(name),
+    color:      randomColor(),
+    meta:       'Teacher · ' + district,
+    title:      title,
+    preview:    msg,
+    category:   cat,
+    replyCount: 0,
+    likeCount:  0,
+    savedBy:    [],
+    pinned:     false,
+    createdAt:  firebase.firestore.FieldValue.serverTimestamp()
+  }).then(function() {
+    ['pname','pcategory','pdistrict','ptitle','pmessage'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el.tagName === 'SELECT') el.selectedIndex = 0; else el.value = '';
+    });
+    activeTab = 'latest'; currentPage = 1;
+    document.querySelectorAll('.tab-btn').forEach(function(b, i) {
+      b.classList.toggle('active', i === 0);
+    });
+    document.getElementById('postSuccess').classList.add('show');
+    setTimeout(function() { document.getElementById('postSuccess').classList.remove('show'); }, 5000);
+  }).catch(function(e) {
+    alert('Could not post. Check your Firebase config.');
+    console.error(e);
+  }).finally(function() {
+    btn.textContent = 'Post Discussion 💬'; btn.disabled = false;
+  });
+}
+
+// ── CONTACT FORM ──────────────────────────────────────────────────────────────
+function submitContact() {
+  var name    = document.getElementById('cname').value.trim();
+  var subject = document.getElementById('csubject').value;
+  var msg     = document.getElementById('cmessage').value.trim();
+  if (!name || !subject || !msg) { alert('Please fill in your name, subject, and message.'); return; }
+  ['cname','cdistrict','cphone','cemail','csubject','cmessage'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el.tagName === 'SELECT') el.selectedIndex = 0; else el.value = '';
+  });
+  document.getElementById('contactSuccess').classList.add('show');
+  setTimeout(function() { document.getElementById('contactSuccess').classList.remove('show'); }, 6000);
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────────────────
+function openMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('drawerBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('drawerBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── STANDARD NOTES TOGGLE ─────────────────────────────────────────────────────
+function toggleStandard(id, badge) {
+  var panel     = document.getElementById('panel-' + id);
+  var allPanels = document.querySelectorAll('.subjects-panel');
+  var allBadges = document.querySelectorAll('.standard-badge');
+  if (panel.classList.contains('show')) {
+    panel.classList.remove('show'); badge.classList.remove('active'); return;
+  }
+  allPanels.forEach(function(p) { p.classList.remove('show'); });
+  allBadges.forEach(function(b) { b.classList.remove('active'); });
+  panel.classList.add('show'); badge.classList.add('active');
+  setTimeout(function() { panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
+var reveals   = document.querySelectorAll('.reveal');
+var revealIO  = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) setTimeout(function() { e.target.classList.add('visible'); }, i * 70);
+  });
+}, { threshold: 0.08 });
+reveals.forEach(function(r) { revealIO.observe(r); });
+
+// ── NEWS.JSON LOADER ──────────────────────────────────────────────────────────
+function loadNewsFromJSON() {
+  fetch('news.json')
+    .then(function(res) { return res.json(); })
+    .then(function(articles) {
+      var container = document.getElementById('dynamic-news-container');
+      if (!container || !articles.length) return;
+
+      var html = '';
+      articles.forEach(function(article, index) {
+        var isLead = index === 0;
+        var emoji = ['📰','🎓','📖','🏫','💻','📊','🌍','✏️'][index % 8];
+        if (isLead) {
+          html += '<div class="article-card lead reveal" style="grid-column:1/-1;margin-bottom:1.5rem;">' +
+            '<div class="article-thumb" style="background:linear-gradient(135deg,var(--forest),var(--forest2));height:220px;display:flex;align-items:center;justify-content:center;font-size:4rem;">' + emoji + '</div>' +
+            '<div class="article-body">' +
+            '<div class="article-category" style="color:var(--rust);font-weight:700;">' + (article.category || 'News') + '</div>' +
+            '<div class="article-title" style="font-size:1.3rem;">' + article.title + '</div>' +
+            '<div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem;font-style:italic;">📅 ' + article.date + '</div>' +
+            '<div class="article-excerpt">' + article.body + '</div>' +
+            '</div></div>';
+        } else {
+          html += '<div class="article-card reveal">' +
+            '<div class="article-thumb" style="height:140px;background:linear-gradient(135deg,var(--forest2),var(--forest3));display:flex;align-items:center;justify-content:center;font-size:2.5rem;">' + emoji + '</div>' +
+            '<div class="article-body">' +
+            '<div class="article-category">' + (article.category || 'News') + '</div>' +
+            '<div class="article-title">' + article.title + '</div>' +
+            '<div class="article-excerpt">' + article.body + '</div>' +
+            '<div class="article-meta"><span>📅 ' + article.date + '</span></div>' +
+            '</div></div>';
+        }
+      });
+
+      container.innerHTML = '<div class="articles-grid">' + html + '</div>';
+
+      // Re-run scroll reveal on new elements
+      document.querySelectorAll('#dynamic-news-container .reveal').forEach(function(r) {
+        revealIO.observe(r);
+      });
+    })
+    .catch(function() {
+      // news.json not found or invalid — silently skip
+    });
+}
+
+// ── BOOT ──────────────────────────────────────────────────────────────────────
+startListening();
+loadNewsFromJSON();
+</script>
+</body>
+</html>
