@@ -109,11 +109,11 @@ nav {
 .nav-links a {
   text-decoration: none;
   color: var(--text);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 0.45rem 0.85rem;
+  padding: 0.45rem 0.65rem;
   border-radius: 3px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   transition: background 0.2s, color 0.2s;
 }
 .nav-links a:hover { background: var(--warm); color: var(--forest); }
@@ -1382,7 +1382,7 @@ footer {
   .footer-main { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   /* ── NAV ── */
   .nav-links { display: none; }
   .hamburger { display: flex; }
@@ -1492,7 +1492,9 @@ footer {
       </div>
     </a>
     <ul class="nav-links">
+      <li><a href="#notices">Announcements</a></li>
       <li><a href="#forum">Forum</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#resources">Resources</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1521,9 +1523,15 @@ footer {
   </div>
 
   <!-- Nav links -->
-  <div class="drawer-section-label">Navigation</div>
+  <div class="drawer-section-label">Main Navigation</div>
+  <a href="#notices" onclick="closeMenu()">
+    <span class="nav-icon">📢</span> Announcements &amp; Notices
+  </a>
   <a href="#forum" onclick="closeMenu()">
     <span class="nav-icon">💬</span> Discussion Forum
+  </a>
+  <a href="#news" onclick="closeMenu()">
+    <span class="nav-icon">📰</span> Latest News
   </a>
   <a href="#resources" onclick="closeMenu()">
     <span class="nav-icon">📂</span> Teaching Resources
@@ -1536,8 +1544,11 @@ footer {
   <a href="https://www.maneb.edu.mw" target="_blank" onclick="closeMenu()">
     <span class="nav-icon">📝</span> MANEB Examinations
   </a>
-  <a href="#" onclick="closeMenu()">
+  <a href="https://web.facebook.com/MalawiEducation" target="_blank" onclick="closeMenu()">
     <span class="nav-icon">🏛️</span> Ministry of Education
+  </a>
+  <a href="https://web.facebook.com/MANEBMalawi" target="_blank" onclick="closeMenu()">
+    <span class="nav-icon">🎓</span> MANEB Facebook Page
   </a>
 
   <!-- Footer CTA -->
@@ -1850,7 +1861,7 @@ footer {
     <div class="section-header text-center reveal">
       <div class="section-kicker">Teaching Materials</div>
       <h2 class="section-title">Resources for Every Teacher</h2>
-      <p class="section-sub">Free downloadable materials, lesson plans, past papers, and guides for Malawian teachers from Standard 1 to Form 4.</p>
+      <p class="section-sub">Free downloadable materials, past papers, notes, Syllabuses and Teachers guides for Malawian teachers from Standard 1 to Standard 8.</p>
     </div>
 
     <div class="resources-grid">
@@ -1961,6 +1972,14 @@ footer {
         <div class="sb-icon">📖</div>
         <div class="sb-label">Teachers Guides</div>
         <div class="sb-sub">All Subjects</div>
+        <div class="sb-arrow">▼ VIEW</div>
+      </div>
+
+      <!-- SYLLABUS -->
+      <div class="standard-badge" onclick="showComingSoon(this)">
+        <div class="sb-icon">📜</div>
+        <div class="sb-label">Syllabus</div>
+        <div class="sb-sub">All Standards</div>
         <div class="sb-arrow">▼ VIEW</div>
       </div>
 
@@ -2135,8 +2154,9 @@ footer {
     <div class="footer-col">
       <h5>Useful Links</h5>
       <ul>
-        <li><a href="#">Ministry of Education</a></li>
-        <li><a href="#">MANEB (Examinations Board)</a></li>
+        <li><a href="https://web.facebook.com/MalawiEducation" target="_blank" rel="noopener">Ministry of Education</a></li>
+        <li><a href="https://web.facebook.com/MANEBMalawi" target="_blank" rel="noopener">MANEB (Examinations Board)</a></li>
+        <li><a href="https://apkpure.com/easy-assess/com.jumaali.seniorclasseseasyassess/download/28.0" target="_blank" rel="noopener">⬇️ Easy Assess 28 Download</a></li>
       </ul>
     </div>
 
