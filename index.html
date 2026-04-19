@@ -842,6 +842,126 @@ section { padding: 5.5rem 0; }
 }
 .success-banner.show { display: block; }
 
+/* ── LIVE NOTICES TICKER ── */
+.live-ticker {
+  background: #C1440E;
+  color: var(--white);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  height: 38px;
+}
+.ticker-label {
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.ticker-track {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.ticker-inner {
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  animation: ticker-scroll 30s linear infinite;
+  padding-left: 100%;
+}
+.ticker-inner:hover { animation-play-state: paused; }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ── ANNOUNCEMENTS & NOTICES ── */
+#notices { background: var(--cream); border-bottom: 1px solid var(--border); }
+.notices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.notice-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  border-top: 3px solid var(--forest3);
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.notice-card:hover { box-shadow: 0 8px 28px rgba(27,67,50,0.1); transform: translateY(-3px); }
+.notice-card.urgent { border-top-color: var(--rust); }
+.notice-card.event { border-top-color: var(--tan); }
+.notice-card.info { border-top-color: #1A6B8A; }
+.notice-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--forest3);
+  margin-bottom: 0.6rem;
+}
+.notice-card.urgent .notice-type { color: var(--rust); }
+.notice-card.event .notice-type { color: var(--tan); }
+.notice-card.info .notice-type { color: #1A6B8A; }
+.notice-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+.notice-body {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.notice-footer {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: #aaa;
+}
+
+/* postings badge */
+.postings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--forest);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 2rem;
+}
+.postings-badge:hover { background: var(--forest2); transform: translateY(-2px); }
+.postings-badge .pb-icon { font-size: 1.3rem; }
+
 /* ── COMING SOON POPUP ── */
 .coming-soon-popup {
   display: none;
@@ -1361,8 +1481,6 @@ footer {
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -1468,6 +1586,48 @@ footer {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE NOTICES TICKER -->
+<div class="live-ticker">
+  <div class="ticker-label">🔔 LIVE NOTICES</div>
+  <div class="ticker-track">
+    <div class="ticker-inner">
+      📅 Third Term for 2025/2026 begins next week on Monday. Make sure your Schemes of Work are ready by Friday this week. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Third Term for 2025/2026 begins next week on Monday. Make sure your Schemes of Work are ready by Friday this week. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Third Term for 2025/2026 begins next week on Monday. Make sure your Schemes of Work are ready by Friday this week.
+    </div>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENTS & NOTICES -->
+<section id="notices">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-kicker">Official Notices</div>
+      <h2 class="section-title">Announcements &amp; Notices</h2>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+      <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
+        <span class="pb-icon">📋</span>
+        <span class="sb-label">Postings</span>
+      </button>
+      <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
+        <span class="pb-icon">📚</span>
+        <span class="sb-label">CPD</span>
+      </button>
+      <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
+        <span class="pb-icon">📖</span>
+        <span class="sb-label">NRP</span>
+      </button>
+      <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
+        <span class="pb-icon">🏛️</span>
+        <span class="sb-label">Heads Meetings</span>
+      </button>
+      <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
+        <span class="pb-icon">🧮</span>
+        <span class="sb-label">Headcounting</span>
+      </button>
     </div>
   </div>
 </section>
