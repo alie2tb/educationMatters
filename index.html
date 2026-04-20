@@ -1543,13 +1543,6 @@ footer {
         <div class="n2">Education Portal · Malawi</div>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="#notices">Announcements</a></li>
-      <li><a href="#forum">Forum</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#resources">Resources</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
     <button class="hamburger" onclick="openMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1690,6 +1683,10 @@ footer {
       <button class="postings-badge reveal" onclick="document.getElementById('comingSoonPopup').classList.add('open')">
         <span class="pb-icon">🧮</span>
         <span class="sb-label">Headcounting</span>
+      </button>
+      <button class="postings-badge reveal" onclick="window.open('CIRCULAR ON ACADEMIC CALENDAR.pdf', '_blank')">
+        <span class="pb-icon">📅</span>
+        <span class="sb-label">Academic Calendar</span>
       </button>
     </div>
   </div>
@@ -2003,6 +2000,31 @@ footer {
         </div>
       </div>
 
+      <!-- Q&A BOOKLETS -->
+      <div class="standard-badge reveal" onclick="toggleStandard('qa', this)">
+        <div class="sb-icon">📋</div>
+        <div class="sb-label">Q &amp; A Booklets</div>
+        <div class="sb-sub">All Standards</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+      </div>
+
+      <!-- Q&A SUBJECT PANELS -->
+      <div class="subjects-panel" id="panel-qa">
+        <div class="sp-title">📋 Q &amp; A Booklets — Select a Subject</div>
+        <div class="subjects-list">
+          <a href="MATHEMATICS_PSLCE_2010-2021_QUESTIONS_&_MODEL_ANSWERS.pdf" target="_blank" class="subject-item"><div class="si-icon">📐</div><div class="si-name">Maths</div></a>
+          <a href="Q&A English.pdf" target="_blank" class="subject-item"><div class="si-icon">🔤</div><div class="si-name">English</div></a>
+          <a href="Q&A Chichewa.pdf" target="_blank" class="subject-item"><div class="si-icon">🗣️</div><div class="si-name">Chichewa</div></a>
+          <a href="Q&A Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
+          <a href="Q&A Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
+          <a href="Q&A Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
+          <a href="Q&A Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
+          <a href="Q&A Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+          <a href="Q&A Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
+          <a href="Q&A Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+        </div>
+      </div>
+
       <!-- LESSON PLANS -->
       <div class="standard-badge" onclick="showComingSoon(this)">
         <div class="sb-icon">📝</div>
@@ -2035,10 +2057,18 @@ footer {
         <div class="sb-arrow">▼ VIEW</div>
       </div>
 
+      <!-- SCHEMES OF WORK -->
+      <a href="schemes-of-work-term3.zip" download class="standard-badge reveal" style="text-decoration:none;">
+        <div class="sb-icon">📦</div>
+        <div class="sb-label">Schemes of Work</div>
+        <div class="sb-sub">Term 3 · All Subjects</div>
+        <div class="sb-arrow" style="color:var(--sage);">⬇️ DOWNLOAD ZIP</div>
+      </a>
+
       <!-- TEACHERS GUIDES PANEL -->
       <div class="subjects-panel" id="panel-tg">
         <div class="sp-title">📖 Teachers Guides — Select a Standard</div>
-        <div class="subjects-list" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="subjects-list" style="grid-template-columns: repeat(2, 1fr);">
 
           <!-- STD 1 -->
           <div class="subject-item" onclick="toggleSyllabusStd('tg-std1', this)">
@@ -2168,18 +2198,6 @@ footer {
 
     </div>
 
-    <!-- SCHEMES OF WORK DOWNLOAD -->
-    <div class="reveal schemes-card">
-      <div class="schemes-info">
-        <div style="font-size:2.5rem; line-height:1; flex-shrink:0;">📦</div>
-        <div>
-          <div style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.3rem;">Schemes of Work — Term 3</div>
-          <div style="font-size:0.82rem; color:var(--sage); margin-bottom:0.2rem;">Complete schemes of work for all subjects · Term 3</div>
-          <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); letter-spacing:0.05em;">📁 schemes-of-work-term3.zip</div>
-        </div>
-      </div>
-      <a href="schemes-of-work-term3.zip" download class="schemes-btn">⬇️ Download ZIP</a>
-    </div>
   </div>
 </section>
 
@@ -2195,6 +2213,76 @@ footer {
     <button onclick="document.getElementById('comingSoonPopup').classList.remove('open')">Got it!</button>
   </div>
 </div>
+
+<!-- ONLINE EASY ASSESSMENT -->
+<section id="assessment" style="background: var(--white);">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <h2 class="section-title">Online Easy Assessment</h2>
+      <p class="section-sub">Quick and easy online assessments for every standard. Select your class to get started.</p>
+    </div>
+
+    <div class="resources-grid" style="margin-top:2.5rem;">
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="openAssessment(1)">
+        <div class="sb-icon">1️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 1</div>
+        <div class="sb-sub">Primary · Year 1</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">2️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 2</div>
+        <div class="sb-sub">Primary · Year 2</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">3️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 3</div>
+        <div class="sb-sub">Primary · Year 3</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">4️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 4</div>
+        <div class="sb-sub">Primary · Year 4</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">5️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 5</div>
+        <div class="sb-sub">Primary · Year 5</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">6️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 6</div>
+        <div class="sb-sub">Primary · Year 6</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">7️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 7</div>
+        <div class="sb-sub">Primary · Year 7</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+        <div class="sb-icon">8️⃣</div>
+        <div class="sb-label" style="color:var(--white);">Standard 8</div>
+        <div class="sb-sub">Primary · Year 8</div>
+        <div class="sb-arrow">▶ START</div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -2752,11 +2840,13 @@ function toggleStandard(id, badge) {
 // ── SYLLABUS STANDARD TOGGLE ──────────────────────────────────────────────────
 function toggleSyllabusStd(id, item) {
   var panel = document.getElementById(id);
-  var allPanels = document.querySelectorAll('#panel-tg .resource-btn-panel');
-  var allItems  = document.querySelectorAll('#panel-tg .subject-item');
+  var parentPanel = item.closest('.subjects-panel');
+  var allPanels = parentPanel.querySelectorAll('.resource-btn-panel');
+  var allItems  = parentPanel.querySelectorAll('.subject-item');
   if (panel.classList.contains('show')) {
     panel.classList.remove('show');
-    item.classList.remove('active');
+    item.style.background  = '';
+    item.style.borderColor = '';
     return;
   }
   allPanels.forEach(function(p) { p.classList.remove('show'); });
@@ -2861,6 +2951,721 @@ function loadTickerFromJSON() {
 startListening();
 loadNewsFromJSON();
 loadTickerFromJSON();
+</script>
+<!-- ── ASSESSMENT OVERLAY ──────────────────────────────────────────────── -->
+<style>
+#assessmentOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #f5f0e8;
+  z-index: 600;
+  overflow-y: auto;
+  font-family: 'DM Sans', sans-serif;
+}
+.aov-header {
+  background: #fff;
+  border-bottom: 1px solid #e0d8cc;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.aov-back {
+  background: var(--forest);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'DM Sans', sans-serif;
+}
+.aov-back:hover { background: var(--forest2); }
+.aov-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+.aov-body { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
+
+/* Summary pills */
+.aov-summary {
+  background: #fff;
+  border: 1px solid #e0d8cc;
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+}
+.aov-sum-label {
+  font-weight: 700;
+  color: var(--forest);
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
+.aov-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+.aov-pill .pn { font-size: 1rem; font-weight: 700; }
+.pill-l1 { background: #fde8e8; color: #c0392b; }
+.pill-l2 { background: #fff3cd; color: #856404; }
+.pill-l3 { background: #d1ecf1; color: #0c5460; }
+.pill-l4 { background: #d4edda; color: #155724; }
+.pill-pass { background: #d4edda; color: #155724; }
+.pill-fail { background: #fde8e8; color: #c0392b; }
+
+/* Toolbar */
+.aov-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.aov-toolbar-left { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.aov-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+.aov-btn.primary { background: var(--tan); color: var(--forest); border-color: var(--tan); }
+.aov-btn.primary:hover { background: #e0b878; }
+.aov-btn:hover { background: #f0ebe3; }
+.aov-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  color: #aaa;
+}
+.aov-search input {
+  border: none;
+  outline: none;
+  font-size: 0.82rem;
+  font-family: 'DM Sans', sans-serif;
+  color: #333;
+  width: 160px;
+  background: transparent;
+}
+
+/* Table card */
+.aov-card {
+  background: #fff;
+  border: 1px solid #e0d8cc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.aov-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid #e0d8cc;
+}
+.aov-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+.aov-card-count { font-size: 0.78rem; color: #888; }
+
+/* Table */
+.aov-table-wrap { overflow-x: auto; }
+table.aov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.aov-table th {
+  background: #f5f0e8;
+  color: #888;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e0d8cc;
+}
+.aov-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0ebe3;
+  color: #1a1a1a;
+  vertical-align: middle;
+}
+.aov-table tr:last-child td { border-bottom: none; }
+.aov-table tr:hover td { background: #faf7f2; }
+.aov-table input.score-input {
+  width: 60px;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
+  outline: none;
+}
+.aov-table input.score-input:focus { border-color: var(--forest3); }
+
+.sex-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.sex-m { background: #dbeafe; color: #1e40af; }
+.sex-f { background: #fce7f3; color: #9d174d; }
+
+.level-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.lv1 { background: #fde8e8; color: #c0392b; }
+.lv2 { background: #fff3cd; color: #856404; }
+.lv3 { background: #d1ecf1; color: #0c5460; }
+.lv4 { background: #d4edda; color: #155724; }
+.lv-none { background: #f0f0f0; color: #999; }
+
+.remark-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.rm-excellent { color: #155724; }
+.rm-good { color: #856404; }
+.rm-verygood { color: #0c5460; }
+.rm-needsupport { color: #c0392b; }
+
+.aov-edit-btn {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.aov-edit-btn:hover { background: #f0ebe3; border-color: var(--forest3); }
+.aov-add-btn {
+  background: var(--forest);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.aov-add-btn:hover { background: var(--forest2); }
+
+/* Add student row */
+.aov-add-row td { background: #faf7f2; }
+
+/* Modal */
+#scoreModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 700;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+#scoreModal.open { display: flex; }
+.score-modal-box {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.smb-header {
+  background: var(--forest);
+  color: #fff;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+.smb-close { background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; line-height: 1; }
+.smb-body { padding: 1.25rem; }
+.smb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.smb-field label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; display: block; margin-bottom: 0.3rem; }
+.smb-field input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+}
+.smb-field input:focus { border-color: var(--forest3); }
+.smb-save {
+  width: 100%;
+  background: var(--forest);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.smb-save:hover { background: var(--forest2); }
+
+@media (max-width: 640px) {
+  .aov-body { padding: 1rem 0.75rem; }
+  .aov-summary { gap: 0.5rem; }
+  .aov-table th, .aov-table td { padding: 0.55rem 0.6rem; font-size: 0.75rem; }
+  .aov-search input { width: 110px; }
+  #scoreFilterPanel > div:nth-child(2) { grid-template-columns: 1fr 1fr !important; }
+}
+.flt-input {
+  width: 58px;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  color: #333;
+}
+.flt-input:focus { border-color: var(--forest3); }
+</style>
+
+<!-- Assessment Overlay -->
+<div id="assessmentOverlay">
+  <div class="aov-header">
+    <button class="aov-back" onclick="closeAssessment()">← Back</button>
+    <div class="aov-title" id="aovTitle">Standard 1 — Assessment</div>
+  </div>
+  <div class="aov-body">
+
+    <!-- Summary pills -->
+    <div class="aov-summary" id="aovSummary">
+      <span class="aov-sum-label" id="aovStdLabel">STANDARD 1 —</span>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="aov-toolbar">
+      <div class="aov-toolbar-left">
+        <button class="aov-btn primary" onclick="exportPDF()">⬇ Export PDF</button>
+        <button class="aov-btn" onclick="toggleScoreFilter()" id="scoreFilterBtn">⚙ Score Filters</button>
+      </div>
+      <div class="aov-search">
+        <span>🔍</span>
+        <input type="text" id="aovSearch" placeholder="Search student..." oninput="renderTable()"/>
+      </div>
+    </div>
+
+    <!-- Score Filter Panel -->
+    <div id="scoreFilterPanel" style="display:none; background:#fff; border:1px solid #e0d8cc; border-radius:8px; padding:1rem 1.25rem; margin-bottom:1.25rem;">
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#c0392b; margin-bottom:0.85rem; display:flex; align-items:center; gap:0.5rem;">
+        🎯 FILTER BY SUBJECT SCORE RANGE — ENTER MIN AND/OR MAX FOR ANY SUBJECT
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1rem;">
+        <div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">English</div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <input type="number" id="flt_english_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+            <span style="color:#aaa;font-size:0.8rem;">–</span>
+            <input type="number" id="flt_english_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Chichewa</div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <input type="number" id="flt_chichewa_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+            <span style="color:#aaa;font-size:0.8rem;">–</span>
+            <input type="number" id="flt_chichewa_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Maths</div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <input type="number" id="flt_maths_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+            <span style="color:#aaa;font-size:0.8rem;">–</span>
+            <input type="number" id="flt_maths_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Religious Education</div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <input type="number" id="flt_re_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+            <span style="color:#aaa;font-size:0.8rem;">–</span>
+            <input type="number" id="flt_re_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Expressive Arts</div>
+          <div style="display:flex;align-items:center;gap:0.3rem;">
+            <input type="number" id="flt_ea_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+            <span style="color:#aaa;font-size:0.8rem;">–</span>
+            <input type="number" id="flt_ea_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:0.85rem; text-align:right;">
+        <button class="aov-btn" onclick="clearScoreFilters()" style="font-size:0.75rem; padding:0.35rem 0.85rem;">✕ Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Table card -->
+    <div class="aov-card">
+      <div class="aov-card-header">
+        <div class="aov-card-title" id="aovCardTitle">Standard 1 — Assessment</div>
+        <div class="aov-card-count" id="aovCardCount">0 students</div>
+      </div>
+      <div class="aov-table-wrap">
+        <table class="aov-table">
+          <thead>
+            <tr>
+              <th>POS</th>
+              <th>FULL NAME</th>
+              <th>SEX</th>
+              <th>ENGLISH</th>
+              <th>CHICHEWA</th>
+              <th>MATHS</th>
+              <th>RELIGIOUS EDUCATION</th>
+              <th>EXPRESSIVE ARTS</th>
+              <th>TOTAL</th>
+              <th>LEVEL</th>
+              <th>REMARKS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="aovTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Add new student button -->
+    <div style="margin-top:1rem; text-align:right;">
+      <button class="aov-add-btn" onclick="openAddStudent()">+ Add Student</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Score / Add Modal -->
+<div id="scoreModal" onclick="if(event.target===this) closeScoreModal()">
+  <div class="score-modal-box">
+    <div class="smb-header">
+      <span id="scoreModalTitle">Edit Scores</span>
+      <button class="smb-close" onclick="closeScoreModal()">×</button>
+    </div>
+    <div class="smb-body">
+      <div class="smb-grid" id="scoreModalFields"></div>
+      <button class="smb-save" onclick="saveScores()">💾 Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ASSESSMENT DATA ────────────────────────────────────────────────────────────
+var assessmentData = {
+  1: [
+    { name:'Kondwani Nkosi',  sex:'Male',   english:100, chichewa:100, maths:100, re:50, ea:50 },
+    { name:'Tadala Phiri',    sex:'Male',   english:80,  chichewa:80,  maths:80,  re:45, ea:50 },
+    { name:'Madalitso Mwale', sex:'Male',   english:80,  chichewa:0,   maths:79,  re:0,  ea:0  },
+    { name:'Tionge Chirwa',   sex:'Female', english:0,   chichewa:0,   maths:80,  re:0,  ea:0  },
+    { name:'Precious Kamanga',sex:'Female', english:null,chichewa:null,maths:null,re:null,ea:null }
+  ]
+};
+for (var s = 2; s <= 8; s++) assessmentData[s] = [];
+
+var currentStd = 1;
+var editingIdx  = null;
+var isAdding    = false;
+
+function getLevel(total, hasScores) {
+  if (!hasScores) return null;
+  if (total >= 350) return 4;
+  if (total >= 250) return 3;
+  if (total >= 150) return 2;
+  return 1;
+}
+function getRemark(level) {
+  return ['','NEED SUPPORT','GOOD','VERY GOOD','EXCELLENT'][level] || '—';
+}
+function levelClass(level) {
+  return ['lv-none','lv1','lv2','lv3','lv4'][level] || 'lv-none';
+}
+function remarkClass(level) {
+  return ['','rm-needsupport','rm-good','rm-verygood','rm-excellent'][level] || '';
+}
+
+function calcStudent(s) {
+  var subjects = [s.english, s.chichewa, s.maths, s.re, s.ea];
+  var hasScores = subjects.some(function(v){ return v !== null && v !== undefined; });
+  var total = hasScores ? subjects.reduce(function(a,b){ return a + (b||0); }, 0) : null;
+  var level = (total !== null) ? getLevel(total, hasScores) : null;
+  return { total: total, level: level, hasScores: hasScores };
+}
+
+function renderSummary(students) {
+  var counts = {1:0,2:0,3:0,4:0,pass:0,fail:0};
+  students.forEach(function(s) {
+    var c = calcStudent(s);
+    if (c.level) {
+      counts[c.level]++;
+      if (c.level >= 2) counts.pass++; else counts.fail++;
+    }
+  });
+  document.getElementById('aovStdLabel').textContent = 'STANDARD ' + currentStd + ' —';
+  document.getElementById('aovSummary').innerHTML =
+    '<span class="aov-sum-label">STANDARD ' + currentStd + ' —</span>' +
+    '<span class="aov-pill pill-l1"><span class="pn">' + counts[1] + '</span> Level 1 · Need Support</span>' +
+    '<span class="aov-pill pill-l2"><span class="pn">' + counts[2] + '</span> Level 2 · Good</span>' +
+    '<span class="aov-pill pill-l3"><span class="pn">' + counts[3] + '</span> Level 3 · Very Good</span>' +
+    '<span class="aov-pill pill-l4"><span class="pn">' + counts[4] + '</span> Level 4 · Excellent</span>' +
+    '<span class="aov-pill pill-pass"><span class="pn">' + counts.pass + '</span> Passed</span>' +
+    '<span class="aov-pill pill-fail"><span class="pn">' + counts.fail + '</span> Failed</span>';
+}
+
+function renderTable() {
+  var students = assessmentData[currentStd];
+  var search = (document.getElementById('aovSearch').value || '').toLowerCase();
+  renderSummary(students);
+
+  var filtered = students.filter(function(s) {
+    if (search && s.name.toLowerCase().indexOf(search) === -1) return false;
+    if (!passesScoreFilter(s)) return false;
+    return true;
+  });
+
+  // Sort by total descending (nulls last)
+  var ranked = filtered.slice().sort(function(a,b){
+    var ca = calcStudent(a), cb = calcStudent(b);
+    if (ca.total === null && cb.total === null) return 0;
+    if (ca.total === null) return 1;
+    if (cb.total === null) return -1;
+    return cb.total - ca.total;
+  });
+
+  document.getElementById('aovCardCount').textContent = students.length + ' student' + (students.length !== 1 ? 's' : '');
+  document.getElementById('aovCardTitle').textContent = 'Standard ' + currentStd + ' — Assessment';
+
+  var html = '';
+  var pos = 0;
+  ranked.forEach(function(s, i) {
+    var origIdx = students.indexOf(s);
+    var c = calcStudent(s);
+    if (c.hasScores) pos++;
+    var posStr = c.hasScores ? pos : '—';
+    var sexBadge = '<span class="sex-badge ' + (s.sex==='Male'?'sex-m':'sex-f') + '">' + s.sex + '</span>';
+    var lvBadge = c.level ? '<span class="level-badge ' + levelClass(c.level) + '">Level ' + c.level + '</span>' : '<span class="level-badge lv-none">—</span>';
+    var rmBadge = c.level ? '<span class="remark-badge ' + remarkClass(c.level) + '">' + getRemark(c.level) + '</span>' : '<span style="color:#ccc">—</span>';
+    var totalStr = c.total !== null ? '<strong>' + c.total + '</strong>' : '—';
+
+    function scoreCell(v) { return v !== null && v !== undefined ? v : '<span style="color:#ccc">—</span>'; }
+
+    var actionBtn = c.hasScores
+      ? '<button class="aov-edit-btn" onclick="openEditScores(' + origIdx + ')">✎ Edit Scores</button>'
+      : '<button class="aov-add-btn" onclick="openEditScores(' + origIdx + ')">+ Add Scores</button>';
+
+    html += '<tr>' +
+      '<td>' + posStr + '</td>' +
+      '<td><strong>' + s.name + '</strong></td>' +
+      '<td>' + sexBadge + '</td>' +
+      '<td>' + scoreCell(s.english) + '</td>' +
+      '<td>' + scoreCell(s.chichewa) + '</td>' +
+      '<td>' + scoreCell(s.maths) + '</td>' +
+      '<td>' + scoreCell(s.re) + '</td>' +
+      '<td>' + scoreCell(s.ea) + '</td>' +
+      '<td>' + totalStr + '</td>' +
+      '<td>' + lvBadge + '</td>' +
+      '<td>' + rmBadge + '</td>' +
+      '<td>' + actionBtn + '</td>' +
+      '</tr>';
+  });
+  document.getElementById('aovTableBody').innerHTML = html;
+}
+
+function openAssessment(std) {
+  currentStd = std;
+  document.getElementById('aovTitle').textContent = 'Standard ' + std + ' — Assessment';
+  document.getElementById('aovSearch').value = '';
+  document.getElementById('scoreFilterPanel').style.display = 'none';
+  clearScoreFilters();
+  renderTable();
+  document.getElementById('assessmentOverlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeAssessment() {
+  document.getElementById('assessmentOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// ── SCORE MODAL ────────────────────────────────────────────────────────────────
+function openEditScores(idx) {
+  editingIdx = idx; isAdding = false;
+  var s = assessmentData[currentStd][idx];
+  document.getElementById('scoreModalTitle').textContent = 'Edit Scores — ' + s.name;
+  var fields = [
+    { key:'english',  label:'English' },
+    { key:'chichewa', label:'Chichewa' },
+    { key:'maths',    label:'Maths' },
+    { key:'re',       label:'Religious Education' },
+    { key:'ea',       label:'Expressive Arts' }
+  ];
+  var html = '';
+  fields.forEach(function(f) {
+    var val = s[f.key] !== null && s[f.key] !== undefined ? s[f.key] : '';
+    html += '<div class="smb-field"><label>' + f.label + '</label>' +
+            '<input type="number" min="0" max="100" id="sf_' + f.key + '" value="' + val + '" placeholder="0–100"/></div>';
+  });
+  // Add name & sex fields for editing
+  html = '<div class="smb-field" style="grid-column:1/-1"><label>Full Name</label>' +
+         '<input type="text" id="sf_name" value="' + s.name + '"/></div>' +
+         '<div class="smb-field"><label>Sex</label>' +
+         '<select id="sf_sex" style="width:100%;padding:0.55rem 0.75rem;border:1px solid #ddd;border-radius:5px;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;">' +
+         '<option ' + (s.sex==='Male'?'selected':'') + '>Male</option>' +
+         '<option ' + (s.sex==='Female'?'selected':'') + '>Female</option></select></div>' + html;
+  document.getElementById('scoreModalFields').innerHTML = html;
+  document.getElementById('scoreModal').classList.add('open');
+}
+
+function openAddStudent() {
+  editingIdx = null; isAdding = true;
+  document.getElementById('scoreModalTitle').textContent = 'Add New Student';
+  var html = '<div class="smb-field" style="grid-column:1/-1"><label>Full Name</label>' +
+             '<input type="text" id="sf_name" placeholder="e.g. Mary Banda"/></div>' +
+             '<div class="smb-field"><label>Sex</label>' +
+             '<select id="sf_sex" style="width:100%;padding:0.55rem 0.75rem;border:1px solid #ddd;border-radius:5px;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;">' +
+             '<option>Male</option><option>Female</option></select></div>' +
+             '<div class="smb-field"><label>English</label><input type="number" min="0" max="100" id="sf_english" placeholder="0–100"/></div>' +
+             '<div class="smb-field"><label>Chichewa</label><input type="number" min="0" max="100" id="sf_chichewa" placeholder="0–100"/></div>' +
+             '<div class="smb-field"><label>Maths</label><input type="number" min="0" max="100" id="sf_maths" placeholder="0–100"/></div>' +
+             '<div class="smb-field"><label>Religious Education</label><input type="number" min="0" max="100" id="sf_re" placeholder="0–100"/></div>' +
+             '<div class="smb-field"><label>Expressive Arts</label><input type="number" min="0" max="100" id="sf_ea" placeholder="0–100"/></div>';
+  document.getElementById('scoreModalFields').innerHTML = html;
+  document.getElementById('scoreModal').classList.add('open');
+}
+
+function saveScores() {
+  var name = (document.getElementById('sf_name').value || '').trim();
+  if (!name) { alert('Please enter the student name.'); return; }
+  var sex = document.getElementById('sf_sex').value;
+  function getVal(id) {
+    var el = document.getElementById(id);
+    if (!el) return null;
+    var v = el.value.trim();
+    return v === '' ? null : parseInt(v) || 0;
+  }
+  var entry = {
+    name: name, sex: sex,
+    english: getVal('sf_english'), chichewa: getVal('sf_chichewa'),
+    maths: getVal('sf_maths'), re: getVal('sf_re'), ea: getVal('sf_ea')
+  };
+  if (isAdding) {
+    assessmentData[currentStd].push(entry);
+  } else {
+    assessmentData[currentStd][editingIdx] = entry;
+  }
+  closeScoreModal();
+  renderTable();
+}
+
+function closeScoreModal() {
+  document.getElementById('scoreModal').classList.remove('open');
+}
+
+function toggleScoreFilter() {
+  var panel = document.getElementById('scoreFilterPanel');
+  var btn   = document.getElementById('scoreFilterBtn');
+  var open  = panel.style.display !== 'none';
+  panel.style.display = open ? 'none' : 'block';
+  btn.style.background = open ? '' : '#f0ebe3';
+  btn.style.borderColor = open ? '' : 'var(--forest3)';
+}
+function clearScoreFilters() {
+  ['english','chichewa','maths','re','ea'].forEach(function(s) {
+    var mn = document.getElementById('flt_'+s+'_min');
+    var mx = document.getElementById('flt_'+s+'_max');
+    if (mn) mn.value = '';
+    if (mx) mx.value = '';
+  });
+  renderTable();
+}
+function getFilterVal(id) {
+  var el = document.getElementById(id);
+  if (!el || el.value.trim() === '') return null;
+  return parseFloat(el.value);
+}
+function passesScoreFilter(s) {
+  var checks = [
+    { mn:'flt_english_min',  mx:'flt_english_max',  val:s.english  },
+    { mn:'flt_chichewa_min', mx:'flt_chichewa_max', val:s.chichewa },
+    { mn:'flt_maths_min',    mx:'flt_maths_max',    val:s.maths    },
+    { mn:'flt_re_min',       mx:'flt_re_max',       val:s.re       },
+    { mn:'flt_ea_min',       mx:'flt_ea_max',       val:s.ea       }
+  ];
+  return checks.every(function(c) {
+    var mn = getFilterVal(c.mn), mx = getFilterVal(c.mx);
+    if (mn === null && mx === null) return true;
+    var v = c.val !== null && c.val !== undefined ? c.val : 0;
+    if (mn !== null && v < mn) return false;
+    if (mx !== null && v > mx) return false;
+    return true;
+  });
+}
+
+function exportPDF() {
+  window.print();
+}
 </script>
 </body>
 </html>
