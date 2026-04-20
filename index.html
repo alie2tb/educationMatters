@@ -765,6 +765,46 @@ section { padding: 5.5rem 0; }
 .rc-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
 .rc-count { font-size: 0.72rem; color: var(--tan); margin-top: 0.75rem; }
 
+/* ── SYLLABUS RESOURCE BUTTONS ── */
+.resource-btn-panel {
+  display: none;
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 0.5rem;
+  animation: fadeUp 0.3s ease forwards;
+}
+.resource-btn-panel.show { display: block; }
+.resource-btn-panel .rp-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.85rem;
+}
+.resource-file-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--tan);
+  color: var(--forest);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 1.25rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+}
+.resource-file-btn:hover { background: #e0b878; transform: translateY(-2px); }
+
 /* ── NEWS / ARTICLES ── */
 #news { background: var(--white); }
 
@@ -1980,11 +2020,11 @@ footer {
       </div>
 
       <!-- TEACHERS GUIDES -->
-      <div class="standard-badge" onclick="showComingSoon(this)">
+      <div class="standard-badge" onclick="toggleStandard('tg', this)">
         <div class="sb-icon">📖</div>
         <div class="sb-label">Teachers Guides</div>
         <div class="sb-sub">All Subjects</div>
-        <div class="sb-arrow">▼ VIEW</div>
+        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
       </div>
 
       <!-- SYLLABUS -->
@@ -1993,6 +2033,137 @@ footer {
         <div class="sb-label">Syllabus</div>
         <div class="sb-sub">All Standards</div>
         <div class="sb-arrow">▼ VIEW</div>
+      </div>
+
+      <!-- TEACHERS GUIDES PANEL -->
+      <div class="subjects-panel" id="panel-tg">
+        <div class="sp-title">📖 Teachers Guides — Select a Standard</div>
+        <div class="subjects-list" style="grid-template-columns: repeat(4, 1fr);">
+
+          <!-- STD 1 -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std1', this)">
+            <div class="si-icon">1️⃣</div>
+            <div class="si-name">Standard 1</div>
+          </div>
+
+          <!-- STD 2 -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std2', this)">
+            <div class="si-icon">2️⃣</div>
+            <div class="si-name">Standard 2</div>
+          </div>
+
+          <!-- STD 3 -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std3', this)">
+            <div class="si-icon">3️⃣</div>
+            <div class="si-name">Standard 3</div>
+          </div>
+
+          <!-- STD 4 -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std4', this)">
+            <div class="si-icon">4️⃣</div>
+            <div class="si-name">Standard 4</div>
+          </div>
+
+          <!-- STD 5 — Coming Soon -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std5', this)">
+            <div class="si-icon">5️⃣</div>
+            <div class="si-name">Standard 5</div>
+          </div>
+
+          <!-- STD 6 — Coming Soon -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std6', this)">
+            <div class="si-icon">6️⃣</div>
+            <div class="si-name">Standard 6</div>
+          </div>
+
+          <!-- STD 7 — Coming Soon -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std7', this)">
+            <div class="si-icon">7️⃣</div>
+            <div class="si-name">Standard 7</div>
+          </div>
+
+          <!-- STD 8 — Coming Soon -->
+          <div class="subject-item" onclick="toggleSyllabusStd('tg-std8', this)">
+            <div class="si-icon">8️⃣</div>
+            <div class="si-name">Standard 8</div>
+          </div>
+
+        </div>
+
+        <!-- Syllabus sub-panels -->
+
+        <!-- STD 1 — OLD SYLLABUS with Maths TG buttons -->
+        <div class="resource-btn-panel" id="tg-std1">
+          <a href="STD 1 MATHS TG NNP TERM 1.pdf" target="_blank" class="resource-file-btn">📄 STD 1 MATHS TG NNP TERM 1</a>
+          <a href="STD 1 MATHS TG NNP TERM 2.pdf" target="_blank" class="resource-file-btn">📄 STD 1 MATHS TG NNP TERM 2</a>
+          <a href="STD 1 MATHS TG NNP TERM 3.pdf" target="_blank" class="resource-file-btn">📄 STD 1 MATHS TG NNP TERM 3</a>
+        </div>
+
+        <!-- STD 2 — OLD SYLLABUS with Maths TG buttons -->
+        <div class="resource-btn-panel" id="tg-std2">
+          <a href="STD 2 MATHS TG NNP TERM 1.pdf" target="_blank" class="resource-file-btn">📄 STD 2 MATHS TG NNP TERM 1</a>
+          <a href="STD 2 MATHS TG NNP TERM 2.pdf" target="_blank" class="resource-file-btn">📄 STD 2 MATHS TG NNP TERM 2</a>
+          <a href="STD 2 MATHS TG NNP TERM 3.pdf" target="_blank" class="resource-file-btn">📄 STD 2 MATHS TG NNP TERM 3</a>
+        </div>
+
+        <!-- STD 3 — OLD SYLLABUS with Maths TG buttons -->
+        <div class="resource-btn-panel" id="tg-std3">
+          <a href="STD 3 MATHS TG NNP TERM 1.pdf" target="_blank" class="resource-file-btn">📄 STD 3 MATHS TG NNP TERM 1</a>
+          <a href="STD 3 MATHS TG NNP TERM 2.pdf" target="_blank" class="resource-file-btn">📄 STD 3 MATHS TG NNP TERM 2</a>
+          <a href="STD 3 MATHS TG NNP TERM 3.pdf" target="_blank" class="resource-file-btn">📄 STD 3 MATHS TG NNP TERM 3</a>
+        </div>
+
+        <!-- STD 4 — OLD SYLLABUS with Maths TG buttons -->
+        <div class="resource-btn-panel" id="tg-std4">
+          <a href="STD 4 MATHS TG NNP TERM 1.pdf" target="_blank" class="resource-file-btn">📄 STD 4 MATHS TG NNP TERM 1</a>
+          <a href="STD 4 MATHS TG NNP TERM 2.pdf" target="_blank" class="resource-file-btn">📄 STD 4 MATHS TG NNP TERM 2</a>
+          <a href="STD 4 MATHS TG NNP TERM 3.pdf" target="_blank" class="resource-file-btn">📄 STD 4 MATHS TG NNP TERM 3</a>
+        </div>
+
+        <!-- STD 5 — Coming Soon -->
+        <div class="resource-btn-panel" id="tg-std5">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <div style="font-size:2rem;">🚧</div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-weight:700; color:var(--tan); font-size:1rem; margin-bottom:0.2rem;">Coming Soon</div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55);">Standard 5 syllabus materials are being prepared. Please check back soon.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STD 6 — Coming Soon -->
+        <div class="resource-btn-panel" id="tg-std6">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <div style="font-size:2rem;">🚧</div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-weight:700; color:var(--tan); font-size:1rem; margin-bottom:0.2rem;">Coming Soon</div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55);">Standard 6 syllabus materials are being prepared. Please check back soon.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STD 7 — Coming Soon -->
+        <div class="resource-btn-panel" id="tg-std7">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <div style="font-size:2rem;">🚧</div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-weight:700; color:var(--tan); font-size:1rem; margin-bottom:0.2rem;">Coming Soon</div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55);">Standard 7 syllabus materials are being prepared. Please check back soon.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STD 8 — Coming Soon -->
+        <div class="resource-btn-panel" id="tg-std8">
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <div style="font-size:2rem;">🚧</div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-weight:700; color:var(--tan); font-size:1rem; margin-bottom:0.2rem;">Coming Soon</div>
+              <div style="font-size:0.82rem; color:rgba(255,255,255,0.55);">Standard 8 syllabus materials are being prepared. Please check back soon.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -2575,6 +2746,24 @@ function toggleStandard(id, badge) {
   allPanels.forEach(function(p) { p.classList.remove('show'); });
   allBadges.forEach(function(b) { b.classList.remove('active'); });
   panel.classList.add('show'); badge.classList.add('active');
+  setTimeout(function() { panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
+}
+
+// ── SYLLABUS STANDARD TOGGLE ──────────────────────────────────────────────────
+function toggleSyllabusStd(id, item) {
+  var panel = document.getElementById(id);
+  var allPanels = document.querySelectorAll('#panel-tg .resource-btn-panel');
+  var allItems  = document.querySelectorAll('#panel-tg .subject-item');
+  if (panel.classList.contains('show')) {
+    panel.classList.remove('show');
+    item.classList.remove('active');
+    return;
+  }
+  allPanels.forEach(function(p) { p.classList.remove('show'); });
+  allItems.forEach(function(i)  { i.style.background = ''; i.style.borderColor = ''; });
+  panel.classList.add('show');
+  item.style.background   = 'rgba(116,198,157,0.2)';
+  item.style.borderColor  = 'var(--sage)';
   setTimeout(function() { panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 50);
 }
 
