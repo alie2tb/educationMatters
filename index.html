@@ -2224,56 +2224,56 @@ footer {
 
     <div class="resources-grid" style="margin-top:2.5rem;">
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="openAssessment(1)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std1')">
         <div class="sb-icon">1️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 1</div>
         <div class="sb-sub">Primary · Year 1</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std2')">
         <div class="sb-icon">2️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 2</div>
         <div class="sb-sub">Primary · Year 2</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std3')">
         <div class="sb-icon">3️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 3</div>
         <div class="sb-sub">Primary · Year 3</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std4')">
         <div class="sb-icon">4️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 4</div>
         <div class="sb-sub">Primary · Year 4</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std5')">
         <div class="sb-icon">5️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 5</div>
         <div class="sb-sub">Primary · Year 5</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std6')">
         <div class="sb-icon">6️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 6</div>
         <div class="sb-sub">Primary · Year 6</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std7')">
         <div class="sb-icon">7️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 7</div>
         <div class="sb-sub">Primary · Year 7</div>
         <div class="sb-arrow">▶ START</div>
       </div>
 
-      <div class="standard-badge reveal" style="background:var(--forest); border-color:var(--forest2);" onclick="showComingSoon(this)">
+      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std8')">
         <div class="sb-icon">8️⃣</div>
         <div class="sb-label" style="color:var(--white);">Standard 8</div>
         <div class="sb-sub">Primary · Year 8</div>
@@ -2952,720 +2952,1337 @@ startListening();
 loadNewsFromJSON();
 loadTickerFromJSON();
 </script>
-<!-- ── ASSESSMENT OVERLAY ──────────────────────────────────────────────── -->
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     ONLINE EASY ASSESSMENT — Full-screen overlay, lifted from Easy Assess
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<!-- Fonts & PDF libs required by Easy Assess engine -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
 <style>
-#assessmentOverlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #f5f0e8;
-  z-index: 600;
-  overflow-y: auto;
-  font-family: 'DM Sans', sans-serif;
-}
-.aov-header {
-  background: #fff;
-  border-bottom: 1px solid #e0d8cc;
-  padding: 0.85rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.aov-back {
-  background: var(--forest);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.45rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: 'DM Sans', sans-serif;
-}
-.aov-back:hover { background: var(--forest2); }
-.aov-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--forest);
-}
-.aov-body { padding: 1.5rem; max-width: 1200px; margin: 0 auto; }
-
-/* Summary pills */
-.aov-summary {
-  background: #fff;
-  border: 1px solid #e0d8cc;
-  border-radius: 8px;
-  padding: 0.85rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.82rem;
-}
-.aov-sum-label {
-  font-weight: 700;
-  color: var(--forest);
-  font-size: 0.85rem;
-  margin-right: 0.25rem;
-}
-.aov-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  border-radius: 20px;
-  padding: 0.25rem 0.75rem;
-  font-weight: 600;
-  font-size: 0.78rem;
-}
-.aov-pill .pn { font-size: 1rem; font-weight: 700; }
-.pill-l1 { background: #fde8e8; color: #c0392b; }
-.pill-l2 { background: #fff3cd; color: #856404; }
-.pill-l3 { background: #d1ecf1; color: #0c5460; }
-.pill-l4 { background: #d4edda; color: #155724; }
-.pill-pass { background: #d4edda; color: #155724; }
-.pill-fail { background: #fde8e8; color: #c0392b; }
-
-/* Toolbar */
-.aov-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-.aov-toolbar-left { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-.aov-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-family: 'DM Sans', sans-serif;
-  transition: background 0.2s;
-}
-.aov-btn.primary { background: var(--tan); color: var(--forest); border-color: var(--tan); }
-.aov-btn.primary:hover { background: #e0b878; }
-.aov-btn:hover { background: #f0ebe3; }
-.aov-search {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 0.4rem 0.85rem;
-  font-size: 0.82rem;
-  color: #aaa;
-}
-.aov-search input {
-  border: none;
-  outline: none;
-  font-size: 0.82rem;
-  font-family: 'DM Sans', sans-serif;
-  color: #333;
-  width: 160px;
-  background: transparent;
+/* ── EASY ASSESS DESIGN TOKENS (scoped to overlay) ── */
+#ea-overlay {
+  --ea-bg:#f5f0e8; --ea-bg2:#ede8de; --ea-card:#fff;
+  --ea-border:#ddd8ce; --ea-border2:#e8e3d8;
+  --ea-text:#1e1a14; --ea-text2:#6b6355; --ea-text3:#9c9080;
+  --ea-forest:#2d5a3d; --ea-forest-light:#e8f2eb; --ea-forest-mid:#3d7a52;
+  --ea-gold:#b8860b;
+  --ea-amber:#d97706; --ea-amber-light:#fef3e2;
+  --ea-lvl1:#c0392b; --ea-lvl1-bg:#fdeaea;
+  --ea-lvl2:#d97706; --ea-lvl2-bg:#fef3e2;
+  --ea-lvl3:#1a5c8a; --ea-lvl3-bg:#e8f2fa;
+  --ea-lvl4:#2d5a3d; --ea-lvl4-bg:#e8f2eb;
+  --ea-radius:10px;
+  --ea-shadow:0 2px 16px rgba(30,26,20,.10);
+  --ea-shadow-lg:0 8px 40px rgba(30,26,20,.16);
 }
 
-/* Table card */
-.aov-card {
-  background: #fff;
-  border: 1px solid #e0d8cc;
-  border-radius: 8px;
-  overflow: hidden;
+/* ── OVERLAY SHELL ── */
+#ea-overlay {
+  display:none; position:fixed; inset:0; z-index:600;
+  background:var(--ea-bg); overflow-y:auto;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif; font-size:14px; color:var(--ea-text);
 }
-.aov-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid #e0d8cc;
-}
-.aov-card-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #1a1a1a;
-}
-.aov-card-count { font-size: 0.78rem; color: #888; }
+#ea-overlay.open { display:block; }
 
-/* Table */
-.aov-table-wrap { overflow-x: auto; }
-table.aov-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.82rem;
+/* ── HEADER ── */
+.ea-header {
+  position:sticky; top:0; z-index:10;
+  height:54px; background:var(--ea-forest); color:#fff;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 22px; box-shadow:0 2px 12px rgba(45,90,61,.3);
 }
-.aov-table th {
-  background: #f5f0e8;
-  color: #888;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.65rem 1rem;
-  text-align: left;
-  white-space: nowrap;
-  border-bottom: 1px solid #e0d8cc;
+.ea-header-brand { display:flex; align-items:center; gap:10px; }
+.ea-header-brand h2 { font-family:'Lora',serif; font-size:18px; font-weight:700; color:#fff; }
+.ea-back-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25);
+  color:#fff; border-radius:8px; padding:6px 14px;
+  font-size:13px; font-weight:600; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:background .2s;
 }
-.aov-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f0ebe3;
-  color: #1a1a1a;
-  vertical-align: middle;
-}
-.aov-table tr:last-child td { border-bottom: none; }
-.aov-table tr:hover td { background: #faf7f2; }
-.aov-table input.score-input {
-  width: 60px;
-  padding: 0.3rem 0.45rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.82rem;
-  font-family: 'DM Sans', sans-serif;
-  text-align: center;
-  outline: none;
-}
-.aov-table input.score-input:focus { border-color: var(--forest3); }
+.ea-back-btn:hover { background:rgba(255,255,255,.25); }
 
-.sex-badge {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-.sex-m { background: #dbeafe; color: #1e40af; }
-.sex-f { background: #fce7f3; color: #9d174d; }
+/* ── MAIN AREA ── */
+.ea-main { padding:20px 22px; max-width:1400px; margin:0 auto; }
 
-.level-badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
+/* ── ASSESSMENT CLASS LABEL ── */
+.ea-class-pill {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.2);
+  border-radius:20px; padding:5px 14px;
+  font-size:13px; font-weight:700; color:#fff; letter-spacing:.02em;
 }
-.lv1 { background: #fde8e8; color: #c0392b; }
-.lv2 { background: #fff3cd; color: #856404; }
-.lv3 { background: #d1ecf1; color: #0c5460; }
-.lv4 { background: #d4edda; color: #155724; }
-.lv-none { background: #f0f0f0; color: #999; }
 
-.remark-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+/* ── NO CLASS PLACEHOLDER ── */
+.ea-no-class {
+  text-align:center; padding:64px 24px;
+  background:var(--ea-card); border:1px solid var(--ea-border); border-radius:var(--ea-radius);
+  color:var(--ea-text3);
 }
-.rm-excellent { color: #155724; }
-.rm-good { color: #856404; }
-.rm-verygood { color: #0c5460; }
-.rm-needsupport { color: #c0392b; }
+.ea-no-class h3 { font-family:'Lora',serif; font-size:18px; color:var(--ea-text2); margin-bottom:8px; }
+.ea-no-class p { font-size:13px; }
 
-.aov-edit-btn {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
+/* ── LEVEL COUNTERS ── */
+.ea-level-bar {
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  background:var(--ea-card); border:1px solid var(--ea-border);
+  border-radius:var(--ea-radius); padding:12px 18px; margin-bottom:16px;
 }
-.aov-edit-btn:hover { background: #f0ebe3; border-color: var(--forest3); }
-.aov-add-btn {
-  background: var(--forest);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  white-space: nowrap;
+.ea-lc-title { font-size:12px; font-weight:700; color:var(--ea-text2); text-transform:uppercase; letter-spacing:.6px; margin-right:4px; white-space:nowrap; }
+.ea-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 13px; border-radius:20px; font-size:12.5px; font-weight:600; white-space:nowrap;
 }
-.aov-add-btn:hover { background: var(--forest2); }
+.ea-chip .cn { font-family:'Lora',serif; font-size:16px; font-weight:700; }
+.ea-sep { width:1px; height:24px; background:var(--ea-border); margin:0 4px; flex-shrink:0; }
+.ea-lc1 { background:var(--ea-lvl1-bg); color:var(--ea-lvl1); }
+.ea-lc2 { background:var(--ea-lvl2-bg); color:var(--ea-lvl2); }
+.ea-lc3 { background:var(--ea-lvl3-bg); color:var(--ea-lvl3); }
+.ea-lc4 { background:var(--ea-lvl4-bg); color:var(--ea-lvl4); }
+.ea-lc-pass { background:var(--ea-lvl4-bg); color:var(--ea-lvl4); }
+.ea-lc-fail { background:var(--ea-lvl1-bg); color:var(--ea-lvl1); }
 
-/* Add student row */
-.aov-add-row td { background: #faf7f2; }
+/* ── TOOLBAR ── */
+.ea-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+.ea-tb-left { display:flex; gap:8px; flex-wrap:wrap; }
+.ea-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 15px; border-radius:var(--ea-radius); border:1.5px solid var(--ea-border);
+  font-size:13px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
+  cursor:pointer; transition:all .18s; white-space:nowrap; background:var(--ea-card); color:var(--ea-text2);
+}
+.ea-btn:hover { border-color:var(--ea-forest); color:var(--ea-forest); background:var(--ea-forest-light); }
+.ea-btn-gold { background:var(--ea-gold); color:#fff; border-color:var(--ea-gold); }
+.ea-btn-gold:hover { background:#a07709; border-color:#a07709; color:#fff; }
+.ea-btn-danger { background:var(--ea-lvl1-bg); color:var(--ea-lvl1); border-color:rgba(192,57,43,.25); }
+.ea-btn-danger:hover { background:rgba(192,57,43,.15); }
+.ea-active-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:2px 8px; border-radius:20px; font-size:11px; font-weight:600;
+  background:var(--ea-amber-light); color:var(--ea-amber); border:1px solid rgba(217,119,6,.25); margin-left:4px;
+}
+.ea-search-wrap { position:relative; }
+.ea-search-wrap svg { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--ea-text3); }
+.ea-search-wrap input {
+  padding:7px 12px 7px 32px; background:var(--ea-card); border:1.5px solid var(--ea-border);
+  border-radius:var(--ea-radius); font-size:13px; font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--ea-text); width:210px; transition:border-color .2s;
+}
+.ea-search-wrap input:focus { outline:none; border-color:var(--ea-forest); box-shadow:0 0 0 3px rgba(45,90,61,.1); }
 
-/* Modal */
-#scoreModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 700;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+/* ── FILTER PANEL ── */
+.ea-filter-panel {
+  background:var(--ea-card); border:1.5px solid var(--ea-border);
+  border-radius:var(--ea-radius); padding:16px 18px; margin-bottom:14px; display:none;
 }
-#scoreModal.open { display: flex; }
-.score-modal-box {
-  background: #fff;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 480px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+.ea-filter-panel.show { display:block; }
+.ea-fp-title { font-size:11px; font-weight:700; color:var(--ea-text2); text-transform:uppercase; letter-spacing:.7px; margin-bottom:12px; }
+.ea-fp-grid { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end; }
+.ea-fp-field { display:flex; flex-direction:column; gap:4px; min-width:100px; }
+.ea-fp-field label { font-size:10px; font-weight:700; color:var(--ea-text3); text-transform:uppercase; letter-spacing:.6px; white-space:nowrap; }
+.ea-fp-field input {
+  padding:6px 8px; border:1.5px solid var(--ea-border); border-radius:7px;
+  font-size:12.5px; font-family:'Plus Jakarta Sans',sans-serif; color:var(--ea-text);
+  background:var(--ea-bg); width:80px;
 }
-.smb-header {
-  background: var(--forest);
-  color: #fff;
-  padding: 1rem 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-}
-.smb-close { background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer; line-height: 1; }
-.smb-body { padding: 1.25rem; }
-.smb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
-.smb-field label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; display: block; margin-bottom: 0.3rem; }
-.smb-field input {
-  width: 100%;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.88rem;
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-}
-.smb-field input:focus { border-color: var(--forest3); }
-.smb-save {
-  width: 100%;
-  background: var(--forest);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-}
-.smb-save:hover { background: var(--forest2); }
+.ea-fp-field input:focus { outline:none; border-color:var(--ea-forest); }
 
-@media (max-width: 640px) {
-  .aov-body { padding: 1rem 0.75rem; }
-  .aov-summary { gap: 0.5rem; }
-  .aov-table th, .aov-table td { padding: 0.55rem 0.6rem; font-size: 0.75rem; }
-  .aov-search input { width: 110px; }
-  #scoreFilterPanel > div:nth-child(2) { grid-template-columns: 1fr 1fr !important; }
+/* ── TABLE CARD ── */
+.ea-tbl-card { background:var(--ea-card); border:1px solid var(--ea-border); border-radius:var(--ea-radius); overflow:hidden; box-shadow:var(--ea-shadow); }
+.ea-tbl-hdr { padding:13px 17px; border-bottom:1px solid var(--ea-border2); display:flex; align-items:center; justify-content:space-between; }
+.ea-tbl-hdr h3 { font-size:14px; font-weight:700; font-family:'Lora',serif; color:var(--ea-text); }
+.ea-tbl-hdr span { font-size:12px; color:var(--ea-text3); }
+.ea-tbl-scroll { overflow-x:auto; }
+.ea-tbl { width:100%; border-collapse:collapse; font-size:12.5px; }
+.ea-tbl thead th {
+  background:var(--ea-bg2); padding:9px 12px; text-align:left;
+  font-size:10.5px; font-weight:700; color:var(--ea-text2);
+  text-transform:uppercase; letter-spacing:.6px;
+  border-bottom:1px solid var(--ea-border); white-space:nowrap;
 }
-.flt-input {
-  width: 58px;
-  padding: 0.35rem 0.45rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-  color: #333;
+.ea-tbl thead th.num { text-align:center; }
+.ea-tbl tbody tr { border-bottom:1px solid var(--ea-border2); transition:background .1s; }
+.ea-tbl tbody tr:last-child { border-bottom:none; }
+.ea-tbl tbody tr:hover { background:var(--ea-bg); }
+.ea-tbl tbody td { padding:9px 12px; vertical-align:middle; }
+.ea-tbl td.num { text-align:center; }
+.ea-empty { text-align:center; padding:52px 24px; color:var(--ea-text3); font-size:13px; }
+
+/* ── BADGES ── */
+.ea-sex-m { display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;background:#dbeafe;color:#1e40af; }
+.ea-sex-f { display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;background:#fce8f3;color:#9b2777; }
+.ea-lv { display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:700;white-space:nowrap; }
+.ea-lv1 { background:var(--ea-lvl1-bg);color:var(--ea-lvl1); }
+.ea-lv2 { background:var(--ea-lvl2-bg);color:var(--ea-lvl2); }
+.ea-lv3 { background:var(--ea-lvl3-bg);color:var(--ea-lvl3); }
+.ea-lv4 { background:var(--ea-lvl4-bg);color:var(--ea-lvl4); }
+.ea-rmk { display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap; }
+.ea-rm1 { background:var(--ea-lvl1-bg);color:var(--ea-lvl1); }
+.ea-rm2 { background:var(--ea-lvl2-bg);color:var(--ea-lvl2); }
+.ea-rm3 { background:var(--ea-lvl3-bg);color:var(--ea-lvl3); }
+.ea-rm4 { background:var(--ea-lvl4-bg);color:var(--ea-lvl4); }
+.ea-score-val { font-weight:700; text-align:center; font-family:'Lora',serif; }
+.ea-score-empty { color:var(--ea-text3); text-align:center; font-size:12px; }
+.ea-total-val { font-family:'Lora',serif; font-size:14px; font-weight:700; text-align:center; color:var(--ea-forest); }
+.ea-pos-val { font-family:'Lora',serif; font-size:13px; font-weight:700; color:var(--ea-forest); }
+.ea-scores-btn {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--ea-forest-light); color:var(--ea-forest);
+  border:1px solid rgba(45,90,61,.2); border-radius:7px;
+  padding:5px 11px; font-size:12px; font-weight:600; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif; transition:background .15s; white-space:nowrap;
 }
-.flt-input:focus { border-color: var(--forest3); }
+.ea-scores-btn:hover { background:#d4eadb; }
+
+/* ── ADD STUDENT BUTTON ── */
+.ea-add-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--ea-forest); color:#fff;
+  border:none; border-radius:8px; padding:7px 15px;
+  font-size:13px; font-weight:600; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif; transition:background .2s;
+  white-space:nowrap;
+}
+.ea-add-btn:hover { background:var(--ea-forest-mid); }
+
+/* ── ACTION ICON BUTTONS ── */
+.ea-icon-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:30px; height:30px; border-radius:7px; border:1.5px solid var(--ea-border);
+  background:var(--ea-card); cursor:pointer; transition:all .15s;
+  color:var(--ea-text2);
+}
+.ea-icon-btn:hover { border-color:var(--ea-forest); color:var(--ea-forest); background:var(--ea-forest-light); }
+.ea-icon-btn.del:hover { border-color:var(--ea-lvl1); color:var(--ea-lvl1); background:var(--ea-lvl1-bg); }
+
+/* ── STUDENT MODAL ── */
+#ea-student-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(30,26,20,.55); backdrop-filter:blur(4px);
+  z-index:700; align-items:center; justify-content:center; padding:16px;
+}
+#ea-student-overlay.open { display:flex; }
+
+/* ── SCORE MODAL ── */
+#ea-score-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(30,26,20,.55); backdrop-filter:blur(4px);
+  z-index:700; align-items:center; justify-content:center; padding:16px;
+}
+#ea-score-overlay.open { display:flex; }
+.ea-modal {
+  background:var(--ea-card); border:1px solid var(--ea-border);
+  border-radius:16px; width:100%; max-width:500px; max-height:92vh; overflow-y:auto;
+  box-shadow:var(--ea-shadow-lg); animation:eaFadeUp .22s ease;
+}
+.ea-mhdr {
+  padding:16px 20px 13px; border-bottom:1px solid var(--ea-border2);
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; background:var(--ea-card); z-index:1;
+}
+.ea-mhdr h3 { font-family:'Lora',serif; font-size:18px; font-weight:700; color:var(--ea-text); }
+.ea-mclose { background:none; border:none; font-size:22px; color:var(--ea-text3); cursor:pointer; line-height:1; transition:color .15s; }
+.ea-mclose:hover { color:var(--ea-lvl1); }
+.ea-mbdy { padding:20px; }
+.ea-mftr { padding:13px 20px 16px; border-top:1px solid var(--ea-border2); display:flex; justify-content:flex-end; gap:10px; }
+.ea-learner-chip {
+  background:var(--ea-forest-light); border:1px solid rgba(45,90,61,.2);
+  border-radius:8px; padding:10px 14px; margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+.ea-chip-icon { font-size:20px; }
+.ea-chip-name { font-weight:700; font-size:14px; }
+.ea-chip-sex { font-size:12px; color:var(--ea-text2); }
+.ea-score-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.ea-sf { display:flex; flex-direction:column; gap:5px; }
+.ea-sf label { font-size:11px; font-weight:700; color:var(--ea-text2); text-transform:uppercase; letter-spacing:.7px; }
+.ea-sf input {
+  padding:9px 12px; border:1.5px solid var(--ea-border); border-radius:8px;
+  font-size:15px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
+  color:var(--ea-text); background:var(--ea-bg); text-align:center;
+  transition:border-color .2s, box-shadow .2s;
+}
+.ea-sf input:focus { outline:none; border-color:var(--ea-forest); box-shadow:0 0 0 3px rgba(45,90,61,.1); }
+.ea-score-preview {
+  background:var(--ea-bg); border:1px solid var(--ea-border2); border-radius:10px;
+  padding:12px 16px; margin-top:14px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; text-align:center;
+}
+.ea-sp-val { font-family:'Lora',serif; font-size:18px; font-weight:700; }
+.ea-sp-lbl { font-size:10px; color:var(--ea-text2); text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
+.ea-f-err { color:var(--ea-lvl1); font-size:12.5px; margin-top:8px; min-height:16px; }
+.ea-btn-forest { background:var(--ea-forest); color:#fff; border-color:var(--ea-forest); }
+.ea-btn-forest:hover { background:var(--ea-forest-mid); }
+.ea-btn-ghost { background:transparent; color:var(--ea-text2); border-color:var(--ea-border); }
+.ea-btn-ghost:hover { border-color:var(--ea-forest); color:var(--ea-forest); }
+@keyframes eaFadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@media(max-width:640px){
+  .ea-main{padding:14px}
+  .ea-tbl thead th, .ea-tbl tbody td{padding:7px 8px;font-size:11.5px}
+  .ea-score-grid{grid-template-columns:1fr}
+  .ea-level-bar{flex-direction:column;align-items:flex-start;gap:6px}
+}
 </style>
 
-<!-- Assessment Overlay -->
-<div id="assessmentOverlay">
-  <div class="aov-header">
-    <button class="aov-back" onclick="closeAssessment()">← Back</button>
-    <div class="aov-title" id="aovTitle">Standard 1 — Assessment</div>
-  </div>
-  <div class="aov-body">
-
-    <!-- Summary pills -->
-    <div class="aov-summary" id="aovSummary">
-      <span class="aov-sum-label" id="aovStdLabel">STANDARD 1 —</span>
+<!-- ══ ASSESSMENT FULL-SCREEN OVERLAY ══ -->
+<div id="ea-overlay">
+  <!-- Header -->
+  <header class="ea-header">
+    <div class="ea-header-brand">
+      <button class="ea-back-btn" onclick="eaClose()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </button>
+      <h2 id="ea-header-title">Online Easy Assessment</h2>
     </div>
-
-    <!-- Toolbar -->
-    <div class="aov-toolbar">
-      <div class="aov-toolbar-left">
-        <button class="aov-btn primary" onclick="exportPDF()">⬇ Export PDF</button>
-        <button class="aov-btn" onclick="toggleScoreFilter()" id="scoreFilterBtn">⚙ Score Filters</button>
-      </div>
-      <div class="aov-search">
-        <span>🔍</span>
-        <input type="text" id="aovSearch" placeholder="Search student..." oninput="renderTable()"/>
-      </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.65);" id="ea-class-pill-wrap">
+      <span class="ea-class-pill" id="ea-class-pill">—</span>
     </div>
+  </header>
 
-    <!-- Score Filter Panel -->
-    <div id="scoreFilterPanel" style="display:none; background:#fff; border:1px solid #e0d8cc; border-radius:8px; padding:1rem 1.25rem; margin-bottom:1.25rem;">
-      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#c0392b; margin-bottom:0.85rem; display:flex; align-items:center; gap:0.5rem;">
-        🎯 FILTER BY SUBJECT SCORE RANGE — ENTER MIN AND/OR MAX FOR ANY SUBJECT
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1rem;">
-        <div>
-          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">English</div>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <input type="number" id="flt_english_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-            <span style="color:#aaa;font-size:0.8rem;">–</span>
-            <input type="number" id="flt_english_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Chichewa</div>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <input type="number" id="flt_chichewa_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-            <span style="color:#aaa;font-size:0.8rem;">–</span>
-            <input type="number" id="flt_chichewa_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Maths</div>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <input type="number" id="flt_maths_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-            <span style="color:#aaa;font-size:0.8rem;">–</span>
-            <input type="number" id="flt_maths_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Religious Education</div>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <input type="number" id="flt_re_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-            <span style="color:#aaa;font-size:0.8rem;">–</span>
-            <input type="number" id="flt_re_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.4rem;">Expressive Arts</div>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <input type="number" id="flt_ea_min" placeholder="Min" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-            <span style="color:#aaa;font-size:0.8rem;">–</span>
-            <input type="number" id="flt_ea_max" placeholder="Max" min="0" max="100" class="flt-input" oninput="renderTable()"/>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:0.85rem; text-align:right;">
-        <button class="aov-btn" onclick="clearScoreFilters()" style="font-size:0.75rem; padding:0.35rem 0.85rem;">✕ Clear Filters</button>
+  <div class="ea-main">
+    <!-- Dynamic assessment content -->
+    <div id="ea-content">
+      <div class="ea-no-class">
+        <div style="font-size:48px;margin-bottom:14px">🎓</div>
+        <h3>Loading…</h3>
       </div>
     </div>
-
-    <!-- Table card -->
-    <div class="aov-card">
-      <div class="aov-card-header">
-        <div class="aov-card-title" id="aovCardTitle">Standard 1 — Assessment</div>
-        <div class="aov-card-count" id="aovCardCount">0 students</div>
-      </div>
-      <div class="aov-table-wrap">
-        <table class="aov-table">
-          <thead>
-            <tr>
-              <th>POS</th>
-              <th>FULL NAME</th>
-              <th>SEX</th>
-              <th>ENGLISH</th>
-              <th>CHICHEWA</th>
-              <th>MATHS</th>
-              <th>RELIGIOUS EDUCATION</th>
-              <th>EXPRESSIVE ARTS</th>
-              <th>TOTAL</th>
-              <th>LEVEL</th>
-              <th>REMARKS</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody id="aovTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Add new student button -->
-    <div style="margin-top:1rem; text-align:right;">
-      <button class="aov-add-btn" onclick="openAddStudent()">+ Add Student</button>
-    </div>
-
   </div>
 </div>
 
-<!-- Score / Add Modal -->
-<div id="scoreModal" onclick="if(event.target===this) closeScoreModal()">
-  <div class="score-modal-box">
-    <div class="smb-header">
-      <span id="scoreModalTitle">Edit Scores</span>
-      <button class="smb-close" onclick="closeScoreModal()">×</button>
+<!-- ══ ADD / EDIT STUDENT MODAL ══ -->
+<div id="ea-student-overlay" onclick="if(event.target===this)eaCloseStudentModal()">
+  <div class="ea-modal" style="max-width:420px;">
+    <div class="ea-mhdr">
+      <h3 id="ea-student-title">Add Student</h3>
+      <button class="ea-mclose" onclick="eaCloseStudentModal()">×</button>
     </div>
-    <div class="smb-body">
-      <div class="smb-grid" id="scoreModalFields"></div>
-      <button class="smb-save" onclick="saveScores()">💾 Save</button>
+    <div class="ea-mbdy">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="ea-sf">
+          <label>First Name *</label>
+          <input type="text" id="ea-s-firstname" placeholder="e.g. Chisomo" style="padding:10px 12px;border:1.5px solid var(--ea-border);border-radius:8px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--ea-text);background:var(--ea-bg);transition:border-color .2s;">
+        </div>
+        <div class="ea-sf">
+          <label>Surname *</label>
+          <input type="text" id="ea-s-surname" placeholder="e.g. Banda" style="padding:10px 12px;border:1.5px solid var(--ea-border);border-radius:8px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--ea-text);background:var(--ea-bg);transition:border-color .2s;">
+        </div>
+        <div class="ea-sf">
+          <label>Sex *</label>
+          <select id="ea-s-sex" style="padding:10px 12px;border:1.5px solid var(--ea-border);border-radius:8px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--ea-text);background:var(--ea-bg);">
+            <option value="">— Select —</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="ea-f-err" id="ea-s-err"></div>
+    </div>
+    <div class="ea-mftr">
+      <button class="ea-btn ea-btn-ghost" onclick="eaCloseStudentModal()">Cancel</button>
+      <button class="ea-btn ea-btn-forest" onclick="eaSaveStudent()" id="ea-s-save-btn">Save Student</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCORE ENTRY MODAL ══ -->
+<div id="ea-score-overlay" onclick="if(event.target===this)eaCloseScoreModal()">
+  <div class="ea-modal">
+    <div class="ea-mhdr">
+      <h3 id="ea-score-title">Enter Scores</h3>
+      <button class="ea-mclose" onclick="eaCloseScoreModal()">×</button>
+    </div>
+    <div class="ea-mbdy">
+      <div class="ea-learner-chip">
+        <span class="ea-chip-icon">🎓</span>
+        <div>
+          <div class="ea-chip-name" id="ea-chip-name">—</div>
+          <div class="ea-chip-sex" id="ea-chip-sex">—</div>
+        </div>
+      </div>
+      <div class="ea-score-grid" id="ea-score-fields"></div>
+      <div class="ea-score-preview">
+        <div><div class="ea-sp-val" id="ea-prev-total" style="color:var(--ea-forest)">—</div><div class="ea-sp-lbl">Total</div></div>
+        <div><div class="ea-sp-val" id="ea-prev-level" style="color:var(--ea-gold)">—</div><div class="ea-sp-lbl">Level</div></div>
+        <div><div class="ea-sp-val" id="ea-prev-remarks" style="font-size:13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">—</div><div class="ea-sp-lbl">Remarks</div></div>
+      </div>
+      <div class="ea-f-err" id="ea-sc-err"></div>
+    </div>
+    <div class="ea-mftr">
+      <button class="ea-btn ea-btn-ghost" onclick="eaCloseScoreModal()">Cancel</button>
+      <button class="ea-btn ea-btn-forest" onclick="eaSaveScores()">💾 Save Scores</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── ASSESSMENT DATA ────────────────────────────────────────────────────────────
-var assessmentData = {
-  1: [
-    { name:'Kondwani Nkosi',  sex:'Male',   english:100, chichewa:100, maths:100, re:50, ea:50 },
-    { name:'Tadala Phiri',    sex:'Male',   english:80,  chichewa:80,  maths:80,  re:45, ea:50 },
-    { name:'Madalitso Mwale', sex:'Male',   english:80,  chichewa:0,   maths:79,  re:0,  ea:0  },
-    { name:'Tionge Chirwa',   sex:'Female', english:0,   chichewa:0,   maths:80,  re:0,  ea:0  },
-    { name:'Precious Kamanga',sex:'Female', english:null,chichewa:null,maths:null,re:null,ea:null }
-  ]
+// EASY ASSESS - STANDARD CONFIGS
+var EA_STD_CONFIG = {
+  std1: {
+    label:'Standard 1',
+    subjects:['English','Chichewa','Maths','Religious Education','Expressive Arts'],
+    keys:['eng','chi','mat','re','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, re:50, ea:50 }
+  },
+  std2: {
+    label:'Standard 2',
+    subjects:['English','Chichewa','Maths','Life Skills','Religious Education','Expressive Arts'],
+    keys:['eng','chi','mat','ls','re','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ls:100, re:50, ea:50 }
+  },
+  std3: {
+    label:'Standard 3',
+    subjects:['English','Chichewa','Maths','Life Skills','Social Studies','Religious Education','Expressive Arts'],
+    keys:['eng','chi','mat','ls','ss','re','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ls:100, ss:100, re:100, ea:100 }
+  },
+  std4: {
+    label:'Standard 4',
+    subjects:['English','Chichewa','Maths','Life Skills','Social Studies','Ulimi','Religious Education','Expressive Arts'],
+    keys:['eng','chi','mat','ls','ss','ul','re','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ls:100, ss:100, ul:100, re:100, ea:100 }
+  },
+  std5: {
+    label:'Standard 5',
+    subjects:['English','Chichewa','Maths','Primary Science','Social Studies','Expressive Arts'],
+    keys:['eng','chi','mat','ps','soc','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ps:100, soc:100, ea:100 }
+  },
+  std6: {
+    label:'Standard 6',
+    subjects:['English','Chichewa','Maths','Primary Science','Social Studies','Expressive Arts'],
+    keys:['eng','chi','mat','ps','soc','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ps:100, soc:100, ea:100 }
+  },
+  std7: {
+    label:'Standard 7',
+    subjects:['English','Chichewa','Maths','Primary Science','Social Studies','Expressive Arts'],
+    keys:['eng','chi','mat','ps','soc','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ps:100, soc:100, ea:100 }
+  },
+  std8: {
+    label:'Standard 8',
+    subjects:['English','Chichewa','Maths','Primary Science','Social Studies','Expressive Arts'],
+    keys:['eng','chi','mat','ps','soc','ea'],
+    maxPerKey:{ eng:100, chi:100, mat:100, ps:100, soc:100, ea:100 }
+  }
 };
-for (var s = 2; s <= 8; s++) assessmentData[s] = [];
 
-var currentStd = 1;
-var editingIdx  = null;
-var isAdding    = false;
-
-function getLevel(total, hasScores) {
-  if (!hasScores) return null;
-  if (total >= 350) return 4;
-  if (total >= 250) return 3;
-  if (total >= 150) return 2;
-  return 1;
-}
-function getRemark(level) {
-  return ['','NEED SUPPORT','GOOD','VERY GOOD','EXCELLENT'][level] || '—';
-}
-function levelClass(level) {
-  return ['lv-none','lv1','lv2','lv3','lv4'][level] || 'lv-none';
-}
-function remarkClass(level) {
-  return ['','rm-needsupport','rm-good','rm-verygood','rm-excellent'][level] || '';
+// STUDENT DB
+var eaDb = JSON.parse(localStorage.getItem('ea_db') || '[]');
+var eaNid = parseInt(localStorage.getItem('ea_nid') || '1');
+if (!eaDb.length) {
+  var seed = [
+    {id:eaNid++,name:'Chisomo Banda',sex:'Female',dob:'2013-03-14',village:'Mtandire',district:'Lilongwe',orphan:'Single',disability:'None',repeater:'No',tin:'No',tout:'No',denomination:'Catholic',guardian:'Grace Banda'},
+    {id:eaNid++,name:'Tadala Phiri',sex:'Male',dob:'2012-07-22',village:'Ndirande',district:'Blantyre',orphan:'No',disability:'None',repeater:'Yes',tin:'No',tout:'No',denomination:'CCAP',guardian:'John Phiri'},
+    {id:eaNid++,name:'Madalitso Mwale',sex:'Male',dob:'2014-01-05',village:'Katoto',district:'Mzimba',orphan:'Double',disability:'Visual',repeater:'No',tin:'Yes',tout:'No',denomination:'Church of Christ',guardian:'Rose Mwale'},
+    {id:eaNid++,name:'Kondwani Nkosi',sex:'Male',dob:'2013-09-18',village:'Lizulu',district:'Ntcheu',orphan:'No',disability:'Physical',repeater:'No',tin:'No',tout:'Yes',denomination:'Muslim',guardian:'Paul Nkosi'},
+    {id:eaNid++,name:'Tionge Chirwa',sex:'Female',dob:'2012-11-30',village:'Luwinga',district:'Mzimba',orphan:'No',disability:'None',repeater:'No',tin:'No',tout:'No',denomination:'Seventh Day',guardian:'Mary Chirwa'},
+    {id:eaNid++,name:'Precious Kamanga',sex:'Female',dob:'2013-05-08',village:'Chinsapo',district:'Lilongwe',orphan:'Single',disability:'None',repeater:'No',tin:'Yes',tout:'No',denomination:'Muslim',guardian:'Fatima Kamanga'}
+  ];
+  eaDb = seed;
+  localStorage.setItem('ea_db', JSON.stringify(eaDb));
+  localStorage.setItem('ea_nid', String(eaNid));
 }
 
-function calcStudent(s) {
-  var subjects = [s.english, s.chichewa, s.maths, s.re, s.ea];
-  var hasScores = subjects.some(function(v){ return v !== null && v !== undefined; });
-  var total = hasScores ? subjects.reduce(function(a,b){ return a + (b||0); }, 0) : null;
-  var level = (total !== null) ? getLevel(total, hasScores) : null;
-  return { total: total, level: level, hasScores: hasScores };
+// ASSESSMENT DATA
+var eaAssessments = JSON.parse(localStorage.getItem('ea_assessments') || '{}');
+function eaPersistAssessments() { localStorage.setItem('ea_assessments', JSON.stringify(eaAssessments)); }
+function eaGetAssessment(stdKey, lid) { return (eaAssessments[stdKey] && eaAssessments[stdKey][lid]) || null; }
+function eaSetAssessment(stdKey, lid, data) {
+  if (!eaAssessments[stdKey]) eaAssessments[stdKey] = {};
+  eaAssessments[stdKey][lid] = data;
+  eaPersistAssessments();
 }
 
-function renderSummary(students) {
-  var counts = {1:0,2:0,3:0,4:0,pass:0,fail:0};
-  students.forEach(function(s) {
-    var c = calcStudent(s);
-    if (c.level) {
-      counts[c.level]++;
-      if (c.level >= 2) counts.pass++; else counts.fail++;
-    }
-  });
-  document.getElementById('aovStdLabel').textContent = 'STANDARD ' + currentStd + ' —';
-  document.getElementById('aovSummary').innerHTML =
-    '<span class="aov-sum-label">STANDARD ' + currentStd + ' —</span>' +
-    '<span class="aov-pill pill-l1"><span class="pn">' + counts[1] + '</span> Level 1 · Need Support</span>' +
-    '<span class="aov-pill pill-l2"><span class="pn">' + counts[2] + '</span> Level 2 · Good</span>' +
-    '<span class="aov-pill pill-l3"><span class="pn">' + counts[3] + '</span> Level 3 · Very Good</span>' +
-    '<span class="aov-pill pill-l4"><span class="pn">' + counts[4] + '</span> Level 4 · Excellent</span>' +
-    '<span class="aov-pill pill-pass"><span class="pn">' + counts.pass + '</span> Passed</span>' +
-    '<span class="aov-pill pill-fail"><span class="pn">' + counts.fail + '</span> Failed</span>';
+// SCORING HELPERS
+function eaSubMax(cfg, key) { return cfg.maxPerKey ? (cfg.maxPerKey[key] !== undefined ? cfg.maxPerKey[key] : 100) : 100; }
+function eaCalcTotal(scores) { return Object.values(scores).reduce(function(a,b){ return a+(b||0); }, 0); }
+
+var EA_BANDS = {
+  std1:[{max:159,lv:'Level 1'},{max:240,lv:'Level 2'},{max:320,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std2:[{max:199,lv:'Level 1'},{max:300,lv:'Level 2'},{max:400,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std3:[{max:279,lv:'Level 1'},{max:420,lv:'Level 2'},{max:560,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std4:[{max:319,lv:'Level 1'},{max:480,lv:'Level 2'},{max:640,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std5:[{max:239,lv:'Level 1'},{max:360,lv:'Level 2'},{max:480,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std6:[{max:239,lv:'Level 1'},{max:360,lv:'Level 2'},{max:480,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std7:[{max:239,lv:'Level 1'},{max:360,lv:'Level 2'},{max:480,lv:'Level 3'},{max:Infinity,lv:'Level 4'}],
+  std8:[{max:239,lv:'Level 1'},{max:360,lv:'Level 2'},{max:480,lv:'Level 3'},{max:Infinity,lv:'Level 4'}]
+};
+
+function eaGetLevel(total, stdKey) {
+  var bands = EA_BANDS[stdKey] || EA_BANDS['std5'];
+  for (var i=0; i<bands.length; i++) { if (total <= bands[i].max) return bands[i].lv; }
+  return 'Level 4';
 }
-
-function renderTable() {
-  var students = assessmentData[currentStd];
-  var search = (document.getElementById('aovSearch').value || '').toLowerCase();
-  renderSummary(students);
-
-  var filtered = students.filter(function(s) {
-    if (search && s.name.toLowerCase().indexOf(search) === -1) return false;
-    if (!passesScoreFilter(s)) return false;
-    return true;
-  });
-
-  // Sort by total descending (nulls last)
-  var ranked = filtered.slice().sort(function(a,b){
-    var ca = calcStudent(a), cb = calcStudent(b);
-    if (ca.total === null && cb.total === null) return 0;
-    if (ca.total === null) return 1;
-    if (cb.total === null) return -1;
-    return cb.total - ca.total;
-  });
-
-  document.getElementById('aovCardCount').textContent = students.length + ' student' + (students.length !== 1 ? 's' : '');
-  document.getElementById('aovCardTitle').textContent = 'Standard ' + currentStd + ' — Assessment';
-
-  var html = '';
-  var pos = 0;
-  ranked.forEach(function(s, i) {
-    var origIdx = students.indexOf(s);
-    var c = calcStudent(s);
-    if (c.hasScores) pos++;
-    var posStr = c.hasScores ? pos : '—';
-    var sexBadge = '<span class="sex-badge ' + (s.sex==='Male'?'sex-m':'sex-f') + '">' + s.sex + '</span>';
-    var lvBadge = c.level ? '<span class="level-badge ' + levelClass(c.level) + '">Level ' + c.level + '</span>' : '<span class="level-badge lv-none">—</span>';
-    var rmBadge = c.level ? '<span class="remark-badge ' + remarkClass(c.level) + '">' + getRemark(c.level) + '</span>' : '<span style="color:#ccc">—</span>';
-    var totalStr = c.total !== null ? '<strong>' + c.total + '</strong>' : '—';
-
-    function scoreCell(v) { return v !== null && v !== undefined ? v : '<span style="color:#ccc">—</span>'; }
-
-    var actionBtn = c.hasScores
-      ? '<button class="aov-edit-btn" onclick="openEditScores(' + origIdx + ')">✎ Edit Scores</button>'
-      : '<button class="aov-add-btn" onclick="openEditScores(' + origIdx + ')">+ Add Scores</button>';
-
-    html += '<tr>' +
-      '<td>' + posStr + '</td>' +
-      '<td><strong>' + s.name + '</strong></td>' +
-      '<td>' + sexBadge + '</td>' +
-      '<td>' + scoreCell(s.english) + '</td>' +
-      '<td>' + scoreCell(s.chichewa) + '</td>' +
-      '<td>' + scoreCell(s.maths) + '</td>' +
-      '<td>' + scoreCell(s.re) + '</td>' +
-      '<td>' + scoreCell(s.ea) + '</td>' +
-      '<td>' + totalStr + '</td>' +
-      '<td>' + lvBadge + '</td>' +
-      '<td>' + rmBadge + '</td>' +
-      '<td>' + actionBtn + '</td>' +
-      '</tr>';
-  });
-  document.getElementById('aovTableBody').innerHTML = html;
+function eaGetRemarks(total, stdKey) {
+  var lv = eaGetLevel(total, stdKey);
+  if (lv === 'Level 1') return 'NEED SUPPORT';
+  if (lv === 'Level 2') return 'GOOD';
+  if (lv === 'Level 3') return 'VERY GOOD';
+  return 'EXCELLENT';
 }
+function eaLvClass(lv) {
+  if (lv === 'Level 1') return 'ea-lv1';
+  if (lv === 'Level 2') return 'ea-lv2';
+  if (lv === 'Level 3') return 'ea-lv3';
+  return 'ea-lv4';
+}
+function eaRmClass(lv) {
+  if (lv === 'Level 1') return 'ea-rm1';
+  if (lv === 'Level 2') return 'ea-rm2';
+  if (lv === 'Level 3') return 'ea-rm3';
+  return 'ea-rm4';
+}
+function eaEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function eaSexBadge(v){ return v==='Male' ? '<span class="ea-sex-m">Male</span>' : '<span class="ea-sex-f">Female</span>'; }
 
-function openAssessment(std) {
-  currentStd = std;
-  document.getElementById('aovTitle').textContent = 'Standard ' + std + ' — Assessment';
-  document.getElementById('aovSearch').value = '';
-  document.getElementById('scoreFilterPanel').style.display = 'none';
-  clearScoreFilters();
-  renderTable();
-  document.getElementById('assessmentOverlay').style.display = 'block';
+// OVERLAY OPEN / CLOSE
+var eaCurrentStd = '';
+
+function openAssessment(stdKey) {
+  eaCurrentStd = stdKey;
+  document.getElementById('ea-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  var label = EA_STD_CONFIG[stdKey].label;
+  document.getElementById('ea-header-title').textContent = label + ' - Assessment';
+  document.getElementById('ea-class-pill').textContent = 'Class: ' + label;
+  eaRenderStandard(stdKey);
 }
-function closeAssessment() {
-  document.getElementById('assessmentOverlay').style.display = 'none';
+
+function eaClose() {
+  document.getElementById('ea-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// ── SCORE MODAL ────────────────────────────────────────────────────────────────
-function openEditScores(idx) {
-  editingIdx = idx; isAdding = false;
-  var s = assessmentData[currentStd][idx];
-  document.getElementById('scoreModalTitle').textContent = 'Edit Scores — ' + s.name;
-  var fields = [
-    { key:'english',  label:'English' },
-    { key:'chichewa', label:'Chichewa' },
-    { key:'maths',    label:'Maths' },
-    { key:'re',       label:'Religious Education' },
-    { key:'ea',       label:'Expressive Arts' }
-  ];
-  var html = '';
-  fields.forEach(function(f) {
-    var val = s[f.key] !== null && s[f.key] !== undefined ? s[f.key] : '';
-    html += '<div class="smb-field"><label>' + f.label + '</label>' +
-            '<input type="number" min="0" max="100" id="sf_' + f.key + '" value="' + val + '" placeholder="0–100"/></div>';
+// RENDER STANDARD
+function eaRenderStandard(stdKey) {
+  var cfg = EA_STD_CONFIG[stdKey];
+  var container = document.getElementById('ea-content');
+  var searchEl = container.querySelector('.ea-std-search');
+  var q = searchEl ? searchEl.value.toLowerCase() : '';
+
+  // Read filter values
+  var subFilters = {};
+  cfg.keys.forEach(function(k) {
+    var minEl = container.querySelector('.ea-af-min[data-key="' + k + '"]');
+    var maxEl = container.querySelector('.ea-af-max[data-key="' + k + '"]');
+    var minV = minEl ? parseFloat(minEl.value) : NaN;
+    var maxV = maxEl ? parseFloat(maxEl.value) : NaN;
+    subFilters[k] = { min: isNaN(minV) ? null : minV, max: isNaN(maxV) ? null : maxV };
   });
-  // Add name & sex fields for editing
-  html = '<div class="smb-field" style="grid-column:1/-1"><label>Full Name</label>' +
-         '<input type="text" id="sf_name" value="' + s.name + '"/></div>' +
-         '<div class="smb-field"><label>Sex</label>' +
-         '<select id="sf_sex" style="width:100%;padding:0.55rem 0.75rem;border:1px solid #ddd;border-radius:5px;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;">' +
-         '<option ' + (s.sex==='Male'?'selected':'') + '>Male</option>' +
-         '<option ' + (s.sex==='Female'?'selected':'') + '>Female</option></select></div>' + html;
-  document.getElementById('scoreModalFields').innerHTML = html;
-  document.getElementById('scoreModal').classList.add('open');
-}
+  var filterActive = cfg.keys.some(function(k) { return subFilters[k].min !== null || subFilters[k].max !== null; });
+  var filterWasOpen = container.querySelector('.ea-filter-panel.show') !== null;
 
-function openAddStudent() {
-  editingIdx = null; isAdding = true;
-  document.getElementById('scoreModalTitle').textContent = 'Add New Student';
-  var html = '<div class="smb-field" style="grid-column:1/-1"><label>Full Name</label>' +
-             '<input type="text" id="sf_name" placeholder="e.g. Mary Banda"/></div>' +
-             '<div class="smb-field"><label>Sex</label>' +
-             '<select id="sf_sex" style="width:100%;padding:0.55rem 0.75rem;border:1px solid #ddd;border-radius:5px;font-family:\'DM Sans\',sans-serif;font-size:0.88rem;outline:none;">' +
-             '<option>Male</option><option>Female</option></select></div>' +
-             '<div class="smb-field"><label>English</label><input type="number" min="0" max="100" id="sf_english" placeholder="0–100"/></div>' +
-             '<div class="smb-field"><label>Chichewa</label><input type="number" min="0" max="100" id="sf_chichewa" placeholder="0–100"/></div>' +
-             '<div class="smb-field"><label>Maths</label><input type="number" min="0" max="100" id="sf_maths" placeholder="0–100"/></div>' +
-             '<div class="smb-field"><label>Religious Education</label><input type="number" min="0" max="100" id="sf_re" placeholder="0–100"/></div>' +
-             '<div class="smb-field"><label>Expressive Arts</label><input type="number" min="0" max="100" id="sf_ea" placeholder="0–100"/></div>';
-  document.getElementById('scoreModalFields').innerHTML = html;
-  document.getElementById('scoreModal').classList.add('open');
-}
-
-function saveScores() {
-  var name = (document.getElementById('sf_name').value || '').trim();
-  if (!name) { alert('Please enter the student name.'); return; }
-  var sex = document.getElementById('sf_sex').value;
-  function getVal(id) {
-    var el = document.getElementById(id);
-    if (!el) return null;
-    var v = el.value.trim();
-    return v === '' ? null : parseInt(v) || 0;
+  // Build learner list
+  var learners = eaDb.filter(function(s) { return !q || s.name.toLowerCase().indexOf(q) !== -1; });
+  if (filterActive) {
+    learners = learners.filter(function(s) {
+      var a = eaGetAssessment(stdKey, s.id);
+      if (!a) return false;
+      return cfg.keys.every(function(k) {
+        var v = a[k] || 0;
+        var f = subFilters[k];
+        if (f.min !== null && v < f.min) return false;
+        if (f.max !== null && v > f.max) return false;
+        return true;
+      });
+    });
   }
-  var entry = {
-    name: name, sex: sex,
-    english: getVal('sf_english'), chichewa: getVal('sf_chichewa'),
-    maths: getVal('sf_maths'), re: getVal('sf_re'), ea: getVal('sf_ea')
-  };
-  if (isAdding) {
-    assessmentData[currentStd].push(entry);
+
+  // Build scored data and sort
+  var rows = learners.map(function(s) {
+    var a = eaGetAssessment(stdKey, s.id);
+    var hasScores = a !== null;
+    var scores = {};
+    if (a) cfg.keys.forEach(function(k) { scores[k] = a[k] || 0; });
+    var total = hasScores ? eaCalcTotal(scores) : null;
+    return { s:s, a:a, hasScores:hasScores, scores:scores, total:total };
+  });
+  rows.sort(function(x,y) {
+    if (x.total===null && y.total===null) return 0;
+    if (x.total===null) return 1;
+    if (y.total===null) return -1;
+    return y.total - x.total;
+  });
+
+  // Assign positions
+  var pos = 1;
+  for (var i=0; i<rows.length; i++) {
+    if (rows[i].total === null) { rows[i].position = '-'; continue; }
+    if (i > 0 && rows[i].total === rows[i-1].total) rows[i].position = rows[i-1].position;
+    else rows[i].position = pos;
+    pos++;
+  }
+
+  // Level counters
+  var l1=0,l2=0,l3=0,l4=0,passed=0,failed=0;
+  rows.forEach(function(item) {
+    if (!item.hasScores || item.total===null) return;
+    var lv = eaGetLevel(item.total, stdKey);
+    if (lv==='Level 1') { l1++; failed++; }
+    else if (lv==='Level 2') { l2++; passed++; }
+    else if (lv==='Level 3') { l3++; passed++; }
+    else { l4++; passed++; }
+  });
+
+  // Filter inputs HTML
+  var filterHTML = '';
+  cfg.subjects.forEach(function(sub, i) {
+    var k = cfg.keys[i];
+    var mx = eaSubMax(cfg, k);
+    var minVal = subFilters[k].min !== null ? subFilters[k].min : '';
+    var maxVal = subFilters[k].max !== null ? subFilters[k].max : '';
+    filterHTML += '<div class="ea-fp-field">' +
+      '<label>' + eaEsc(sub) + '</label>' +
+      '<div style="display:flex;gap:4px;align-items:center">' +
+      '<input class="ea-af-min" data-key="' + k + '" type="number" min="0" max="' + mx + '" placeholder="Min" value="' + minVal + '" oninput="eaRenderStandard(\'' + stdKey + '\')">' +
+      '<span style="color:#aaa;font-size:11px">-</span>' +
+      '<input class="ea-af-max" data-key="' + k + '" type="number" min="0" max="' + mx + '" placeholder="Max" value="' + maxVal + '" oninput="eaRenderStandard(\'' + stdKey + '\')">' +
+      '</div></div>';
+  });
+
+  // Table header score columns
+  var thScores = '';
+  cfg.subjects.forEach(function(sub) { thScores += '<th class="num">' + eaEsc(sub) + '</th>'; });
+
+  // Table body rows
+  var tbRows = '';
+  if (rows.length === 0) {
+    tbRows = '<tr><td colspan="' + (7 + cfg.keys.length) + '"><div class="ea-empty">No students found</div></td></tr>';
   } else {
-    assessmentData[currentStd][editingIdx] = entry;
+    rows.forEach(function(item) {
+      var s = item.s, a = item.a, hasScores = item.hasScores, total = item.total, position = item.position;
+      var scoreCells = '';
+      cfg.keys.forEach(function(k) {
+        var v = a ? a[k] : null;
+        if (hasScores && v !== undefined) scoreCells += '<td class="num ea-score-val">' + v + '</td>';
+        else scoreCells += '<td class="num ea-score-empty">-</td>';
+      });
+      var lv = hasScores ? eaGetLevel(total, stdKey) : null;
+      var lvc = lv ? eaLvClass(lv) : '';
+      var rmc = lv ? eaRmClass(lv) : '';
+      var rmk = hasScores ? eaGetRemarks(total, stdKey) : null;
+      var posCell = hasScores ? '<span class="ea-pos-val">' + position + '</span>' : '<span style="color:#bbb;font-size:11px">-</span>';
+      var totalCell = hasScores ? total : '-';
+      var lvCell = lv ? '<span class="ea-lv ' + lvc + '">' + lv + '</span>' : '<span style="color:#bbb;font-size:11px">-</span>';
+      var rmkCell = rmk ? '<span class="ea-rmk ' + rmc + '">' + rmk + '</span>' : '<span style="color:#bbb;font-size:11px">-</span>';
+      var scoresBtnLabel = hasScores ? 'Edit Scores' : '+ Add Scores';
+      var actionsCell = '<td style="white-space:nowrap">' +
+        '<div style="display:flex;gap:6px;align-items:center;">' +
+        '<button class="ea-scores-btn" onclick="eaOpenScoreModal(\'' + stdKey + '\',' + s.id + ')">' + scoresBtnLabel + '</button>' +
+        '<button class="ea-icon-btn" title="Edit Student" onclick="eaOpenEditStudent(' + s.id + ')">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>' +
+        '</button>' +
+        '<button class="ea-icon-btn del" title="Delete Student" onclick="eaDeleteStudent(' + s.id + ')">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' +
+        '</button></div></td>';
+
+      tbRows += '<tr>' +
+        '<td class="num">' + posCell + '</td>' +
+        '<td style="font-weight:600;white-space:nowrap">' + eaEsc(s.name) + '</td>' +
+        '<td>' + eaSexBadge(s.sex) + '</td>' +
+        scoreCells +
+        '<td class="num ea-total-val">' + totalCell + '</td>' +
+        '<td>' + lvCell + '</td>' +
+        '<td>' + rmkCell + '</td>' +
+        actionsCell +
+        '</tr>';
+    });
   }
-  closeScoreModal();
-  renderTable();
+
+  // Active filter badge and clear button
+  var filterBadge = filterActive ? ' <span class="ea-active-badge">Active</span>' : '';
+  var clearBtn = filterActive ? '<button class="ea-btn ea-btn-danger" onclick="eaClearFilters(\'' + stdKey + '\')">x Clear</button>' : '';
+  var filterPanelClass = (filterWasOpen || filterActive) ? 'ea-filter-panel show' : 'ea-filter-panel';
+  var filteredNote = filterActive ? ' <em style="font-size:11px;color:var(--ea-amber)">(filtered)</em>' : '';
+  var studentCount = learners.length + ' student' + (learners.length !== 1 ? 's' : '');
+
+  container.innerHTML =
+    '<div class="ea-level-bar">' +
+      '<span class="ea-lc-title">Results: ' + cfg.label + ' -</span>' +
+      '<span class="ea-chip ea-lc1"><span class="cn">' + l1 + '</span> Level 1 Need Support</span>' +
+      '<span class="ea-chip ea-lc2"><span class="cn">' + l2 + '</span> Level 2 Good</span>' +
+      '<span class="ea-chip ea-lc3"><span class="cn">' + l3 + '</span> Level 3 Very Good</span>' +
+      '<span class="ea-chip ea-lc4"><span class="cn">' + l4 + '</span> Level 4 Excellent</span>' +
+      '<span class="ea-sep"></span>' +
+      '<span class="ea-chip ea-lc-pass"><span class="cn">' + passed + '</span> Passed</span>' +
+      '<span class="ea-chip ea-lc-fail"><span class="cn">' + failed + '</span> Failed</span>' +
+    '</div>' +
+    '<div class="ea-toolbar">' +
+      '<div class="ea-tb-left">' +
+        '<button class="ea-btn ea-btn-forest" onclick="eaOpenAddStudent()">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M12 5v14M5 12h14"/></svg>' +
+          ' Add Student' +
+        '</button>' +
+        '<button class="ea-btn ea-btn-gold" onclick="eaExportPDF(\'' + stdKey + '\')">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
+          ' Export PDF' +
+        '</button>' +
+        '<span id="ea-code-timer" style="display:none;align-items:center;gap:5px;background:#e8f5e9;color:#2d5a3d;border:1px solid #a5d6a7;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:700;font-family:Plus Jakarta Sans,sans-serif;">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>' +
+          ' Code active: --:--' +
+        '</span>' +
+        '<button class="ea-btn" onclick="eaToggleFilter()">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>' +
+          ' Score Filters' + filterBadge +
+        '</button>' +
+        clearBtn +
+      '</div>' +
+      '<div class="ea-search-wrap">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>' +
+        '<input class="ea-std-search" type="text" placeholder="Search student..." value="' + eaEsc(q) + '" oninput="eaRenderStandard(\'' + stdKey + '\')">' +
+      '</div>' +
+    '</div>' +
+    '<div class="' + filterPanelClass + '" id="ea-filter-panel">' +
+      '<div class="ea-fp-title">Filter by Subject Score Range - enter min and/or max for any subject</div>' +
+      '<div class="ea-fp-grid">' + filterHTML + '</div>' +
+    '</div>' +
+    '<div class="ea-tbl-card">' +
+      '<div class="ea-tbl-hdr">' +
+        '<h3>' + cfg.label + ' - Assessment</h3>' +
+        '<span>' + studentCount + filteredNote + '</span>' +
+      '</div>' +
+      '<div class="ea-tbl-scroll">' +
+        '<table class="ea-tbl">' +
+          '<thead><tr>' +
+            '<th class="num">Pos</th><th>Full Name</th><th>Sex</th>' +
+            thScores +
+            '<th class="num">Total</th><th>Level</th><th>Remarks</th><th>Actions</th>' +
+          '</tr></thead>' +
+          '<tbody>' + tbRows + '</tbody>' +
+        '</table>' +
+      '</div>' +
+    '</div>';
 }
 
-function closeScoreModal() {
-  document.getElementById('scoreModal').classList.remove('open');
+function eaToggleFilter() {
+  var p = document.getElementById('ea-filter-panel');
+  if (p) p.classList.toggle('show');
+}
+function eaClearFilters(stdKey) {
+  var els = document.getElementById('ea-content').querySelectorAll('.ea-af-min,.ea-af-max');
+  els.forEach(function(el) { el.value = ''; });
+  eaRenderStandard(stdKey);
 }
 
-function toggleScoreFilter() {
-  var panel = document.getElementById('scoreFilterPanel');
-  var btn   = document.getElementById('scoreFilterBtn');
-  var open  = panel.style.display !== 'none';
-  panel.style.display = open ? 'none' : 'block';
-  btn.style.background = open ? '' : '#f0ebe3';
-  btn.style.borderColor = open ? '' : 'var(--forest3)';
-}
-function clearScoreFilters() {
-  ['english','chichewa','maths','re','ea'].forEach(function(s) {
-    var mn = document.getElementById('flt_'+s+'_min');
-    var mx = document.getElementById('flt_'+s+'_max');
-    if (mn) mn.value = '';
-    if (mx) mx.value = '';
+// SCORE MODAL
+var eaScoringStd = null, eaScoringLid = null;
+
+function eaOpenScoreModal(stdKey, lid) {
+  eaScoringStd = stdKey;
+  eaScoringLid = lid;
+  var cfg = EA_STD_CONFIG[stdKey];
+  var s = eaDb.find(function(x) { return x.id === lid; });
+  document.getElementById('ea-score-title').textContent = cfg.label + ' - Scores';
+  document.getElementById('ea-chip-name').textContent = s.name;
+  document.getElementById('ea-chip-sex').textContent = s.sex;
+  document.getElementById('ea-sc-err').textContent = '';
+  var a = eaGetAssessment(stdKey, lid);
+  var fieldsHTML = '';
+  cfg.subjects.forEach(function(sub, i) {
+    var k = cfg.keys[i];
+    var mx = eaSubMax(cfg, k);
+    var val = a ? (a[k] !== undefined ? a[k] : '') : '';
+    fieldsHTML += '<div class="ea-sf">' +
+      '<label>' + eaEsc(sub) + ' (0-' + mx + ')</label>' +
+      '<input type="number" min="0" max="' + mx + '" placeholder="0" value="' + val + '" data-key="' + k + '" oninput="eaPreviewScore()">' +
+      '</div>';
   });
-  renderTable();
-}
-function getFilterVal(id) {
-  var el = document.getElementById(id);
-  if (!el || el.value.trim() === '') return null;
-  return parseFloat(el.value);
-}
-function passesScoreFilter(s) {
-  var checks = [
-    { mn:'flt_english_min',  mx:'flt_english_max',  val:s.english  },
-    { mn:'flt_chichewa_min', mx:'flt_chichewa_max', val:s.chichewa },
-    { mn:'flt_maths_min',    mx:'flt_maths_max',    val:s.maths    },
-    { mn:'flt_re_min',       mx:'flt_re_max',       val:s.re       },
-    { mn:'flt_ea_min',       mx:'flt_ea_max',       val:s.ea       }
-  ];
-  return checks.every(function(c) {
-    var mn = getFilterVal(c.mn), mx = getFilterVal(c.mx);
-    if (mn === null && mx === null) return true;
-    var v = c.val !== null && c.val !== undefined ? c.val : 0;
-    if (mn !== null && v < mn) return false;
-    if (mx !== null && v > mx) return false;
-    return true;
-  });
+  document.getElementById('ea-score-fields').innerHTML = fieldsHTML;
+  eaPreviewScore();
+  document.getElementById('ea-score-overlay').classList.add('open');
 }
 
-function exportPDF() {
-  window.print();
+function eaCloseScoreModal() {
+  document.getElementById('ea-score-overlay').classList.remove('open');
+  eaScoringStd = null;
+  eaScoringLid = null;
 }
+
+function eaPreviewScore() {
+  var inputs = document.querySelectorAll('#ea-score-fields input');
+  var total = 0, hasAny = false;
+  inputs.forEach(function(inp) {
+    var v = parseFloat(inp.value);
+    if (!isNaN(v)) { total += v; hasAny = true; }
+  });
+  if (hasAny) {
+    document.getElementById('ea-prev-total').textContent = total;
+    document.getElementById('ea-prev-level').textContent = eaGetLevel(total, eaScoringStd);
+    document.getElementById('ea-prev-remarks').textContent = eaGetRemarks(total, eaScoringStd);
+  } else {
+    document.getElementById('ea-prev-total').textContent = '-';
+    document.getElementById('ea-prev-level').textContent = '-';
+    document.getElementById('ea-prev-remarks').textContent = '-';
+  }
+}
+
+function eaSaveScores() {
+  var cfg = EA_STD_CONFIG[eaScoringStd];
+  var err = document.getElementById('ea-sc-err');
+  err.textContent = '';
+  var inputs = document.querySelectorAll('#ea-score-fields input');
+  var scores = {};
+  var valid = true;
+  inputs.forEach(function(inp) {
+    var k = inp.dataset.key;
+    var raw = inp.value;
+    if (raw === '') { scores[k] = 0; return; }
+    var v = parseFloat(raw);
+    var mx = eaSubMax(cfg, k);
+    if (isNaN(v) || v < 0 || v > mx) {
+      err.textContent = 'Score for ' + cfg.subjects[cfg.keys.indexOf(k)] + ' must be 0-' + mx;
+      valid = false;
+    } else {
+      scores[k] = v;
+    }
+  });
+  if (!valid) return;
+  var std = eaScoringStd;
+  eaSetAssessment(std, eaScoringLid, scores);
+  eaCloseScoreModal();
+  eaRenderStandard(std);
+}
+
+// -------------------------------------------------------
+//  DEVICE FINGERPRINT
+//  Combines stable browser/device properties into a short
+//  hash that identifies this specific device.
+// -------------------------------------------------------
+function eaDeviceFingerprint() {
+  var raw = [
+    navigator.userAgent,
+    navigator.language,
+    screen.width + 'x' + screen.height,
+    screen.colorDepth,
+    new Date().getTimezoneOffset(),
+    navigator.hardwareConcurrency || '',
+    navigator.platform || ''
+  ].join('|');
+  // Simple djb2 hash -> 8-char hex string
+  var hash = 5381;
+  for (var i = 0; i < raw.length; i++) {
+    hash = ((hash << 5) + hash) + raw.charCodeAt(i);
+    hash = hash & hash; // keep 32-bit
+  }
+  return (hash >>> 0).toString(16).toUpperCase().padStart(8, '0');
+}
+
+// -------------------------------------------------------
+//  CODE GENERATION  (used on the admin/generator page)
+//  Algorithm:
+//    1. Take the device fingerprint (8 hex chars)
+//    2. Append a secret salt known only to you
+//    3. Hash the result -> produce a 6-char alphanumeric code
+//  The code is ONLY valid on the device whose fingerprint
+//  was used to generate it.
+// -------------------------------------------------------
+var EA_SECRET = 'EducationMattersMalawi2025';  // <-- change this to your own secret
+
+function eaGenerateCode(fingerprint) {
+  var raw = fingerprint + EA_SECRET;
+  var hash = 5381;
+  for (var i = 0; i < raw.length; i++) {
+    hash = ((hash << 5) + hash) + raw.charCodeAt(i);
+    hash = hash & hash;
+  }
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no O/0/1/I to avoid confusion
+  var code = '';
+  var n = hash >>> 0;
+  for (var c = 0; c < 6; c++) {
+    code += chars[n % chars.length];
+    n = Math.floor(n / chars.length);
+  }
+  return code;
+}
+
+// -------------------------------------------------------
+//  CODE VALIDATION & SESSION
+//  Once a valid code is entered the device clock is noted.
+//  The code remains valid for exactly 5 minutes from that
+//  moment. After that it is burned and can never be reused.
+// -------------------------------------------------------
+var EA_CODE_SESSION_KEY = 'ea_code_session';
+var EA_CODE_WINDOW_MS   = 5 * 60 * 1000; // 5 minutes
+
+function eaGetSession() {
+  try { return JSON.parse(localStorage.getItem(EA_CODE_SESSION_KEY) || 'null'); } catch(e) { return null; }
+}
+function eaSaveSession(session) {
+  localStorage.setItem(EA_CODE_SESSION_KEY, JSON.stringify(session));
+}
+function eaBurnSession() {
+  localStorage.removeItem(EA_CODE_SESSION_KEY);
+}
+
+function eaIsSessionValid() {
+  var session = eaGetSession();
+  if (!session) return false;
+  // Must match this device
+  if (session.fingerprint !== eaDeviceFingerprint()) return false;
+  // Must be within 5-minute window from activation time
+  var elapsed = Date.now() - session.activatedAt;
+  if (elapsed > EA_CODE_WINDOW_MS) {
+    eaBurnSession(); // expired — destroy it
+    return false;
+  }
+  return true;
+}
+
+function eaSecondsRemaining() {
+  var session = eaGetSession();
+  if (!session) return 0;
+  var elapsed = Date.now() - session.activatedAt;
+  var remaining = Math.ceil((EA_CODE_WINDOW_MS - elapsed) / 1000);
+  return Math.max(0, remaining);
+}
+
+// -------------------------------------------------------
+//  EXPORT PDF  — now requires a valid code session
+// -------------------------------------------------------
+var eaPendingExportStd = null;
+var eaCodeCountdownTimer = null;
+
+function eaExportPDF(stdKey) {
+  if (eaIsSessionValid()) {
+    // Session still active — go straight to PDF
+    eaDoExportPDF(stdKey);
+  } else {
+    // Ask for a code
+    eaPendingExportStd = stdKey;
+    eaOpenCodeModal();
+  }
+}
+
+function eaDoExportPDF(stdKey) {
+  if (!window.jspdf) { alert('PDF library not loaded yet. Please try again.'); return; }
+  var jsPDF = window.jspdf.jsPDF;
+  var cfg = EA_STD_CONFIG[stdKey];
+  var doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+  var now = new Date();
+  doc.setFontSize(13); doc.setFont('helvetica','bold'); doc.setTextColor(45,90,61);
+  doc.text('Education Matters - ' + cfg.label + ' Assessment', 148.5, 12, {align:'center'});
+  doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,95,85);
+  doc.text('Generated: ' + now.toLocaleDateString() + '  |  Malawi Primary Schools', 148.5, 18, {align:'center'});
+  var rows = eaDb.map(function(s, i) {
+    var a = eaGetAssessment(stdKey, s.id);
+    var scores = {};
+    if (a) cfg.keys.forEach(function(k) { scores[k] = a[k] || 0; });
+    var total = a ? eaCalcTotal(scores) : null;
+    var lv = total !== null ? eaGetLevel(total, stdKey) : '-';
+    var rmk = total !== null ? eaGetRemarks(total, stdKey) : '-';
+    var subCells = cfg.keys.map(function(k) { return a ? (a[k] !== undefined ? a[k] : '-') : '-'; });
+    return [i+1, s.name, s.sex==='Male'?'M':'F'].concat(subCells).concat([total!==null?total:'-', lv, rmk]);
+  });
+  doc.autoTable({
+    head: [['#','Full Name','Sex'].concat(cfg.subjects).concat(['Total','Level','Remarks'])],
+    body: rows, startY: 24, theme: 'grid',
+    headStyles:{fillColor:[45,90,61],textColor:[255,255,255],fontSize:7,fontStyle:'bold',cellPadding:2.5,halign:'center'},
+    bodyStyles:{fontSize:7.5,textColor:[30,26,20],cellPadding:2.5,halign:'center'},
+    columnStyles:{0:{cellWidth:7},1:{cellWidth:38,halign:'left'},2:{cellWidth:9}},
+    alternateRowStyles:{fillColor:[245,240,232]},
+    tableLineColor:[200,195,185], tableLineWidth:.2,
+    margin:{left:8,right:8}
+  });
+  var pages = doc.internal.getNumberOfPages();
+  for (var pg=1; pg<=pages; pg++) {
+    doc.setPage(pg); doc.setFontSize(7); doc.setTextColor(150,144,128);
+    doc.text('Education Matters  |  ' + cfg.label + '  |  Page ' + pg + ' of ' + pages, 148.5, 207, {align:'center'});
+  }
+  doc.save('assessment-' + stdKey + '-' + now.toISOString().slice(0,10) + '.pdf');
+  // After PDF is saved, burn the session so the code cannot be reused
+  eaBurnSession();
+  eaStopCountdown();
+}
+
+// -------------------------------------------------------
+//  CODE ENTRY MODAL
+// -------------------------------------------------------
+function eaOpenCodeModal() {
+  document.getElementById('ea-code-input').value = '';
+  document.getElementById('ea-code-err').textContent = '';
+  var fp = eaDeviceFingerprint();
+  document.getElementById('ea-code-device-id').textContent = 'Device ID: ' + fp;
+  document.getElementById('ea-code-overlay').classList.add('open');
+  setTimeout(function() { document.getElementById('ea-code-input').focus(); }, 80);
+}
+
+function eaCloseCodeModal() {
+  document.getElementById('ea-code-overlay').classList.remove('open');
+  eaPendingExportStd = null;
+}
+
+function eaSubmitCode() {
+  var entered = document.getElementById('ea-code-input').value.trim().toUpperCase().replace(/\s/g,'');
+  var err = document.getElementById('ea-code-err');
+  err.textContent = '';
+  if (!entered) { err.textContent = 'Please enter your access code.'; return; }
+
+  var fp = eaDeviceFingerprint();
+  var expected = eaGenerateCode(fp);
+
+  if (entered !== expected) {
+    err.textContent = 'Invalid code. This code does not match this device.';
+    document.getElementById('ea-code-input').value = '';
+    document.getElementById('ea-code-input').focus();
+    return;
+  }
+
+  // Valid — activate 5-minute session
+  eaSaveSession({ fingerprint: fp, activatedAt: Date.now() });
+  eaCloseCodeModal();
+  eaStartCountdown();
+
+  if (eaPendingExportStd) {
+    eaDoExportPDF(eaPendingExportStd);
+    eaPendingExportStd = null;
+  }
+}
+
+// -------------------------------------------------------
+//  COUNTDOWN TIMER  (shows remaining time in toolbar)
+// -------------------------------------------------------
+function eaStartCountdown() {
+  eaStopCountdown();
+  eaUpdateCountdownDisplay();
+  eaCodeCountdownTimer = setInterval(function() {
+    if (!eaIsSessionValid()) {
+      eaStopCountdown();
+      eaUpdateCountdownDisplay();
+      return;
+    }
+    eaUpdateCountdownDisplay();
+  }, 1000);
+}
+
+function eaStopCountdown() {
+  if (eaCodeCountdownTimer) {
+    clearInterval(eaCodeCountdownTimer);
+    eaCodeCountdownTimer = null;
+  }
+}
+
+function eaUpdateCountdownDisplay() {
+  var el = document.getElementById('ea-code-timer');
+  if (!el) return;
+  if (eaIsSessionValid()) {
+    var secs = eaSecondsRemaining();
+    var mm = Math.floor(secs / 60);
+    var ss = secs % 60;
+    el.textContent = 'Code active: ' + mm + ':' + (ss < 10 ? '0' : '') + ss;
+    el.style.display = 'inline-flex';
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+// Resume countdown if session exists when page loads
+if (eaIsSessionValid()) { eaStartCountdown(); }
+
+// STUDENT MANAGEMENT
+var eaEditingStudentId = null;
+
+function eaOpenAddStudent() {
+  eaEditingStudentId = null;
+  document.getElementById('ea-student-title').textContent = 'Add Student';
+  document.getElementById('ea-s-save-btn').textContent = 'Save Student';
+  document.getElementById('ea-s-firstname').value = '';
+  document.getElementById('ea-s-surname').value = '';
+  document.getElementById('ea-s-sex').value = '';
+  document.getElementById('ea-s-err').textContent = '';
+  document.getElementById('ea-student-overlay').classList.add('open');
+  setTimeout(function() { document.getElementById('ea-s-firstname').focus(); }, 80);
+}
+
+function eaOpenEditStudent(id) {
+  var s = eaDb.find(function(x) { return x.id === id; });
+  if (!s) return;
+  eaEditingStudentId = id;
+  var parts = s.name.split(' ');
+  var surname = parts.length > 1 ? parts.pop() : '';
+  var firstname = parts.join(' ') || s.name;
+  document.getElementById('ea-student-title').textContent = 'Edit Student';
+  document.getElementById('ea-s-save-btn').textContent = 'Update Student';
+  document.getElementById('ea-s-firstname').value = firstname;
+  document.getElementById('ea-s-surname').value = surname;
+  document.getElementById('ea-s-sex').value = s.sex || '';
+  document.getElementById('ea-s-err').textContent = '';
+  document.getElementById('ea-student-overlay').classList.add('open');
+  setTimeout(function() { document.getElementById('ea-s-firstname').focus(); }, 80);
+}
+
+function eaCloseStudentModal() {
+  document.getElementById('ea-student-overlay').classList.remove('open');
+  eaEditingStudentId = null;
+}
+
+function eaSaveStudent() {
+  var first = document.getElementById('ea-s-firstname').value.trim();
+  var sur   = document.getElementById('ea-s-surname').value.trim();
+  var sex   = document.getElementById('ea-s-sex').value;
+  var err   = document.getElementById('ea-s-err');
+  err.textContent = '';
+  if (!first) { err.textContent = 'First name is required.'; return; }
+  if (!sur)   { err.textContent = 'Surname is required.'; return; }
+  if (!sex)   { err.textContent = 'Please select sex.'; return; }
+  var fullName = first + ' ' + sur;
+  if (eaEditingStudentId !== null) {
+    var idx = eaDb.findIndex(function(x) { return x.id === eaEditingStudentId; });
+    if (idx > -1) { eaDb[idx].name = fullName; eaDb[idx].sex = sex; }
+  } else {
+    eaDb.push({ id:eaNid++, name:fullName, sex:sex, dob:'', village:'', district:'', orphan:'No', disability:'None', repeater:'No', tin:'No', tout:'No', denomination:'', guardian:'' });
+  }
+  localStorage.setItem('ea_db', JSON.stringify(eaDb));
+  localStorage.setItem('ea_nid', String(eaNid));
+  eaCloseStudentModal();
+  if (eaCurrentStd) eaRenderStandard(eaCurrentStd);
+}
+
+function eaDeleteStudent(id) {
+  var s = eaDb.find(function(x) { return x.id === id; });
+  if (!s) return;
+  if (!confirm('Delete "' + s.name + '"? This cannot be undone.')) return;
+  eaDb = eaDb.filter(function(x) { return x.id !== id; });
+  Object.keys(eaAssessments).forEach(function(k) { if (eaAssessments[k] && eaAssessments[k][id]) delete eaAssessments[k][id]; });
+  localStorage.setItem('ea_db', JSON.stringify(eaDb));
+  eaPersistAssessments();
+  if (eaCurrentStd) eaRenderStandard(eaCurrentStd);
+}
+</script>
+<!-- =====================================================
+     CODE ENTRY MODAL
+     ===================================================== -->
+<style>
+#ea-code-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(15,10,5,.75); backdrop-filter:blur(6px);
+  z-index:800; align-items:flex-start; justify-content:center;
+  padding:16px; overflow-y:auto;
+}
+#ea-code-overlay.open { display:flex; }
+.ea-code-box {
+  background:#fff; border-radius:16px; width:100%; max-width:400px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3); overflow:visible;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif;
+  margin:auto;
+}
+.ea-code-hdr {
+  background:#2d5a3d; padding:22px 24px 18px;
+  text-align:center;
+}
+.ea-code-hdr .lock-icon { font-size:36px; margin-bottom:8px; }
+.ea-code-hdr h3 { font-family:'Lora',serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
+.ea-code-hdr p { font-size:12px; color:rgba(255,255,255,.7); }
+.ea-code-body { padding:24px; }
+.ea-code-device-badge {
+  background:#f5f0e8; border:1px solid #ddd8ce; border-radius:8px;
+  padding:8px 12px; margin-bottom:18px; text-align:center;
+  font-size:11px; font-weight:700; color:#6b6355; letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.ea-code-device-badge span { display:block; font-size:14px; font-weight:800; color:#2d5a3d; letter-spacing:2px; margin-top:3px; font-family:'Lora',serif; }
+.ea-code-input-wrap { position:relative; margin-bottom:14px; }
+.ea-code-input-wrap input {
+  width:100%; padding:14px 16px; text-align:center;
+  font-size:22px; font-weight:800; letter-spacing:6px; text-transform:uppercase;
+  border:2px solid #ddd8ce; border-radius:10px;
+  font-family:'Lora',serif; color:#2d5a3d; background:#f5f0e8;
+  outline:none; transition:border-color .2s;
+}
+.ea-code-input-wrap input:focus { border-color:#2d5a3d; background:#e8f2eb; }
+.ea-code-err { color:#c0392b; font-size:12.5px; text-align:center; min-height:16px; margin-bottom:12px; font-weight:600; }
+.ea-code-submit {
+  width:100%; padding:13px; background:#2d5a3d; color:#fff;
+  border:none; border-radius:10px; font-size:15px; font-weight:700;
+  font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; transition:background .2s;
+}
+.ea-code-submit:hover { background:#3d7a52; }
+.ea-code-cancel {
+  width:100%; padding:9px; background:transparent; color:#9c9080;
+  border:none; font-size:13px; cursor:pointer; margin-top:8px;
+  font-family:'Plus Jakarta Sans',sans-serif; transition:color .2s;
+}
+.ea-code-cancel:hover { color:#c0392b; }
+.ea-code-info { text-align:center; font-size:11px; color:#9c9080; margin-top:16px; line-height:1.6; }
+
+/* ---- ADMIN GENERATOR PAGE ---- */
+#ea-admin-overlay {
+  display:none; position:fixed; inset:0; background:#1a1a1a; z-index:900;
+  align-items:center; justify-content:center;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif;
+}
+#ea-admin-overlay.open { display:flex; }
+.ea-admin-box {
+  background:#fff; border-radius:16px; width:100%; max-width:480px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5); overflow:hidden;
+}
+.ea-admin-hdr {
+  background:#1a1a1a; padding:20px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.ea-admin-hdr h3 { font-family:'Lora',serif; font-size:18px; font-weight:700; color:#fff; }
+.ea-admin-close { background:none; border:none; color:#888; font-size:22px; cursor:pointer; }
+.ea-admin-close:hover { color:#fff; }
+.ea-admin-body { padding:24px; }
+.ea-admin-field { margin-bottom:16px; }
+.ea-admin-field label { display:block; font-size:11px; font-weight:700; color:#6b6355; text-transform:uppercase; letter-spacing:.7px; margin-bottom:6px; }
+.ea-admin-field input {
+  width:100%; padding:10px 13px; border:1.5px solid #ddd8ce; border-radius:8px;
+  font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; color:#1e1a14; background:#f5f0e8;
+}
+.ea-admin-field input:focus { outline:none; border-color:#2d5a3d; }
+.ea-admin-generate {
+  width:100%; padding:12px; background:#2d5a3d; color:#fff;
+  border:none; border-radius:10px; font-size:14px; font-weight:700;
+  font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; margin-bottom:16px;
+}
+.ea-admin-generate:hover { background:#3d7a52; }
+.ea-admin-result {
+  display:none; text-align:center;
+  background:#e8f2eb; border:2px solid #a5d6a7; border-radius:12px; padding:20px;
+}
+.ea-admin-result .res-label { font-size:11px; font-weight:700; color:#6b6355; text-transform:uppercase; letter-spacing:.7px; margin-bottom:6px; }
+.ea-admin-result .res-code { font-family:'Lora',serif; font-size:36px; font-weight:700; color:#2d5a3d; letter-spacing:6px; }
+.ea-admin-result .res-device { font-size:11px; color:#6b6355; margin-top:8px; }
+.ea-admin-note { font-size:11.5px; color:#9c9080; line-height:1.6; margin-top:14px; text-align:center; }
+.ea-admin-err { color:#c0392b; font-size:12px; margin-top:8px; min-height:14px; }
+</style>
+
+<!-- Code Entry Modal -->
+<div id="ea-code-overlay" onclick="if(event.target===this)eaCloseCodeModal()">
+  <div class="ea-code-box">
+    <div class="ea-code-hdr">
+      <div class="lock-icon">🔐</div>
+      <h3>Access Code Required</h3>
+      <p>Enter the code sent to you to unlock PDF export</p>
+    </div>
+    <div class="ea-code-body">
+      <div class="ea-code-device-badge">
+        Your Device ID
+        <span id="ea-code-device-id">--------</span>
+      </div>
+      <div class="ea-code-input-wrap">
+        <input type="text" id="ea-code-input" maxlength="6" placeholder="XXXXXX"
+          oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')"
+          onkeydown="if(event.key==='Enter')eaSubmitCode()">
+      </div>
+      <div class="ea-code-err" id="ea-code-err"></div>
+      <button class="ea-code-submit" onclick="eaSubmitCode()">
+        Unlock &amp; Export PDF
+      </button>
+      <button class="ea-code-cancel" onclick="eaCloseCodeModal()">Cancel</button>
+      <div class="ea-code-info">
+        <div style="background:#f5f0e8;border:1px solid #ddd8ce;border-radius:10px;padding:14px 16px;margin-bottom:12px;text-align:left;">
+          <div style="font-size:11px;font-weight:800;color:#2d5a3d;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;">
+            💳 How to Get Your Code
+          </div>
+          <div style="font-size:12.5px;color:#1e1a14;line-height:1.9;">
+            <strong>Step 1:</strong> Note your <strong>Device ID</strong> above.<br>
+            <strong>Step 2:</strong> Pay <strong style="color:#2d5a3d;font-size:14px;">K 1,000</strong> via any option below — confirm name is <strong style="color:#2d5a3d;">JUMA ALI</strong> before paying.<br>
+            <strong>Step 3:</strong> Send your <strong>Device ID</strong> + payment screenshot via SMS/WhatsApp to receive your code.
+          </div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+            <div style="background:#fff;border:1px solid #ddd8ce;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:20px;">📱</span>
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#9c9080;text-transform:uppercase;letter-spacing:.6px;">Airtel Money</div>
+                <div style="font-size:16px;font-weight:800;color:#e8173c;letter-spacing:1px;">0995 818 600</div>
+                <div style="font-size:11px;color:#6b6355;">Confirm name: <strong>JUMA ALI</strong></div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #ddd8ce;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:20px;">📱</span>
+              <div>
+                <div style="font-size:10px;font-weight:700;color:#9c9080;text-transform:uppercase;letter-spacing:.6px;">TNM Mpamba</div>
+                <div style="font-size:16px;font-weight:800;color:#0072bc;letter-spacing:1px;">0888 592 312</div>
+                <div style="font-size:11px;color:#6b6355;">Confirm name: <strong>JUMA ALI</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        Code is valid for <strong>5 minutes</strong> after first use &amp; works on this device only.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Code Generator (access via Ctrl+Shift+G) -->
+<div id="ea-admin-overlay">
+  <div class="ea-admin-box">
+    <div class="ea-admin-hdr">
+      <h3>&#x1F511; Code Generator — Admin Only</h3>
+      <button class="ea-admin-close" onclick="eaCloseAdmin()">&#x00D7;</button>
+    </div>
+    <div class="ea-admin-body">
+      <div class="ea-admin-field">
+        <label>Admin Password</label>
+        <input type="password" id="ea-admin-pass" placeholder="Enter admin password"
+          onkeydown="if(event.key==='Enter')eaAdminGenerate()">
+        <div class="ea-admin-err" id="ea-admin-err"></div>
+      </div>
+      <div class="ea-admin-field">
+        <label>Teacher Device ID</label>
+        <input type="text" id="ea-admin-device" placeholder="e.g. A3F2B1C8" maxlength="8"
+          oninput="this.value=this.value.toUpperCase().replace(/[^A-F0-9]/g,'')"
+          onkeydown="if(event.key==='Enter')eaAdminGenerate()">
+      </div>
+      <button class="ea-admin-generate" onclick="eaAdminGenerate()">
+        Generate Code
+      </button>
+      <div class="ea-admin-result" id="ea-admin-result">
+        <div class="res-label">Send this code to the teacher</div>
+        <div class="res-code" id="ea-admin-code-display">------</div>
+        <div class="res-device" id="ea-admin-device-display"></div>
+      </div>
+      <div class="ea-admin-note">
+        Press <strong>Ctrl + Shift + G</strong> to open this panel.<br>
+        Each code works only on the device it was generated for.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Admin panel
+var EA_ADMIN_PASSWORD = 'JumaAdmin2025'; // Change this to your own password
+
+function eaOpenAdmin() {
+  document.getElementById('ea-admin-pass').value = '';
+  document.getElementById('ea-admin-device').value = '';
+  document.getElementById('ea-admin-err').textContent = '';
+  document.getElementById('ea-admin-result').style.display = 'none';
+  document.getElementById('ea-admin-overlay').classList.add('open');
+  setTimeout(function() { document.getElementById('ea-admin-pass').focus(); }, 80);
+}
+function eaCloseAdmin() {
+  document.getElementById('ea-admin-overlay').classList.remove('open');
+}
+function eaAdminGenerate() {
+  var pass = document.getElementById('ea-admin-pass').value;
+  var device = document.getElementById('ea-admin-device').value.trim().toUpperCase();
+  var err = document.getElementById('ea-admin-err');
+  err.textContent = '';
+  if (pass !== EA_ADMIN_PASSWORD) { err.textContent = 'Incorrect password.'; return; }
+  if (device.length !== 8) { err.textContent = 'Device ID must be exactly 8 characters.'; return; }
+  var code = eaGenerateCode(device);
+  document.getElementById('ea-admin-code-display').textContent = code;
+  document.getElementById('ea-admin-device-display').textContent = 'Device: ' + device;
+  document.getElementById('ea-admin-result').style.display = 'block';
+}
+
+// Keyboard shortcut to open admin panel: Ctrl + Shift + G
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && e.key === 'G') {
+    e.preventDefault();
+    eaOpenAdmin();
+  }
+});
 </script>
 </body>
 </html>
