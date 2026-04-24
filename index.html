@@ -2447,123 +2447,108 @@ body.em-locked { overflow: hidden; }
 
     <div class="resources-grid">
 
-      <!-- STANDARD 3 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std3', this)">
+      <!-- NOTES (unified) -->
+      <div class="standard-badge reveal" onclick="toggleStandard('notes', this)">
         <div class="sb-icon">📒</div>
-        <div class="sb-label">Standard 3 Notes</div>
-        <div class="sb-sub">Primary · Year 3</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
+        <div class="sb-label">Notes</div>
+        <div class="sb-sub">Standards 3 – 8</div>
+        <div class="sb-arrow">&#x25BC; VIEW SUBJECTS</div>
       </div>
 
-      <!-- STANDARD 4 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std4', this)">
-        <div class="sb-icon">📔</div>
-        <div class="sb-label">Standard 4 Notes</div>
-        <div class="sb-sub">Primary · Year 4</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
-      </div>
+      <!-- NOTES unified panel -->
+      <div class="subjects-panel" id="panel-notes">
+        <div class="sp-title">📒 Notes — Select Standard &amp; Subject</div>
 
-      <!-- STANDARD 5 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std5', this)">
-        <div class="sb-icon">📗</div>
-        <div class="sb-label">Standard 5 Notes</div>
-        <div class="sb-sub">Primary · Year 5</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
-      </div>
-
-      <!-- STANDARD 6 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std6', this)">
-        <div class="sb-icon">📘</div>
-        <div class="sb-label">Standard 6 Notes</div>
-        <div class="sb-sub">Primary · Year 6</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
-      </div>
-
-      <!-- STANDARD 7 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std7', this)">
-        <div class="sb-icon">📙</div>
-        <div class="sb-label">Standard 7 Notes</div>
-        <div class="sb-sub">Primary · Year 7</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
-      </div>
-
-      <!-- STANDARD 8 -->
-      <div class="standard-badge reveal" onclick="toggleStandard('std8', this)">
-        <div class="sb-icon">📕</div>
-        <div class="sb-label">Standard 8 Notes</div>
-        <div class="sb-sub">Primary · Year 8</div>
-        <div class="sb-arrow">▼ VIEW SUBJECTS</div>
-      </div>
-
-      <!-- Subject Panels (one per standard, all share same subjects) -->
-      <div class="subjects-panel" id="panel-std3">
-        <div class="sp-title">📒 Standard 3 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 3 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
+        <!-- Standard selector row -->
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;">Standard</label>
+          <div style="position:relative;display:inline-block;min-width:220px;">
+            <select id="notes-std-select" onchange="notesUpdateSubjects()" style="width:100%;appearance:none;-webkit-appearance:none;background:var(--warm);border:2px solid var(--border);border-radius:8px;padding:0.6rem 2.5rem 0.6rem 0.85rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:600;color:var(--forest);cursor:pointer;outline:none;transition:border-color 0.2s;">
+              <option value="3">Standard 3 — Primary · Year 3</option>
+              <option value="4">Standard 4 — Primary · Year 4</option>
+              <option value="5">Standard 5 — Primary · Year 5</option>
+              <option value="6">Standard 6 — Primary · Year 6</option>
+              <option value="7">Standard 7 — Primary · Year 7</option>
+              <option value="8">Standard 8 — Primary · Year 8</option>
+            </select>
+            <svg style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
         </div>
+
+        <!-- Dynamic subject list -->
+        <div class="subjects-list" id="notes-subjects-list"></div>
       </div>
 
-      <div class="subjects-panel" id="panel-std4">
-        <div class="sp-title">📔 Standard 4 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 4 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Std 4 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Std 4 Ulimi Sayansi ndi Luso.pdf" target="_blank" class="subject-item"><div class="si-icon">🌿</div><div class="si-name">Ulimi Sayansi ndi Luso</div></a>
-        </div>
-      </div>
+      <script>
+      (function(){
+        var NOTES_DATA = {
+          '3': [
+            {icon:'&#x1F4A1;', name:'Life Skills', file:'Std 3 Life Skills.pdf'}
+          ],
+          '4': [
+            {icon:'&#x1F4A1;', name:'Life Skills',              file:'Std 4 Life Skills.pdf'},
+            {icon:'&#x1F30D;', name:'Social Studies',           file:'Std 4 Social Studies.pdf'},
+            {icon:'&#x1F33F;', name:'Ulimi Sayansi ndi Luso',   file:'Std 4 Ulimi Sayansi ndi Luso.pdf'}
+          ],
+          '5': [
+            {icon:'&#x1F331;', name:'Agriculture',        file:'Std 5 Agriculture.pdf'},
+            {icon:'&#x1F52C;', name:'Science',            file:'Std 5 Science.pdf'},
+            {icon:'&#x1F54A;', name:'Religious Education',file:'Std 5 Religious Education.pdf'},
+            {icon:'&#x271D;',  name:'Bible Knowledge',    file:'Std 5 Bible Knowledge.pdf'},
+            {icon:'&#x1F4A1;', name:'Life Skills',        file:'Std 5 Life Skills.pdf'},
+            {icon:'&#x1F30D;', name:'Social Studies',     file:'Std 5 Social Studies.pdf'},
+            {icon:'&#x1F3A8;', name:'Expressive Arts',    file:'Std 5 Expressive Arts.pdf'}
+          ],
+          '6': [
+            {icon:'&#x1F331;', name:'Agriculture',        file:'Std 6 Agriculture.pdf'},
+            {icon:'&#x1F52C;', name:'Science',            file:'Std 6 Science.pdf'},
+            {icon:'&#x1F54A;', name:'Religious Education',file:'Std 6 Religious Education.pdf'},
+            {icon:'&#x271D;',  name:'Bible Knowledge',    file:'Std 6 Bible Knowledge.pdf'},
+            {icon:'&#x1F4A1;', name:'Life Skills',        file:'Std 6 Life Skills.pdf'},
+            {icon:'&#x1F30D;', name:'Social Studies',     file:'Std 6 Social Studies.pdf'},
+            {icon:'&#x1F3A8;', name:'Expressive Arts',    file:'Std 6 Expressive Arts.pdf'}
+          ],
+          '7': [
+            {icon:'&#x1F331;', name:'Agriculture',        file:'Std 7 Agriculture.pdf'},
+            {icon:'&#x1F52C;', name:'Science',            file:'Std 7 Science.pdf'},
+            {icon:'&#x1F54A;', name:'Religious Education',file:'Std 7 Religious Education.pdf'},
+            {icon:'&#x271D;',  name:'Bible Knowledge',    file:'Std 7 Bible Knowledge.pdf'},
+            {icon:'&#x1F4A1;', name:'Life Skills',        file:'Std 7 Life Skills.pdf'},
+            {icon:'&#x1F30D;', name:'Social Studies',     file:'Std 7 Social Studies.pdf'},
+            {icon:'&#x1F3A8;', name:'Expressive Arts',    file:'Std 7 Expressive Arts.pdf'}
+          ],
+          '8': [
+            {icon:'&#x1F331;', name:'Agriculture',        file:'Std 8 Agriculture.pdf'},
+            {icon:'&#x1F52C;', name:'Science',            file:'Std 8 Science.pdf'},
+            {icon:'&#x1F54A;', name:'Religious Education',file:'Std 8 Religious Education.pdf'},
+            {icon:'&#x271D;',  name:'Bible Knowledge',    file:'Std 8 Bible Knowledge.pdf'},
+            {icon:'&#x1F4A1;', name:'Life Skills',        file:'Std 8 Life Skills.pdf'},
+            {icon:'&#x1F30D;', name:'Social Studies',     file:'Std 8 Social Studies.pdf'},
+            {icon:'&#x1F3A8;', name:'Expressive Arts',    file:'Std 8 Expressive Arts.pdf'}
+          ]
+        };
 
-      <!-- Subject Panels (one per standard, all share same subjects) -->
-      <div class="subjects-panel" id="panel-std5">
-        <div class="sp-title">📗 Standard 5 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 5 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
-          <a href="Std 5 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
-          <a href="Std 5 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
-          <a href="Std 5 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
-          <a href="Std 5 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Std 5 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Std 5 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
-        </div>
-      </div>
+        window.notesUpdateSubjects = function() {
+          var sel = document.getElementById('notes-std-select');
+          var list = document.getElementById('notes-subjects-list');
+          if (!sel || !list) return;
+          var subjects = NOTES_DATA[sel.value] || [];
+          list.innerHTML = subjects.map(function(s){
+            return '<a href="' + s.file + '" target="_blank" class="subject-item">'
+              + '<div class="si-icon">' + s.icon + '</div>'
+              + '<div class="si-name">' + s.name + '</div>'
+              + '</a>';
+          }).join('');
+        };
 
-      <div class="subjects-panel" id="panel-std6">
-        <div class="sp-title">📘 Standard 6 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 6 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
-          <a href="Std 6 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
-          <a href="Std 6 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
-          <a href="Std 6 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
-          <a href="Std 6 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Std 6 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Std 6 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
-        </div>
-      </div>
-
-      <div class="subjects-panel" id="panel-std7">
-        <div class="sp-title">📙 Standard 7 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 7 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
-          <a href="Std 7 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
-          <a href="Std 7 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
-          <a href="Std 7 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
-          <a href="Std 7 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Std 7 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Std 7 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
-        </div>
-      </div>
-
-      <div class="subjects-panel" id="panel-std8">
-        <div class="sp-title">📕 Standard 8 — Select a Subject</div>
-        <div class="subjects-list">
-          <a href="Std 8 Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
-          <a href="Std 8 Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
-          <a href="Std 8 Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
-          <a href="Std 8 Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
-          <a href="Std 8 Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Std 8 Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Std 8 Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
-        </div>
-      </div>
+        // Initialise when panel first opens (toggleStandard fires onclick)
+        var origToggle = window.toggleStandard;
+        window.toggleStandard = function(key, el) {
+          origToggle && origToggle(key, el);
+          if (key === 'notes') { setTimeout(window.notesUpdateSubjects, 10); }
+        };
+      })();
+      </script>
 
       <!-- Q&A BOOKLETS -->
       <div class="standard-badge reveal" onclick="toggleStandard('qa', this)">
@@ -2588,14 +2573,6 @@ body.em-locked { overflow: hidden; }
           <a href="Q&A Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
           <a href="Q&A Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
         </div>
-      </div>
-
-      <!-- LESSON PLANS -->
-      <div class="standard-badge" onclick="showComingSoon(this)">
-        <div class="sb-icon">📝</div>
-        <div class="sb-label">Lesson Plans</div>
-        <div class="sb-sub">All Standards</div>
-        <div class="sb-arrow">▼ VIEW</div>
       </div>
 
       <!-- PAST PAPERS -->
@@ -2635,13 +2612,7 @@ body.em-locked { overflow: hidden; }
         </div>
       </div>
 
-      <!-- SCHEMES OF WORK -->
-      <a href="schemes-of-work-term3.zip" download class="standard-badge reveal" style="text-decoration:none;">
-        <div class="sb-icon">📦</div>
-        <div class="sb-label">Schemes of Work</div>
-        <div class="sb-sub">Term 3 · All Subjects</div>
-        <div class="sb-arrow" style="color:var(--sage);">⬇️ DOWNLOAD ZIP</div>
-      </a>
+
 
       <!-- ENGLISH GRAMMAR -->
       <a href="English grammar.pdf" target="_blank" class="standard-badge reveal" style="text-decoration:none;">
@@ -2859,69 +2830,302 @@ body.em-locked { overflow: hidden; }
       <p class="section-sub">Quick and easy online assessments for every standard. Select your class to get started.</p>
     </div>
 
-    <div class="resources-grid" style="margin-top:2.5rem;">
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std1')">
-        <div class="sb-icon">1️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 1</div>
-        <div class="sb-sub">Primary · Year 1</div>
-        <div class="sb-arrow">▶ START</div>
+    <!-- Single unified assessment launcher -->
+    <div style="max-width:560px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
+      <!-- Card header -->
+      <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; gap:1rem;">
+        <span style="font-size:2rem;">&#x1F393;</span>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1.2;">Online Easy Assessment</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">Select a class, then open the assessment table</div>
+        </div>
       </div>
+      <!-- Card body -->
+      <div style="padding:1.75rem 2rem;">
+        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">
+          &#x1F4CB; CLASS
+        </label>
+        <div style="position:relative;">
+          <select id="ea-class-select" onchange="eaUpdatePreview()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s, box-shadow 0.2s;">
+            <option value="std1">Standard 1 &#x2014; Primary &middot; Year 1</option>
+            <option value="std2">Standard 2 &#x2014; Primary &middot; Year 2</option>
+            <option value="std3">Standard 3 &#x2014; Primary &middot; Year 3</option>
+            <option value="std4">Standard 4 &#x2014; Primary &middot; Year 4</option>
+            <option value="std5">Standard 5 &#x2014; Primary &middot; Year 5</option>
+            <option value="std6">Standard 6 &#x2014; Primary &middot; Year 6</option>
+            <option value="std7">Standard 7 &#x2014; Primary &middot; Year 7</option>
+            <option value="std8">Standard 8 &#x2014; Primary &middot; Year 8</option>
+          </select>
+          <svg style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
 
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std2')">
-        <div class="sb-icon">2️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 2</div>
-        <div class="sb-sub">Primary · Year 2</div>
-        <div class="sb-arrow">▶ START</div>
+        <!-- Subject preview chips -->
+        <div id="ea-subject-preview" style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:6px;"></div>
+
+        <!-- Start button -->
+        <button onclick="openAssessment(document.getElementById('ea-class-select').value)" style="margin-top:1.5rem; width:100%; background:var(--forest); color:#fff; border:none; border-radius:8px; padding:0.9rem 1.5rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:0.04em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.6rem; transition:background 0.2s;" onmouseover="this.style.background='var(--forest2)'" onmouseout="this.style.background='var(--forest)'">
+          &#x25B6; Open Assessment
+        </button>
       </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std3')">
-        <div class="sb-icon">3️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 3</div>
-        <div class="sb-sub">Primary · Year 3</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std4')">
-        <div class="sb-icon">4️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 4</div>
-        <div class="sb-sub">Primary · Year 4</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std5')">
-        <div class="sb-icon">5️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 5</div>
-        <div class="sb-sub">Primary · Year 5</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std6')">
-        <div class="sb-icon">6️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 6</div>
-        <div class="sb-sub">Primary · Year 6</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std7')">
-        <div class="sb-icon">7️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 7</div>
-        <div class="sb-sub">Primary · Year 7</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
-      <div class="standard-badge visible" style="background:var(--forest); border-color:var(--forest2); opacity:1; transform:none;" onclick="openAssessment('std8')">
-        <div class="sb-icon">8️⃣</div>
-        <div class="sb-label" style="color:var(--white);">Standard 8</div>
-        <div class="sb-sub">Primary · Year 8</div>
-        <div class="sb-arrow">▶ START</div>
-      </div>
-
     </div>
+
+    <script>
+    (function() {
+      var chipColors = [
+        {bg:'#e8f2eb',tc:'#2d5a3d'},{bg:'#fef3e2',tc:'#b8860b'},{bg:'#e8f2fa',tc:'#1a5c8a'},
+        {bg:'#f0eaff',tc:'#6b3fa0'},{bg:'#fde8e8',tc:'#c0392b'},{bg:'#e8f5ff',tc:'#0b5c8a'},
+        {bg:'#fff8e1',tc:'#a07709'},{bg:'#e8fdf0',tc:'#1a7a4a'}
+      ];
+      function eaUpdatePreview() {
+        var sel = document.getElementById('ea-class-select');
+        var wrap = document.getElementById('ea-subject-preview');
+        if (!sel || !wrap) return;
+        var key = sel.value;
+        var cfg = (typeof EA_STD_CONFIG !== 'undefined') ? EA_STD_CONFIG[key] : null;
+        if (!cfg) { wrap.innerHTML = ''; return; }
+        wrap.innerHTML = cfg.subjects.map(function(s, i) {
+          var c = chipColors[i % chipColors.length];
+          return '<span style="background:' + c.bg + ';color:' + c.tc + ';border:1px solid ' + c.tc + '33;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;">' + s + '</span>';
+        }).join('');
+      }
+      window.eaUpdatePreview = eaUpdatePreview;
+      function tryInit() {
+        if (typeof EA_STD_CONFIG !== 'undefined') { eaUpdatePreview(); }
+        else { setTimeout(tryInit, 100); }
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', tryInit); }
+      else { tryInit(); }
+    })();
+    </script>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- SCHEMES OF WORK -->
+<section id="schemes-of-work" style="background: var(--warm); padding-top:0; padding-bottom:5.5rem;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-kicker">Teaching Materials</div>
+      <h2 class="section-title">Schemes of Work</h2>
+      <p class="section-sub">Generate a personalised scheme of work for any class and subject. Select your class and subject to get started.</p>
+    </div>
+
+    <!-- Schemes of Work card — mirrors the assessment card -->
+    <div style="max-width:560px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
+      <!-- Card header -->
+      <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; gap:1rem;">
+        <span style="font-size:2rem;">&#x1F4CB;</span>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1.2;">Schemes of Work</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">Select a class and subject, then generate your scheme</div>
+        </div>
+      </div>
+      <!-- Card body -->
+      <div style="padding:1.75rem 2rem;">
+
+        <!-- CLASS -->
+        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">
+          &#x1F4DA; CLASS
+        </label>
+        <div style="position:relative; margin-bottom:1.1rem;">
+          <select id="sow-card-class" onchange="sowCardUpdate()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;">
+            <option value="std1">Standard 1 &#x2014; Primary &middot; Year 1</option>
+            <option value="std2">Standard 2 &#x2014; Primary &middot; Year 2</option>
+            <option value="std3">Standard 3 &#x2014; Primary &middot; Year 3</option>
+            <option value="std4">Standard 4 &#x2014; Primary &middot; Year 4</option>
+            <option value="std5">Standard 5 &#x2014; Primary &middot; Year 5</option>
+            <option value="std6">Standard 6 &#x2014; Primary &middot; Year 6</option>
+            <option value="std7">Standard 7 &#x2014; Primary &middot; Year 7</option>
+            <option value="std8">Standard 8 &#x2014; Primary &middot; Year 8</option>
+          </select>
+          <svg style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <!-- SUBJECT -->
+        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">
+          &#x1F4D6; SUBJECT
+        </label>
+        <div style="position:relative;">
+          <select id="sow-card-subject" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;"></select>
+          <svg style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <!-- Subject chips -->
+        <div id="sow-card-chips" style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:6px;"></div>
+
+        <!-- Generate button -->
+        <button onclick="sowCardOpen()" style="margin-top:1.5rem; width:100%; background:var(--forest); color:#fff; border:none; border-radius:8px; padding:0.9rem 1.5rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:0.04em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.6rem; transition:background 0.2s;" onmouseover="this.style.background='var(--forest2)'" onmouseout="this.style.background='var(--forest)'">
+          &#x1F4C4; Generate Scheme
+        </button>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      var SOW_CARD_SUBJECTS = {
+        std1:['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
+        std2:['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
+        std3:['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
+        std4:['English','Chichewa','Mathematics','Life Skills','Social Studies','Ulimi Sayansi ndi Luso','Religious Education','Expressive Arts'],
+        std5:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std6:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std7:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std8:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts']
+      };
+      var chipColors = [
+        {bg:'#e8f2eb',tc:'#2d5a3d'},{bg:'#fef3e2',tc:'#b8860b'},{bg:'#e8f2fa',tc:'#1a5c8a'},
+        {bg:'#f0eaff',tc:'#6b3fa0'},{bg:'#fde8e8',tc:'#c0392b'},{bg:'#e8f5ff',tc:'#0b5c8a'},
+        {bg:'#fff8e1',tc:'#a07709'},{bg:'#e8fdf0',tc:'#1a7a4a'}
+      ];
+
+      function sowCardPopulateSubjects(stdKey) {
+        var subSel = document.getElementById('sow-card-subject');
+        var subjects = SOW_CARD_SUBJECTS[stdKey] || [];
+        subSel.innerHTML = subjects.map(function(s){ return '<option>'+s+'</option>'; }).join('');
+        sowCardRenderChips(subjects);
+      }
+
+      function sowCardRenderChips(subjects) {
+        var wrap = document.getElementById('sow-card-chips');
+        wrap.innerHTML = subjects.map(function(s,i){
+          var c = chipColors[i % chipColors.length];
+          return '<span style="background:'+c.bg+';color:'+c.tc+';border:1px solid '+c.tc+'33;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;">'+s+'</span>';
+        }).join('');
+      }
+
+      window.sowCardUpdate = function() {
+        var key = document.getElementById('sow-card-class').value;
+        sowCardPopulateSubjects(key);
+      };
+
+      window.sowCardOpen = function() {
+        // Pre-fill the SOW generator with selected class+subject, then open it
+        var stdKey = document.getElementById('sow-card-class').value;
+        var subject = document.getElementById('sow-card-subject').value;
+        var stdLabels = {std1:'Standard 1',std2:'Standard 2',std3:'Standard 3',std4:'Standard 4',std5:'Standard 5',std6:'Standard 6',std7:'Standard 7',std8:'Standard 8'};
+        // Sync to picker selects if they exist (from old dialog), else open generator directly
+        var classSel = document.getElementById('sow-class-sel');
+        if (classSel) {
+          classSel.value = stdKey;
+          sowUpdateSubjects();
+          var subSel = document.getElementById('sow-subject-sel');
+          if (subSel) {
+            for (var i = 0; i < subSel.options.length; i++) {
+              if (subSel.options[i].text === subject) { subSel.selectedIndex = i; break; }
+            }
+          }
+          // Update gen tag and open generator
+          var tag = document.getElementById('sow-gen-tag');
+          if (tag) tag.innerHTML = stdLabels[stdKey] + ' &nbsp;&middot;&nbsp; ' + subject;
+          var topicSel = document.getElementById('sow-topic-sel');
+          if (topicSel) {
+            var topics = [];
+            var count = 17;
+            for (var t = 1; t <= count; t++) { topics.push('Topic '+t+': '+subject+' Unit '+t); }
+            topicSel.innerHTML = '<option value="0">\u2014 Start from beginning \u2014</option>' +
+              topics.map(function(tp,idx){ return '<option value="'+(idx+1)+'">'+tp+'</option>'; }).join('');
+          }
+          if (typeof sowUpdateChips === 'function') sowUpdateChips();
+        }
+        document.getElementById('sow-gen-overlay').classList.add('open');
+      };
+
+      // Init on load
+      function init() {
+        sowCardPopulateSubjects('std1');
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+      else { init(); }
+    })();
+    </script>
+  </div>
+</section>
+
+
+<!-- LESSON PLANS -->
+<section id="lesson-plans" style="background: var(--white); padding-top:0; padding-bottom:5.5rem;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-kicker">Teaching Materials</div>
+      <h2 class="section-title">Lesson Plans</h2>
+      <p class="section-sub">Create structured lesson plans for any class and subject in minutes. Select your class and subject to get started.</p>
+    </div>
+
+    <div style="max-width:560px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
+      <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; gap:1rem;">
+        <span style="font-size:2rem;">&#x1F4DD;</span>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1.2;">Lesson Plans</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">Select a class and subject, then create your lesson plan</div>
+        </div>
+      </div>
+      <div style="padding:1.75rem 2rem;">
+        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4DA; CLASS</label>
+        <div style="position:relative; margin-bottom:1.1rem;">
+          <select id="lp-card-class" onchange="lpCardUpdate()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;">
+            <option value="std1">Standard 1 &#x2014; Primary &middot; Year 1</option>
+            <option value="std2">Standard 2 &#x2014; Primary &middot; Year 2</option>
+            <option value="std3">Standard 3 &#x2014; Primary &middot; Year 3</option>
+            <option value="std4">Standard 4 &#x2014; Primary &middot; Year 4</option>
+            <option value="std5">Standard 5 &#x2014; Primary &middot; Year 5</option>
+            <option value="std6">Standard 6 &#x2014; Primary &middot; Year 6</option>
+            <option value="std7">Standard 7 &#x2014; Primary &middot; Year 7</option>
+            <option value="std8">Standard 8 &#x2014; Primary &middot; Year 8</option>
+          </select>
+          <svg style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4D6; SUBJECT</label>
+        <div style="position:relative;">
+          <select id="lp-card-subject" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;"></select>
+          <svg style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <div id="lp-card-chips" style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:6px;"></div>
+
+        <button onclick="lpCardOpen()" style="margin-top:1.5rem; width:100%; background:var(--forest); color:#fff; border:none; border-radius:8px; padding:0.9rem 1.5rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:0.04em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.6rem; transition:background 0.2s;" onmouseover="this.style.background='var(--forest2)'" onmouseout="this.style.background='var(--forest)'">
+          &#x1F4DD; Create Lesson Plan
+        </button>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      var LP_SUBJECTS = {
+        std1:['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
+        std2:['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
+        std3:['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
+        std4:['English','Chichewa','Mathematics','Life Skills','Social Studies','Ulimi Sayansi ndi Luso','Religious Education','Expressive Arts'],
+        std5:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std6:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std7:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+        std8:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts']
+      };
+      var lpChipColors = [
+        {bg:'#e8f2eb',tc:'#2d5a3d'},{bg:'#fef3e2',tc:'#b8860b'},{bg:'#e8f2fa',tc:'#1a5c8a'},
+        {bg:'#f0eaff',tc:'#6b3fa0'},{bg:'#fde8e8',tc:'#c0392b'},{bg:'#e8f5ff',tc:'#0b5c8a'},
+        {bg:'#fff8e1',tc:'#a07709'},{bg:'#e8fdf0',tc:'#1a7a4a'}
+      ];
+      function lpPopulateSubjects(stdKey) {
+        var subSel = document.getElementById('lp-card-subject');
+        var subjects = LP_SUBJECTS[stdKey] || [];
+        subSel.innerHTML = subjects.map(function(s){ return '<option>'+s+'</option>'; }).join('');
+        var wrap = document.getElementById('lp-card-chips');
+        wrap.innerHTML = subjects.map(function(s,i){
+          var c = lpChipColors[i % lpChipColors.length];
+          return '<span style="background:'+c.bg+';color:'+c.tc+';border:1px solid '+c.tc+'33;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;">'+s+'</span>';
+        }).join('');
+      }
+      window.lpCardUpdate = function() { lpPopulateSubjects(document.getElementById('lp-card-class').value); };
+      window.lpCardOpen = function() {
+        alert('This section is under development. After its completed it will help you write your lesson plans faster. Keep checking \uD83D\uDE0A');
+      };
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', function(){ lpPopulateSubjects('std1'); }); }
+      else { lpPopulateSubjects('std1'); }
+    })();
+    </script>
+  </div>
+</section>
+
 <section id="contact">
   <div class="container">
     <div class="section-header reveal">
@@ -4943,6 +5147,342 @@ document.addEventListener('keydown', function(e) {
     eaOpenAdmin();
   }
 });
+</script>
+<!-- ══ SCHEMES OF WORK — CLASS/SUBJECT PICKER DIALOG ══ -->
+<style>
+#sow-pick-overlay {
+  display:none; position:fixed; inset:0; z-index:650;
+  background:rgba(30,26,20,.55); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center; padding:16px;
+}
+#sow-pick-overlay.open { display:flex; }
+.sow-pick-box {
+  background:#fff; border-radius:16px; width:100%; max-width:480px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28); overflow:hidden;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif;
+}
+.sow-pick-hdr {
+  background:#2d5a3d; padding:22px 24px 18px; color:#fff;
+  display:flex; align-items:center; gap:14px;
+}
+.sow-pick-hdr .sow-icon { font-size:36px; }
+.sow-pick-hdr h3 { font-family:'Lora',serif; font-size:20px; font-weight:700; margin:0; }
+.sow-pick-hdr p  { font-size:12px; color:rgba(255,255,255,.75); margin:4px 0 0; }
+.sow-pick-body { padding:24px; }
+.sow-field { margin-bottom:18px; }
+.sow-field label {
+  display:block; font-size:11px; font-weight:700; letter-spacing:.7px;
+  text-transform:uppercase; color:#6b6355; margin-bottom:6px;
+}
+.sow-field select {
+  width:100%; appearance:none; -webkit-appearance:none;
+  background:#f5f0e8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%232d5a3d' stroke-width='2.5'%3E%3Cpolyline points='4 6 8 10 12 6'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border:2px solid #ddd8ce; border-radius:10px;
+  padding:11px 40px 11px 14px; font-size:14px; font-weight:600; color:#2d5a3d;
+  cursor:pointer; outline:none; transition:border-color .2s;
+}
+.sow-field select:focus { border-color:#2d5a3d; }
+.sow-pick-footer {
+  padding:0 24px 20px; display:flex; gap:10px; justify-content:flex-end;
+}
+.sow-btn-cancel {
+  padding:10px 20px; border:1.5px solid #ddd8ce; border-radius:10px;
+  background:transparent; color:#9c9080; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
+}
+.sow-btn-cancel:hover { border-color:#c0392b; color:#c0392b; }
+.sow-btn-next {
+  padding:10px 24px; background:#2d5a3d; color:#fff; border:none;
+  border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif; transition:background .2s;
+  display:flex; align-items:center; gap:7px;
+}
+.sow-btn-next:hover { background:#3d7a52; }
+
+/* ── SCHEME PARAMETERS OVERLAY ── */
+#sow-gen-overlay {
+  display:none; position:fixed; inset:0; z-index:660;
+  background:rgba(30,26,20,.6); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center; padding:16px;
+}
+#sow-gen-overlay.open { display:flex; }
+.sow-gen-box {
+  background:#fff; border-radius:16px; width:100%; max-width:540px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3); overflow:hidden;
+  font-family:'Plus Jakarta Sans','DM Sans',sans-serif;
+}
+.sow-gen-hdr {
+  background:#2d5a3d; padding:20px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.sow-gen-hdr h3 { font-family:'Lora',serif; font-size:20px; font-weight:700; color:#fff; margin:0; }
+.sow-gen-hdr .sow-back-btn {
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  color:#fff; border-radius:8px; padding:6px 14px; font-size:13px;
+  font-weight:600; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
+  display:flex; align-items:center; gap:6px;
+}
+.sow-gen-hdr .sow-back-btn:hover { background:rgba(255,255,255,.25); }
+.sow-gen-body { padding:24px; }
+.sow-gen-class-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  background:#e8f2eb; border:1px solid #a5d6a7; border-radius:8px;
+  padding:6px 14px; font-size:12px; font-weight:700; color:#2d5a3d;
+  margin-bottom:18px; letter-spacing:.04em; text-transform:uppercase;
+}
+.sow-params-title {
+  font-family:'Lora',serif; font-size:16px; font-weight:700; color:#2d5a3d;
+  margin-bottom:16px; display:flex; align-items:center; gap:8px;
+}
+.sow-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.sow-pf { display:flex; flex-direction:column; gap:5px; }
+.sow-pf label {
+  font-size:10px; font-weight:700; color:#6b6355;
+  text-transform:uppercase; letter-spacing:.7px;
+}
+.sow-pf input, .sow-pf select {
+  padding:10px 12px; border:1.5px solid #ddd8ce; border-radius:8px;
+  font-size:14px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
+  color:#2d5a3d; background:#f5f0e8; outline:none; transition:border-color .2s;
+}
+.sow-pf input:focus, .sow-pf select:focus { border-color:#2d5a3d; }
+.sow-pf small { font-size:11px; color:#9c9080; }
+.sow-chips { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 18px; }
+.sow-chip {
+  background:#e8f2eb; border:1px solid #a5d6a7; border-radius:20px;
+  padding:5px 14px; font-size:12px; font-weight:600; color:#2d5a3d;
+}
+.sow-gen-footer {
+  padding:0 24px 20px; display:flex; justify-content:flex-end;
+}
+.sow-gen-btn {
+  padding:12px 28px; background:#2d5a3d; color:#fff; border:none;
+  border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif; transition:background .2s;
+  display:flex; align-items:center; gap:8px;
+}
+.sow-gen-btn:hover { background:#3d7a52; }
+</style>
+
+<!-- Class/Subject Picker -->
+<div id="sow-pick-overlay" onclick="if(event.target===this)sowCloseDialog()">
+  <div class="sow-pick-box">
+    <div class="sow-pick-hdr">
+      <div class="sow-icon">&#x1F4CB;</div>
+      <div>
+        <h3>Schemes of Work</h3>
+        <p>Select a class and subject to begin</p>
+      </div>
+    </div>
+    <div class="sow-pick-body">
+      <div class="sow-field">
+        <label>&#x1F4DA; CLASS</label>
+        <select id="sow-class-sel" onchange="sowUpdateSubjects()">
+          <option value="std1">Standard 1 — Primary &middot; Year 1</option>
+          <option value="std2">Standard 2 — Primary &middot; Year 2</option>
+          <option value="std3">Standard 3 — Primary &middot; Year 3</option>
+          <option value="std4">Standard 4 — Primary &middot; Year 4</option>
+          <option value="std5">Standard 5 — Primary &middot; Year 5</option>
+          <option value="std6">Standard 6 — Primary &middot; Year 6</option>
+          <option value="std7">Standard 7 — Primary &middot; Year 7</option>
+          <option value="std8">Standard 8 — Primary &middot; Year 8</option>
+        </select>
+      </div>
+      <div class="sow-field">
+        <label>&#x1F4D6; SUBJECT</label>
+        <select id="sow-subject-sel"></select>
+      </div>
+    </div>
+    <div class="sow-pick-footer">
+      <button class="sow-btn-cancel" onclick="sowCloseDialog()">Cancel</button>
+      <button class="sow-btn-next" onclick="sowOpenGenerator()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Next
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Scheme Parameters -->
+<div id="sow-gen-overlay" onclick="if(event.target===this)sowCloseGenerator()">
+  <div class="sow-gen-box">
+    <div class="sow-gen-hdr">
+      <h3>Scheme Parameters</h3>
+      <button class="sow-back-btn" onclick="sowBackToPicker()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back
+      </button>
+    </div>
+    <div class="sow-gen-body">
+      <!-- Class + Subject tag -->
+      <div class="sow-gen-class-tag" id="sow-gen-tag">Standard 1 &nbsp;&middot;&nbsp; English</div>
+
+      <div class="sow-params-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Scheme Parameters
+      </div>
+
+      <div class="sow-row">
+        <div class="sow-pf">
+          <label>Week Beginning (Monday)</label>
+          <input type="date" id="sow-date" placeholder="dd/mm/yyyy"/>
+          <small>Must be a Monday</small>
+        </div>
+        <div class="sow-pf">
+          <label>Number of Weeks</label>
+          <input type="number" id="sow-weeks" value="4" min="1" max="16"/>
+        </div>
+      </div>
+
+      <div class="sow-pf" style="margin-bottom:10px;">
+        <label>Starting Topic</label>
+        <select id="sow-topic-sel">
+          <option value="0">&#x2014; Start from beginning &#x2014;</option>
+        </select>
+        <small style="margin-top:4px;">Select which topic to begin from in the syllabus</small>
+      </div>
+
+      <!-- Live stats chips -->
+      <div class="sow-chips" id="sow-chips">
+        <span class="sow-chip" id="sow-chip-total">&#x2014; activities in syllabus</span>
+        <span class="sow-chip" id="sow-chip-from">&#x2014; activities from selected topic</span>
+        <span class="sow-chip" id="sow-chip-req">&#x2014; lessons requested</span>
+      </div>
+    </div>
+    <div class="sow-gen-footer">
+      <button class="sow-gen-btn" onclick="sowGenerate()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Generate Scheme
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var SOW_SUBJECTS = {
+    std1:['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
+    std2:['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
+    std3:['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
+    std4:['English','Chichewa','Mathematics','Life Skills','Social Studies','Ulimi Sayansi ndi Luso','Religious Education','Expressive Arts'],
+    std5:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+    std6:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+    std7:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
+    std8:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts']
+  };
+  // Sample topic counts per subject key (std+subject index)
+  var SOW_TOPIC_COUNTS = { default: 17 };
+
+  function getTopics(stdKey, subjectIdx) {
+    // Generate sample topics — in production these would come from a real syllabus DB
+    var subjectName = SOW_SUBJECTS[stdKey][subjectIdx];
+    var count = SOW_TOPIC_COUNTS[stdKey + '_' + subjectIdx] || 17;
+    var topics = [];
+    for (var i = 1; i <= count; i++) {
+      topics.push('Topic ' + i + ': ' + subjectName + ' Unit ' + i);
+    }
+    return topics;
+  }
+
+  function getStdLabel(stdKey) {
+    var labels = {
+      std1:'Standard 1',std2:'Standard 2',std3:'Standard 3',std4:'Standard 4',
+      std5:'Standard 5',std6:'Standard 6',std7:'Standard 7',std8:'Standard 8'
+    };
+    return labels[stdKey] || stdKey;
+  }
+
+  window.sowOpenDialog = function() {
+    sowUpdateSubjects();
+    document.getElementById('sow-pick-overlay').classList.add('open');
+  };
+  window.sowCloseDialog = function() {
+    document.getElementById('sow-pick-overlay').classList.remove('open');
+  };
+  window.sowUpdateSubjects = function() {
+    var stdKey = document.getElementById('sow-class-sel').value;
+    var subSel = document.getElementById('sow-subject-sel');
+    var subjects = SOW_SUBJECTS[stdKey] || [];
+    subSel.innerHTML = subjects.map(function(s, i){
+      return '<option value="'+i+'">'+s+'</option>';
+    }).join('');
+  };
+  window.sowOpenGenerator = function() {
+    var stdKey = document.getElementById('sow-class-sel').value;
+    var subSel = document.getElementById('sow-subject-sel');
+    var subjectIdx = parseInt(subSel.value);
+    var subjectName = SOW_SUBJECTS[stdKey][subjectIdx];
+    // Update tag
+    document.getElementById('sow-gen-tag').innerHTML = getStdLabel(stdKey) + ' &nbsp;&middot;&nbsp; ' + subjectName;
+    // Populate topic dropdown
+    var topicSel = document.getElementById('sow-topic-sel');
+    var topics = getTopics(stdKey, subjectIdx);
+    topicSel.innerHTML = '<option value="0">\u2014 Start from beginning \u2014</option>' +
+      topics.map(function(t,i){ return '<option value="'+(i+1)+'">'+t+'</option>'; }).join('');
+    // Close picker, open generator
+    document.getElementById('sow-pick-overlay').classList.remove('open');
+    document.getElementById('sow-gen-overlay').classList.add('open');
+    sowUpdateChips();
+    topicSel.onchange = sowUpdateChips;
+    document.getElementById('sow-weeks').oninput = sowUpdateChips;
+  };
+  window.sowUpdateChips = function() {
+    var stdKey = document.getElementById('sow-class-sel').value;
+    var subjectIdx = parseInt(document.getElementById('sow-subject-sel').value);
+    var totalTopics = getTopics(stdKey, subjectIdx).length;
+    var fromIdx = parseInt(document.getElementById('sow-topic-sel').value);
+    var fromCount = fromIdx === 0 ? totalTopics : (totalTopics - fromIdx + 1);
+    var weeks = parseInt(document.getElementById('sow-weeks').value) || 4;
+    var lessonsPerWeek = 2;
+    var lessonsReq = weeks * lessonsPerWeek;
+    document.getElementById('sow-chip-total').textContent = totalTopics + ' activities in syllabus';
+    document.getElementById('sow-chip-from').textContent = fromCount + ' activities from selected topic';
+    document.getElementById('sow-chip-req').textContent = lessonsReq + ' lessons requested (' + weeks + ' wk \u00d7 ' + lessonsPerWeek + '/wk)';
+  };
+  window.sowCloseGenerator = function() {
+    document.getElementById('sow-gen-overlay').classList.remove('open');
+  };
+  window.sowBackToPicker = function() {
+    document.getElementById('sow-gen-overlay').classList.remove('open');
+    document.getElementById('sow-pick-overlay').classList.add('open');
+  };
+  window.sowGenerate = function() {
+    alert('This section is under development. After its completed it will help you write your schemes of work faster. Keep checking \uD83D\uDE0A');
+    return;
+    // ── original generation code (preserved for when development is complete) ──
+    var dateVal = document.getElementById('sow-date').value;
+    if (!dateVal) { alert('Please select a Week Beginning date (must be a Monday).'); return; }
+    var d = new Date(dateVal);
+    if (d.getDay() !== 1) { alert('The selected date must be a Monday.'); return; }
+    var stdKey = document.getElementById('sow-class-sel').value;
+    var subjectIdx = parseInt(document.getElementById('sow-subject-sel').value);
+    var subjectName = SOW_SUBJECTS[stdKey][subjectIdx];
+    var weeks = parseInt(document.getElementById('sow-weeks').value) || 4;
+    var fromIdx = parseInt(document.getElementById('sow-topic-sel').value);
+    var topics = getTopics(stdKey, subjectIdx);
+    var startTopics = fromIdx === 0 ? topics : topics.slice(fromIdx - 1);
+    // Build a simple printable scheme
+    var rows = '';
+    var lessonsPerWeek = 2;
+    var topicCursor = 0;
+    for (var w = 0; w < weeks; w++) {
+      var weekStart = new Date(d.getTime() + w * 7 * 86400000);
+      var wLabel = weekStart.toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'});
+      for (var l = 1; l <= lessonsPerWeek; l++) {
+        var topic = startTopics[topicCursor] || '(Revision / Assessment)';
+        rows += '<tr><td>Week '+(w+1)+'</td><td>'+wLabel+'</td><td>Lesson '+l+'</td><td>'+topic+'</td></tr>';
+        topicCursor++;
+      }
+    }
+    var html = '<html><head><title>Scheme of Work</title><style>body{font-family:sans-serif;padding:24px}h2{color:#2d5a3d}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px 10px;text-align:left}th{background:#2d5a3d;color:#fff}</style></head><body>';
+    html += '<h2>Scheme of Work &mdash; ' + getStdLabel(stdKey) + ' &middot; ' + subjectName + '</h2>';
+    html += '<p>Week Beginning: <strong>' + new Date(dateVal).toLocaleDateString('en-GB') + '</strong> &nbsp;|&nbsp; Duration: <strong>' + weeks + ' weeks</strong></p>';
+    html += '<table><thead><tr><th>Week</th><th>Date</th><th>Lesson</th><th>Topic / Activity</th></tr></thead><tbody>' + rows + '</tbody></table></body></html>';
+    var w2 = window.open('','_blank');
+    if (w2) { w2.document.write(html); w2.document.close(); }
+    document.getElementById('sow-gen-overlay').classList.remove('open');
+  };
+})();
 </script>
 </body>
 </html>
