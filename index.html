@@ -3046,40 +3046,76 @@ body.em-locked { overflow: hidden; }
     </div>
 
     <!-- LP INPUT CARD -->
-    <div style="max-width:560px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
+    <div style="max-width:600px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
       <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; gap:1rem;">
         <span style="font-size:2rem;">&#x1F4DD;</span>
         <div>
           <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1.2;">Lesson Plans</div>
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">AI-powered · 30-minute lessons · No textbook required</div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">AI-powered &middot; 30-minute lessons &middot; No textbook required</div>
         </div>
       </div>
       <div style="padding:1.75rem 2rem;">
 
-        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4DA; CLASS</label>
-        <div style="position:relative; margin-bottom:1.1rem;">
-          <select id="lp-card-class" onchange="lpCardUpdate()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;">
-            <option value="std1">Standard 1 — Primary · Year 1</option>
-            <option value="std2">Standard 2 — Primary · Year 2</option>
-            <option value="std3">Standard 3 — Primary · Year 3</option>
-            <option value="std4">Standard 4 — Primary · Year 4</option>
-            <option value="std5">Standard 5 — Primary · Year 5</option>
-            <option value="std6">Standard 6 — Primary · Year 6</option>
-            <option value="std7">Standard 7 — Primary · Year 7</option>
-            <option value="std8">Standard 8 — Primary · Year 8</option>
-          </select>
-          <svg style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        <!-- Row 1: Class + Subject -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.1rem;">
+          <div>
+            <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4DA; CLASS</label>
+            <div style="position:relative;">
+              <select id="lp-card-class" onchange="lpCardUpdate()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.75rem 2.5rem 0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;">
+                <option value="std1">Standard 1</option>
+                <option value="std2">Standard 2</option>
+                <option value="std3">Standard 3</option>
+                <option value="std4">Standard 4</option>
+                <option value="std5">Standard 5</option>
+                <option value="std6">Standard 6</option>
+                <option value="std7">Standard 7</option>
+                <option value="std8">Standard 8</option>
+              </select>
+              <svg style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4D6; SUBJECT</label>
+            <div style="position:relative;">
+              <select id="lp-card-subject" onchange="lpSubjectUpdate()" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.75rem 2.5rem 0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;"></select>
+              <svg style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
         </div>
 
-        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4D6; SUBJECT</label>
-        <div style="position:relative; margin-bottom:1.1rem;">
-          <select id="lp-card-subject" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 3rem 0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;"></select>
-          <svg style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        <!-- Topic -->
+        <div style="margin-bottom:1.1rem;">
+          <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4CC; TOPIC</label>
+          <div style="position:relative;">
+            <select id="lp-topic" style="width:100%; appearance:none; -webkit-appearance:none; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.75rem 2.5rem 0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; color:var(--forest); cursor:pointer; outline:none; transition:border-color 0.2s;">
+              <option value="">-- Select a topic --</option>
+            </select>
+            <svg style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <p id="lp-topic-loading" style="display:none; font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">&#x23F3; Loading topics from syllabus...</p>
+          <p id="lp-topic-err" style="display:none; font-size:0.7rem; color:var(--rust); margin-top:0.3rem;">&#x26A0; Please select a topic</p>
         </div>
 
-        <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F3AF; SUCCESS CRITERIA</label>
-        <textarea id="lp-criteria" rows="3" placeholder="e.g. Pupils can identify and name three types of clouds and describe their characteristics." style="width:100%; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--text); outline:none; resize:vertical; transition:border-color 0.2s; line-height:1.6;" onfocus="this.style.borderColor='var(--forest3)'" onblur="this.style.borderColor='var(--border)'"></textarea>
-        <p style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">Describe what learners should be able to do by the end of the lesson.</p>
+        <!-- Row 2: Date + Time -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.1rem;">
+          <div>
+            <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F4C5; DATE</label>
+            <input id="lp-date" type="date" style="width:100%; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--forest3)'" onblur="lpValidateDate(this)"/>
+            <p id="lp-date-err" style="display:none; font-size:0.7rem; color:var(--rust); margin-top:0.3rem;">&#x26A0; Must be a weekday (Mon–Fri)</p>
+          </div>
+          <div>
+            <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F552; STARTING TIME</label>
+            <input id="lp-time" type="time" min="07:00" max="17:00" style="width:100%; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.75rem 0.9rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--forest3)'" onblur="lpValidateTime(this)"/>
+            <p id="lp-time-err" style="display:none; font-size:0.7rem; color:var(--rust); margin-top:0.3rem;">&#x26A0; Must be between 7:00 AM and 5:00 PM</p>
+          </div>
+        </div>
+
+        <!-- Success Criteria -->
+        <div style="margin-bottom:0.25rem;">
+          <label style="display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.55rem;">&#x1F3AF; SUCCESS CRITERIA</label>
+          <textarea id="lp-criteria" rows="3" placeholder="e.g. Pupils can identify and name three types of clouds and describe their characteristics." style="width:100%; background:var(--warm); border:2px solid var(--border); border-radius:8px; padding:0.85rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); outline:none; resize:vertical; transition:border-color 0.2s; line-height:1.6;" onfocus="this.style.borderColor='var(--forest3)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+          <p style="font-size:0.72rem; color:var(--muted); margin-top:0.3rem;">Describe what learners should be able to do by the end of the lesson.</p>
+        </div>
 
         <button id="lp-generate-btn" onclick="lpGenerate()" style="margin-top:1.5rem; width:100%; background:var(--forest); color:#fff; border:none; border-radius:8px; padding:0.95rem 1.5rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:700; letter-spacing:0.04em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.6rem; transition:background 0.2s;" onmouseover="this.style.background='var(--forest2)'" onmouseout="this.style.background='var(--forest)'">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -3095,18 +3131,18 @@ body.em-locked { overflow: hidden; }
         <!-- Dialog Header -->
         <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; justify-content:space-between;">
           <div style="display:flex; align-items:center; gap:1rem;">
-            <span style="font-size:1.8rem;">📋</span>
+            <span style="font-size:1.8rem;">&#x1F4CB;</span>
             <div>
               <div id="lp-result-title" style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff;"></div>
-              <div style="font-size:0.72rem; color:rgba(255,255,255,0.65); margin-top:2px;">Duration: 30 minutes · AI Generated</div>
+              <div style="font-size:0.72rem; color:rgba(255,255,255,0.65); margin-top:2px;">Duration: 30 minutes &middot; AI Generated</div>
             </div>
           </div>
           <div style="display:flex; gap:0.6rem; align-items:center;">
             <button onclick="lpPrint()" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.3); border-radius:6px; padding:0.5rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:0.4rem;">
-              🖨️ Print
+              &#x1F5A8;&#xFE0F; Print
             </button>
             <button onclick="lpCloseResult()" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.3); border-radius:6px; padding:0.5rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:600; cursor:pointer;">
-              ✕ Close
+              &#x2715; Close
             </button>
           </div>
         </div>
@@ -3114,7 +3150,7 @@ body.em-locked { overflow: hidden; }
         <!-- Loading state -->
         <div id="lp-loading" style="padding:4rem 2rem; text-align:center;">
           <div style="display:inline-block; width:48px; height:48px; border:4px solid var(--border); border-top-color:var(--forest); border-radius:50%; animation:lpSpin 0.8s linear infinite; margin-bottom:1.5rem;"></div>
-          <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--forest); font-weight:700;">Generating your lesson plan…</p>
+          <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--forest); font-weight:700;">Generating your lesson plan&#x2026;</p>
           <p style="font-size:0.85rem; color:var(--muted); margin-top:0.4rem;">AI is crafting activities for Introduction, Development &amp; Conclusion</p>
         </div>
 
@@ -3122,7 +3158,7 @@ body.em-locked { overflow: hidden; }
         <div id="lp-result-body" style="display:none; padding:2rem;">
 
           <!-- Lesson Meta -->
-          <div id="lp-meta-bar" style="background:var(--warm); border:1px solid var(--border); border-radius:8px; padding:1rem 1.5rem; margin-bottom:1.75rem; display:flex; flex-wrap:wrap; gap:1rem 2rem;"></div>
+          <div id="lp-meta-bar" style="background:var(--warm); border:1px solid var(--border); border-radius:8px; padding:1.1rem 1.5rem; margin-bottom:1.75rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.9rem 1.5rem;"></div>
 
           <!-- Stages container -->
           <div id="lp-stages"></div>
@@ -3130,7 +3166,7 @@ body.em-locked { overflow: hidden; }
           <!-- Regenerate -->
           <div style="text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
             <button onclick="lpGenerate(true)" style="background:var(--forest); color:#fff; border:none; border-radius:8px; padding:0.8rem 2rem; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem;" onmouseover="this.style.background='var(--forest2)'" onmouseout="this.style.background='var(--forest)'">
-              🔄 Regenerate Lesson Plan
+              &#x1F504; Regenerate Lesson Plan
             </button>
           </div>
         </div>
@@ -3168,49 +3204,228 @@ body.em-locked { overflow: hidden; }
     </style>
 
     <script>
+    // ── Syllabus topics extracted from Standard 1-8 Syllabus PDFs ──
+    var LP_TOPICS = {
+      std1: {
+        "English": ["Socialising Songs and Rhymes","Sound differentiation","Socializing Parting Introductions","Commands Attitudes, feelings and thoughts","Asking for and giving information","Eye and hand coordination","Shapes and objects Letters of the alphabet","Holding different simple objects Shapes, letters and patterns","Introductions Identification","Imperatives (commands)","Questions Verb tense","Self introduction Identification","Phonics Stories","Introductions Attitudes, feelings and thoughts","Professions","Concepts about print","Shapes","Patterns and letters of alphabet","Copying letters Copying their names Writing names","Verb tense Imperatives","Articles, nouns, verbs and prepositions","Modal verbs Positive/ negative forms Personal pronouns and adjectives"],
+        "Chichewa": ["Kudziwa za sukulu","Kudziwa anthu ndi malo","Kukhala bwino","Banja langa","Nthano ndi nyimbo","Miyambo ya anthu","Ntchito za anthu","Zomera ndi nyama","Nyengo ndi nyanja"],
+        "Mathematics": ["Introducing numbers","Addition Subtraction","Money","Shapes","Height and length Capacity","Time","Patterns","Physical Graphs"],
+        "Religious Education": ["Creation","Human creation","Our family","Roles and responsibilities of family members","The family of Jesus","Interdependence among people","Diseases","Kindness","Environment and animal rights","Myself","Myself as a creation of God","Moral values and beliefs in society","Sources of food in the home","Responsibilities of family members","God provides food for us","Prayer in the family","Moral values, beliefs and God"],
+        "Expressive Arts": ["Simple body movements","Folk tales and local songs","Simple games","Safe practices in free play","Family roles","Working together in art activities","Artistic expression","Indigenous forms of art","Communicating through various forms of art","Artistic representations","Exploring with materials from the environment","Exploring with materials"]
+      },
+      std2: {
+        "English": ["Greetings and Introductions","Family and Friends","School Life","Health and Hygiene","Food and Nutrition","Animals and Plants","Weather and Seasons","Community Helpers","Transport","Celebrations and Festivals"],
+        "Chichewa": ["Moni ndi zowonana","Banja ndi abwenzi","Moyo wa sukulu","Thanzi ndi ukhondo","Chakudya ndi zakudya","Nyama ndi zomera","Nyengo ndi masika","Anthu othandiza","Mayendedwe","Chikondwerero"],
+        "Mathematics": ["Number and Place Value","Addition and Subtraction","Multiplication","Division","Fractions","Measurement","Shapes and Space","Data Handling"],
+        "Life Skills": ["Self Awareness","Interpersonal Relationships","Decision Making","Creative Thinking","Critical Thinking","Communication Skills","Empathy","Coping with Emotions"],
+        "Religious Education": ["God the Creator","The Family","Obedience","Honesty","Kindness","Sharing","Prayer","Worship","Forgiveness"],
+        "Expressive Arts": ["Singing and Dancing","Drawing and Painting","Drama and Role Play","Craft Work","Physical Exercises","Indigenous Games","Music and Rhythm","Storytelling"]
+      },
+      std3: {
+        "English": ["Greetings and Socialising","Family Relationships","School Environment","Health and Safety","Food and Farming","Wild Animals","Weather Patterns","Jobs and Careers","Transport and Communication","Cultural Celebrations","Environmental Care","Reading and Writing Skills"],
+        "Chichewa": ["Moni ndi zowonana","Ubale wa banja","Malo a sukulu","Thanzi ndi chitetezo","Chakudya ndi ulimi","Nyama zakuthengo","Nyengo","Ntchito za anthu","Mayendedwe ndi uthenga","Chikondwerero","Chisamaliro cha chilengedwe"],
+        "Mathematics": ["Numbers to 1000","Addition and Subtraction","Multiplication Tables","Division","Fractions","Money","Length and Distance","Mass and Weight","Capacity","Time","Angles and Shapes","Data and Graphs"],
+        "Life Skills": ["Personal Identity","Family and Community","Health and Hygiene","Relationships","Decision Making","Rights and Responsibilities","Environmental Awareness","Safety"],
+        "Social Studies": ["Our Community","Natural Resources","Physical Features","People and Culture","Government and Leadership","Economic Activities","Transport and Communication","History of Malawi"],
+        "Religious Education": ["Creation and Environment","Family Values","School Community","Caring for Others","God and Prayer","Moral Standards","Religious Practices","Festivals and Celebrations"],
+        "Expressive Arts": ["Dance and Movement","Visual Arts","Drama","Music","Craft and Design","Indigenous Art Forms","Performance Arts","Creative Expression"]
+      },
+      std4: {
+        "English": ["Social Interaction","Family and Community Life","School and Education","Health and the Body","Agriculture and Food","Wildlife and Conservation","Climate and Environment","Occupations","Transport Systems","Culture and Heritage","Technology","Comprehension and Composition"],
+        "Chichewa": ["Kulankhulana","Banja ndi anthu","Sukulu ndi maphunziro","Thanzi ndi thupi","Ulimi ndi chakudya","Nyama ndi chilengedwe","Nyengo ndi malo","Ntchito","Mayendedwe","Chikhalidwe","Teknoloji"],
+        "Mathematics": ["Numbers and Operations","Fractions and Decimals","Ratio and Proportion","Algebra Basics","Geometry","Measurement","Data Handling and Statistics"],
+        "Life Skills": ["Self Concept","Interpersonal Skills","Health Promotion","Substance Abuse Prevention","Decision Making","Environmental Responsibility","Human Rights","Civic Education"],
+        "Social Studies": ["Geography of Malawi","Natural Resources","Population and Settlement","Economic Activities","Government and Governance","History and Heritage","Regional and World Geography"],
+        "Ulimi Sayansi ndi Luso": ["Ulimi wa mbewu","Ulimi wa nkhuku","Ulimi wa nsomba","Ulimi wa nkhumba","Zomera zakudya","Chisamaliro cha ng'ombe","Kugwiritsa ntchito zida"],
+        "Religious Education": ["God and Creation","Human Dignity","Family and Social Ethics","Moral Values","Prayer and Worship","Religious Communities","Justice and Peace"],
+        "Expressive Arts": ["Performing Arts","Visual Arts and Crafts","Music and Composition","Drama and Theatre","Dance Styles","Artistic Design","Creative Projects"]
+      },
+      std5: {
+        "English": ["Personal and Social Communication","Family and Relationships","Education and Career","Health Sciences","Environment and Conservation","Agriculture","Technology and Innovation","Government and Citizenship","Culture and Society","Global Issues","Media Literacy","Extended Reading and Writing"],
+        "Chichewa": ["Kulankhulana","Ubale","Maphunziro","Thanzi","Chilengedwe","Ulimi","Teknoloji","Boma ndi ufulu","Chikhalidwe","Zochitika zapadziko"],
+        "Mathematics": ["Number Theory","Fractions Decimals Percentages","Ratio and Proportion","Algebra","Geometry and Trigonometry","Statistics and Probability","Financial Mathematics"],
+        "Primary Science": ["Living Things","Plant Life","Animal Life","Human Body","Matter and Materials","Forces and Motion","Energy","Ecology and Environment","Health and Disease","Technology in Science"],
+        "Social Studies": ["Africa and its Regions","Climate and Vegetation","Natural Resources","Economic Development","History of Africa","Governments and Politics","Cultural Diversity","Global Relationships"],
+        "Expressive Arts": ["Advanced Dance Forms","Fine Arts","Dramatic Arts","Musical Performance","Craft and Technology","Cultural Arts","Creative and Critical Arts"]
+      },
+      std6: {
+        "English": ["Advanced Communication","Relationships and Society","Higher Education","Biology and Health","Environmental Science","Agricultural Science","Information Technology","Civic Responsibility","Cultural Studies","International Affairs","Journalism and Media","Advanced Composition"],
+        "Chichewa": ["Kulankhulana kwapamwamba","Ubale ndi anthu","Maphunziro apamwamba","Zamoyo ndi thanzi","Sayansi ya chilengedwe","Sayansi ya ulimi","Teknoloji yamakono","Ufulu ndi udindo","Chikhalidwe cha Malawi","Zochitika za dziko"],
+        "Mathematics": ["Advanced Algebra","Geometry","Trigonometry","Statistics","Probability","Financial Mathematics","Problem Solving"],
+        "Primary Science": ["Cell Biology","Genetics","Ecosystems","Chemical Reactions","Physics Principles","Astronomy","Technology Applications","Environmental Issues"],
+        "Social Studies": ["World Geography","Economic Systems","Political Systems","History of Civilisations","Environmental Issues","Human Rights","Development Studies"],
+        "Expressive Arts": ["Theatre Production","Art and Design","Music Theory","Dance Choreography","Film and Media Arts","Cultural Heritage","Creative Industries"]
+      },
+      std7: {
+        "English": ["Effective Communication","Social and Family Issues","Academic Studies","Medical and Health Topics","Environmental Challenges","Sustainable Agriculture","Digital Literacy","Democracy and Governance","Multicultural Society","Global Challenges","Research and Reporting","Academic Writing"],
+        "Chichewa": ["Mauthenga apamwamba","Zachikhalidwe","Maphunziro apamwamba","Thanzi","Chilengedwe","Ulimi wokhazikika","Teknoloji","Demokalase","Chikhalidwe cha dziko","Zochitika zapadziko"],
+        "Mathematics": ["Number Systems","Advanced Algebra","Coordinate Geometry","Mensuration","Trigonometry","Statistics and Data Analysis","Probability","Financial Literacy"],
+        "Primary Science": ["Human Biology","Plant Biology","Animal Biology","Chemistry Basics","Physics Basics","Environmental Science","Technology and Innovation","Scientific Method"],
+        "Social Studies": ["Physical Geography","Economic Geography","History of Malawi","African History","World History","Political Science","Sociology","Development Economics"],
+        "Expressive Arts": ["Advanced Performance","Studio Arts","Composition and Arrangement","Choreography","Scriptwriting and Direction","Cultural Preservation","Arts Enterprise"]
+      },
+      std8: {
+        "English": ["Oral and Written Communication","Contemporary Social Issues","Educational and Career Planning","Health and Science","Ecology and Sustainability","Modern Agriculture","Information Communication Technology","Civic Education","Cultural Identity","World Events","Investigative Journalism","PSLCE Preparation"],
+        "Chichewa": ["Kulankhulana","Zochitika zachikhalidwe","Mapanga ndi ntchito","Thanzi ndi sayansi","Chilengedwe","Ulimi wamakono","Teknoloji","Ufulu ndi udindo","Umunthu","Zochitika zapadziko","Kukonzekera mayeso"],
+        "Mathematics": ["Revision of Number Work","Algebra and Equations","Geometry and Mensuration","Trigonometry","Statistics","Probability","Financial Mathematics","PSLCE Revision"],
+        "Primary Science": ["Advanced Human Biology","Ecology","Advanced Chemistry","Advanced Physics","Technology and Engineering","Environmental Management","Scientific Investigation","PSLCE Revision"],
+        "Social Studies": ["Malawi Geography","African Geography","World Geography","Economic Development","Political Systems","Malawi History","African History","World History","PSLCE Revision"],
+        "Expressive Arts": ["Masterclass Performance","Advanced Studio Arts","Music Production","Dance Direction","Drama Direction","Portfolio Development","Arts Career Planning"]
+      }
+    };
+
+    // Populate subjects spinner — reuses SOW_SUBJECTS
+    function lpPopulateSubjects(stdKey) {
+      var subSel = document.getElementById('lp-card-subject');
+      if (!subSel) return;
+      var subjects = (window.SOW_SUBJECTS && window.SOW_SUBJECTS[stdKey]) || [];
+      subSel.innerHTML = subjects.map(function(s){ return '<option>'+s+'</option>'; }).join('');
+      // Also update topics for the first subject
+      lpPopulateTopics(stdKey, subjects[0] || '');
+    }
+
+    // Populate topics spinner based on class + subject
+    function lpPopulateTopics(stdKey, subject) {
+      var topicSel = document.getElementById('lp-topic');
+      if (!topicSel) return;
+      var stdTopics = LP_TOPICS[stdKey] || {};
+      var topics = stdTopics[subject] || [];
+      if (topics.length > 0) {
+        topicSel.innerHTML = topics.map(function(t){
+          return '<option value="'+t.replace(/"/g,'&quot;')+'">'+t+'</option>';
+        }).join('');
+        topicSel.style.borderColor = 'var(--border)';
+      } else {
+        topicSel.innerHTML = '<option value="">-- No topics found for this subject --</option>';
+      }
+    }
+
+    function lpCardUpdate() {
+      var stdKey = document.getElementById('lp-card-class').value;
+      lpPopulateSubjects(stdKey);
+    }
+
+    // When subject changes, update topics
+    function lpSubjectUpdate() {
+      var stdKey = document.getElementById('lp-card-class').value;
+      var subject = document.getElementById('lp-card-subject').value;
+      lpPopulateTopics(stdKey, subject);
+    }
+
     (function(){
-      var LP_SUBJECTS = {
-        std1:['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
-        std2:['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
-        std3:['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
-        std4:['English','Chichewa','Mathematics','Life Skills','Social Studies','Ulimi Sayansi ndi Luso','Religious Education','Expressive Arts'],
-        std5:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
-        std6:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
-        std7:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts'],
-        std8:['English','Chichewa','Mathematics','Primary Science','Social Studies','Expressive Arts']
+
+      // ── Validation helpers ──────────────────────────────────
+      window.lpValidateDate = function(el) {
+        var err = document.getElementById('lp-date-err');
+        if (!el.value) { el.style.borderColor='var(--border)'; err.style.display='none'; return true; }
+        var d = new Date(el.value + 'T00:00:00');
+        var day = d.getDay(); // 0=Sun,6=Sat
+        if (day === 0 || day === 6) {
+          el.style.borderColor='var(--rust)';
+          err.style.display='block';
+          return false;
+        }
+        el.style.borderColor='var(--forest3)';
+        err.style.display='none';
+        return true;
       };
 
-      function lpPopulateSubjects(stdKey) {
-        var subSel = document.getElementById('lp-card-subject');
-        var subjects = LP_SUBJECTS[stdKey] || [];
-        subSel.innerHTML = subjects.map(function(s){ return '<option>'+s+'</option>'; }).join('');
+      window.lpValidateTime = function(el) {
+        var err = document.getElementById('lp-time-err');
+        if (!el.value) { el.style.borderColor='var(--border)'; err.style.display='none'; return true; }
+        var parts = el.value.split(':');
+        var h = parseInt(parts[0]), m = parseInt(parts[1]);
+        var total = h * 60 + m;
+        if (total < 420 || total > 1020) { // 7:00=420, 17:00=1020
+          el.style.borderColor='var(--rust)';
+          err.style.display='block';
+          return false;
+        }
+        el.style.borderColor='var(--forest3)';
+        err.style.display='none';
+        return true;
+      };
+
+      function lpHighlight(id) {
+        var el = document.getElementById(id);
+        el.style.borderColor='var(--rust)';
+        el.focus();
+        setTimeout(function(){ el.style.borderColor='var(--border)'; }, 2000);
       }
 
-      window.lpCardUpdate = function() {
-        lpPopulateSubjects(document.getElementById('lp-card-class').value);
-      };
+      function lpFormatDate(val) {
+        if (!val) return '';
+        var d = new Date(val + 'T00:00:00');
+        return d.toLocaleDateString('en-GB', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+      }
 
-      window.lpGenerate = function(isRegen) {
-        var classEl = document.getElementById('lp-card-class');
-        var classLabel = classEl.options[classEl.selectedIndex].text;
-        var subject = document.getElementById('lp-card-subject').value;
-        var criteria = document.getElementById('lp-criteria').value.trim();
+      function lpFormatTime(val) {
+        if (!val) return '';
+        var parts = val.split(':');
+        var h = parseInt(parts[0]), m = parseInt(parts[1]);
+        var ampm = h >= 12 ? 'PM' : 'AM';
+        var h12 = h % 12 || 12;
+        return h12 + ':' + (m < 10 ? '0'+m : m) + ' ' + ampm;
+      }
 
-        if (!criteria) {
-          document.getElementById('lp-criteria').focus();
-          document.getElementById('lp-criteria').style.borderColor = 'var(--rust)';
-          setTimeout(function(){ document.getElementById('lp-criteria').style.borderColor = 'var(--border)'; }, 2000);
-          return;
+      // Returns "7:30am to 8:05am" style string
+      function lpFormatTimeRange(val, stdKey) {
+        if (!val) return '';
+        var parts = val.split(':');
+        var startH = parseInt(parts[0]), startM = parseInt(parts[1]);
+
+        // Duration: std1+std2 = 30 min, std3–std8 = 35 min
+        var duration = (stdKey === 'std1' || stdKey === 'std2') ? 30 : 35;
+
+        var totalStart = startH * 60 + startM;
+        var totalEnd   = totalStart + duration;
+        var endH = Math.floor(totalEnd / 60) % 24;
+        var endM = totalEnd % 60;
+
+        function fmt(h, m) {
+          var ampm = h >= 12 ? 'pm' : 'am';
+          var h12  = h % 12 || 12;
+          return h12 + ':' + (m < 10 ? '0'+m : m) + ampm;
         }
 
+        return fmt(startH, startM) + ' to ' + fmt(endH, endM);
+      }
+
+      // ── Main generate ───────────────────────────────────────
+      window.lpGenerate = function(isRegen) {
+        var classEl  = document.getElementById('lp-card-class');
+        var classLabel = classEl.options[classEl.selectedIndex].text + ' — Primary';
+        var subject  = document.getElementById('lp-card-subject').value;
+        var topic    = document.getElementById('lp-topic').value;
+        var dateVal  = document.getElementById('lp-date').value;
+        var timeVal  = document.getElementById('lp-time').value;
+        var criteria = document.getElementById('lp-criteria').value.trim();
+
+        // Validate all fields
+        var ok = true;
+        if (!topic || topic === '') {
+          var te = document.getElementById('lp-topic');
+          te.style.borderColor='var(--rust)';
+          setTimeout(function(){ te.style.borderColor='var(--border)'; }, 2000);
+          document.getElementById('lp-topic-err').style.display='block';
+          ok = false;
+        } else {
+          document.getElementById('lp-topic-err').style.display='none';
+        }
+        if (!dateVal || !lpValidateDate(document.getElementById('lp-date')))  { lpHighlight('lp-date');    ok = false; }
+        if (!timeVal || !lpValidateTime(document.getElementById('lp-time')))  { lpHighlight('lp-time');    ok = false; }
+        if (!criteria) { lpHighlight('lp-criteria'); ok = false; }
+        if (!ok) return;
+
         // Set dialog header
-        document.getElementById('lp-result-title').textContent = subject + ' — ' + classLabel;
+        document.getElementById('lp-result-title').textContent = topic + ' — ' + classLabel;
 
         // Show overlay in loading state
         var overlay = document.getElementById('lp-result-overlay');
         overlay.style.display = 'block';
         document.body.style.overflow = 'hidden';
         document.getElementById('lp-loading').style.display = 'block';
+        document.getElementById('lp-loading').innerHTML = '<div style="display:inline-block;width:48px;height:48px;border:4px solid var(--border);border-top-color:var(--forest);border-radius:50%;animation:lpSpin 0.8s linear infinite;margin-bottom:1.5rem;"></div><p style="font-family:serif;font-size:1.1rem;color:var(--forest);font-weight:700;">Generating your lesson plan&#x2026;</p><p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem;">AI is crafting activities for Introduction, Development &amp; Conclusion</p>';
         document.getElementById('lp-result-body').style.display = 'none';
 
         // Build AI prompt
@@ -3219,6 +3434,7 @@ body.em-locked { overflow: hidden; }
           'Create a detailed 30-minute lesson plan for the following:',
           '- Class: ' + classLabel,
           '- Subject: ' + subject,
+          '- Topic: ' + topic,
           '- Success Criteria: ' + criteria,
           '- No textbooks to be used. Use only locally available resources, objects, and activities.',
           '',
@@ -3228,12 +3444,11 @@ body.em-locked { overflow: hidden; }
           '3. CONCLUSION (5 minutes)',
           '',
           'For each stage provide:',
-          '- TEACHER_ACTIVITIES: exactly 4 bullet points of what the teacher does',
-          '- LEARNER_ACTIVITIES: exactly 4 bullet points of what learners do',
+          '- TEACHER_ACTIVITIES: exactly 4 bullet points of what the teacher does (keep each point under 20 words)',
+          '- LEARNER_ACTIVITIES: exactly 4 bullet points of what learners do (keep each point under 20 words)',
           '',
           'Respond ONLY with valid JSON in this exact structure (no markdown, no explanation):',
           '{',
-          '  "topic": "short topic name derived from the success criteria",',
           '  "resources": "comma-separated list of 4-5 locally available resources",',
           '  "stages": [',
           '    {',
@@ -3255,46 +3470,56 @@ body.em-locked { overflow: hidden; }
           '      "learner_activities": ["activity 1","activity 2","activity 3","activity 4"]',
           '    }',
           '  ]',
-          '}'
+          '}',
         ].join('\n');
 
         fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true'
+          },
           body: JSON.stringify({
             model: 'claude-sonnet-4-20250514',
-            max_tokens: 1000,
+            max_tokens: 4000,
             messages: [{ role: 'user', content: prompt }]
           })
         })
         .then(function(r){ return r.json(); })
         .then(function(data){
           var raw = (data.content || []).map(function(b){ return b.text || ''; }).join('');
-          var clean = raw.replace(/```json|```/g,'').trim();
+          var start = raw.indexOf('{');
+          var end = raw.lastIndexOf('}');
+          if (start === -1 || end === -1) throw new Error('No JSON found in response');
+          var clean = raw.substring(start, end + 1);
           var plan = JSON.parse(clean);
-          lpRenderPlan(plan, classLabel, subject, criteria);
+          lpRenderPlan(plan, classLabel, subject, topic, dateVal, timeVal, criteria, document.getElementById('lp-card-class').value);
         })
         .catch(function(err){
+          console.error('LP error:', err);
           document.getElementById('lp-loading').innerHTML =
-            '<p style="color:var(--rust);font-weight:600;font-size:1rem;">⚠️ Could not generate plan. Please check your connection and try again.</p>';
+            '<p style="color:var(--rust);font-weight:600;font-size:1rem;">&#x26A0;&#xFE0F; Could not generate plan. Please check your connection and try again.</p>' +
+            '<p style="color:var(--muted);font-size:0.8rem;margin-top:0.5rem;">' + (err && err.message ? err.message : '') + '</p>';
         });
       };
 
       function stageColor(name) {
-        if (name === 'INTRODUCTION') return { bg:'#1B4332', icon:'🌱' };
-        if (name === 'DEVELOPMENT')  return { bg:'#2D6A4F', icon:'🔨' };
-        return { bg:'#40916C', icon:'🏁' };
+        if (name === 'INTRODUCTION') return { bg:'#1B4332', icon:'&#x1F331;' };
+        if (name === 'DEVELOPMENT')  return { bg:'#2D6A4F', icon:'&#x1F528;' };
+        return { bg:'#40916C', icon:'&#x1F3C1;' };
       }
 
-      function lpRenderPlan(plan, classLabel, subject, criteria) {
-        // Meta bar
+      function lpRenderPlan(plan, classLabel, subject, topic, dateVal, timeVal, criteria, stdKey) {
+        // Meta bar — all 6 fields
         var metaBar = document.getElementById('lp-meta-bar');
         metaBar.innerHTML = [
-          { label:'Class', value: classLabel },
-          { label:'Subject', value: subject },
-          { label:'Duration', value: '30 Minutes' },
-          { label:'Topic', value: plan.topic || '—' },
-          { label:'Resources', value: plan.resources || '—' },
+          { label:'Class',            value: classLabel },
+          { label:'Subject',          value: subject },
+          { label:'Topic',            value: topic },
+          { label:'Date',             value: lpFormatDate(dateVal) },
+          { label:'Time',             value: lpFormatTimeRange(timeVal, stdKey) },
+          { label:'Resources',        value: plan.resources || '&#x2014;' },
           { label:'Success Criteria', value: criteria }
         ].map(function(m){
           return '<div class="lp-meta-chip"><span class="lmc-label">'+m.label+'</span><span class="lmc-value">'+m.value+'</span></div>';
@@ -3315,15 +3540,15 @@ body.em-locked { overflow: hidden; }
               '<div class="lp-stage-header" style="background:'+sc.bg+';">',
                 '<span style="font-size:1.2rem;">'+sc.icon+'</span>',
                 '<h3>'+stage.name+'</h3>',
-                '<span class="lp-time-badge">⏱ '+stage.duration+'</span>',
+                '<span class="lp-time-badge">&#x23F1; '+stage.duration+'</span>',
               '</div>',
               '<div class="lp-cols">',
                 '<div class="lp-col">',
-                  '<div class="lp-col-label" style="color:var(--forest);">👩‍🏫 Teacher\'s Activities</div>',
+                  '<div class="lp-col-label" style="color:var(--forest);">Teacher Activities</div>',
                   '<ul>'+teacherItems+'</ul>',
                 '</div>',
                 '<div class="lp-col">',
-                  '<div class="lp-col-label" style="color:#1a6b8a;">🧑‍🎓 Learners\' Activities</div>',
+                  '<div class="lp-col-label" style="color:#1a6b8a;">Learner Activities</div>',
                   '<ul>'+learnerItems+'</ul>',
                 '</div>',
               '</div>',
@@ -3344,19 +3569,26 @@ body.em-locked { overflow: hidden; }
         window.print();
       };
 
-      // Close on backdrop click
-      document.addEventListener('DOMContentLoaded', function(){
-        document.getElementById('lp-result-overlay').addEventListener('click', function(e){
-          if (e.target === this) window.lpCloseResult();
-        });
-      });
+      // Init — always fire on DOMContentLoaded AND immediately if DOM is ready
+      function lpInit() {
+        lpPopulateSubjects('std1');
+        var overlay = document.getElementById('lp-result-overlay');
+        if (overlay) {
+          overlay.addEventListener('click', function(e){
+            if (e.target === this) window.lpCloseResult();
+          });
+        }
+      }
 
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function(){ lpPopulateSubjects('std1'); });
+        document.addEventListener('DOMContentLoaded', lpInit);
       } else {
-        lpPopulateSubjects('std1');
+        lpInit();
       }
-    })();
+    })(); // end IIFE
+
+    // SOW_SUBJECTS is defined later in the page, so defer by one tick
+    setTimeout(function(){ lpPopulateSubjects('std1'); }, 0);
     </script>
   </div>
 </section>
@@ -5595,7 +5827,7 @@ document.addEventListener('keydown', function(e) {
 
 <script>
 (function(){
-  var SOW_SUBJECTS = {
+  var SOW_SUBJECTS = window.SOW_SUBJECTS = {
     std1:['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
     std2:['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
     std3:['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
