@@ -1,0 +1,9 @@
+{
+  "name": "education-matters-proxy",
+  "version": "1.0.0",
+  "description": "Secure proxy for Education Matters lesson plan AI generation",
+  "private": true,
+  "engines": {
+    "node": "18.x"
+  }
+}
