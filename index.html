@@ -1668,6 +1668,96 @@ footer {
   .nav-brand-text .n1 { font-size: 0.8rem; }
 }
 
+/* ── LESSON PLAN TOOL ── */
+.lp-wrap { max-width: 1100px; margin: 0 auto; padding: 0 0 20px; }
+.lp-grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
+@media (max-width: 920px) { .lp-grid { grid-template-columns: 1fr; } }
+.lp-card {
+  background: #fff; border-radius: 14px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,.07), 0 2px 4px -2px rgba(0,0,0,.05);
+  border: 1px solid #eef1f6; padding: 22px; transition: box-shadow .2s;
+}
+.lp-card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,.08); }
+.lp-card h2 { font-size: 17px; margin: 0 0 16px; font-weight: 700; color: #111827; font-family: 'DM Sans', sans-serif; }
+.lp-form-group { margin-bottom: 14px; }
+.lp-label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 5px; }
+.lp-input, .lp-select, .lp-textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid #d1d5db;
+  border-radius: 9px; font-size: 14px; background: #fff; font-family: 'DM Sans', sans-serif;
+  transition: border .15s, box-shadow .15s; color: #111827;
+}
+.lp-textarea { min-height: 72px; resize: vertical; }
+.lp-input:focus, .lp-select:focus, .lp-textarea:focus {
+  outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.13);
+}
+.lp-btn-primary {
+  width: 100%; background: var(--forest); color: #fff; border: none; padding: 13px 16px;
+  border-radius: 11px; font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: transform .05s, background .2s, opacity .2s;
+  box-shadow: 0 6px 16px rgba(27,67,50,.22);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+}
+.lp-btn-primary:hover { background: var(--forest2); }
+.lp-btn-primary:active { transform: translateY(1px); }
+.lp-btn-primary:disabled { opacity: .65; cursor: not-allowed; box-shadow: none; }
+.lp-spinner {
+  width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
+  border-radius: 50%; animation: lpSpin 0.8s linear infinite; display: inline-block;
+}
+@keyframes lpSpin { to { transform: rotate(360deg); } }
+.lp-output-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.lp-btn-ghost {
+  background: #f3f4f6; border: 1px solid #e5e7eb; padding: 7px 14px;
+  border-radius: 9px; font-weight: 600; font-size: 12px; cursor: pointer; color: #374151;
+  transition: background .15s, opacity .2s; font-family: 'DM Sans', sans-serif;
+}
+.lp-btn-ghost:hover { background: #e5e7eb; }
+.lp-btn-ghost:disabled { opacity: .5; cursor: not-allowed; }
+.lp-placeholder {
+  text-align: center; padding: 48px 20px; color: #6b7280;
+  border: 1.5px dashed #e5e7eb; border-radius: 12px; background: #fcfdff;
+}
+.lp-placeholder strong { display: block; color: #374151; font-size: 15px; margin-bottom: 6px; }
+.lp-section { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #f0f2f5; }
+.lp-section:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+.lp-header-table { width: 100%; border-collapse: collapse; margin-bottom: 18px; }
+.lp-header-table td { padding: 7px 12px; border: 1px solid #d1d5db; font-size: 13.5px; vertical-align: top; }
+.lp-header-table td:first-child { font-weight: 700; color: #0f172a; width: 36%; background: #f8fafc; white-space: nowrap; }
+.lp-header-table td:last-child { color: #374151; }
+.lp-section-title {
+  font-size: 14px; font-weight: 800; color: #0f172a;
+  background: #e8f5e9; border-left: 4px solid var(--forest);
+  padding: 7px 13px; margin: 16px 0 0; border-radius: 0 6px 6px 0;
+  letter-spacing: 0.03em;
+}
+.lp-time-pill { font-size: 11px; color: var(--forest2); background: #e8f5e9; padding: 2px 7px; border-radius: 5px; font-weight: 600; margin-left: 6px; }
+.lp-activities-table { width: 100%; border-collapse: collapse; margin-top: 7px; }
+.lp-activities-table th {
+  background: var(--forest); color: #fff; padding: 7px 11px;
+  font-size: 12.5px; font-weight: 700; text-align: left; border: 1px solid var(--forest);
+}
+.lp-activities-table td {
+  padding: 8px 11px; border: 1px solid #d1d5db;
+  font-size: 13px; vertical-align: top; color: #374151; line-height: 1.55;
+}
+.lp-activities-table tr:nth-child(even) td { background: #f8faf8; }
+.lp-step-num {
+  font-weight: 700; color: #fff; background: var(--forest2);
+  border-radius: 50%; width: 21px; height: 21px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; margin-right: 3px;
+}
+.lp-sc-list { margin: 4px 0 0 16px; padding: 0; }
+.lp-sc-list li { margin: 5px 0; font-size: 13px; color: #374151; line-height: 1.55; }
+.lp-materials-list { margin: 7px 0 0 16px; padding: 0; }
+.lp-materials-list li { margin: 4px 0; font-size: 13px; color: #374151; }
+.lp-remarks-box {
+  margin-top: 8px; border: 1px solid #d1d5db; border-radius: 6px;
+  min-height: 88px; padding: 10px 13px; background: #fafafa;
+  color: #9ca3af; font-size: 13px; font-style: italic;
+}
+
 </style>
 </head>
 <body>
@@ -2934,31 +3024,438 @@ body.em-locked { overflow: hidden; }
     <div class="section-header text-center reveal">
       <div class="section-kicker">Teaching Materials</div>
       <h2 class="section-title">Lesson Plans</h2>
+      <p class="section-sub" style="margin-top:0.5rem; color:var(--muted); font-size:0.93rem;">Developed By Juma Ali &nbsp;·&nbsp; Malawi Primary Curriculum</p>
     </div>
-    <div style="max-width:560px; margin:2.5rem auto 0; background:var(--white); border:2px solid var(--forest); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(27,67,50,0.13);">
-      <div style="background:var(--forest); padding:1.4rem 2rem; display:flex; align-items:center; gap:1rem;">
-        <span style="font-size:2rem;">&#x1F4DD;</span>
-        <div>
-          <div style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1.2;">Lesson Plans</div>
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:2px; letter-spacing:0.04em;">AI-powered &middot; 30-minute lessons</div>
+
+    <div class="lp-wrap">
+      <div class="lp-grid">
+        <!-- LEFT: Form -->
+        <div class="lp-card">
+          <h2>Build your lesson</h2>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-grade">Class</label>
+            <select class="lp-select" id="lp-grade">
+              <option>Standard 1</option>
+              <option>Standard 2</option>
+              <option>Standard 3</option>
+              <option>Standard 4</option>
+              <option selected>Standard 5</option>
+              <option>Standard 6</option>
+              <option>Standard 7</option>
+              <option>Standard 8</option>
+            </select>
+          </div>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-subject">Subject</label>
+            <select class="lp-select" id="lp-subject">
+              <option>Mathematics</option>
+              <option>English</option>
+              <option>Chichewa</option>
+              <option>Science and Technology</option>
+              <option>Social Studies</option>
+              <option>Religious and Moral Education</option>
+              <option>Life Skills</option>
+              <option>Expressive Arts</option>
+              <option>Agriculture</option>
+              <option>Chemistry</option>
+              <option>Physics</option>
+              <option>Computer Studies</option>
+            </select>
+          </div>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-topic">Topic</label>
+            <input class="lp-input" id="lp-topic" type="text" placeholder="e.g., Photosynthesis" autocomplete="off">
+          </div>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-date">Date</label>
+            <input class="lp-input" id="lp-date" type="date">
+          </div>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-time">Start Time</label>
+            <input class="lp-input" id="lp-time" type="time" value="07:30">
+          </div>
+          <div class="lp-form-group">
+            <label class="lp-label" for="lp-objectives">Success Criteria (optional)</label>
+            <textarea class="lp-textarea" id="lp-objectives" placeholder="If empty, AI will create 3–4 aligned success criteria."></textarea>
+          </div>
+          <button id="lp-generateBtn" class="lp-btn-primary">Generate Lesson Plan</button>
         </div>
-      </div>
-      <div style="padding:3rem 2rem; text-align:center;">
-        <div style="font-size:3rem; margin-bottom:1rem;">&#x1F6E0;&#xFE0F;</div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--forest); margin-bottom:0.75rem;">Currently Out of Service</h3>
-        <p style="font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--muted); line-height:1.7; max-width:380px; margin:0 auto;">
-          The Lesson Plans generator is temporarily unavailable while we make improvements.<br><br>
-          We apologise for any inconvenience. Please check back soon.
-        </p>
-        <div style="margin-top:1.75rem; display:inline-flex; align-items:center; gap:0.5rem; background:var(--warm); border:1px solid var(--border); border-radius:20px; padding:0.5rem 1.25rem;">
-          <span style="width:8px; height:8px; background:#e07b00; border-radius:50%; display:inline-block; animation:lpPulse 1.4s ease-in-out infinite;"></span>
-          <span style="font-family:'DM Sans',sans-serif; font-size:0.8rem; font-weight:600; color:#e07b00; letter-spacing:0.04em;">TEMPORARILY UNAVAILABLE</span>
+
+        <!-- RIGHT: Output -->
+        <div class="lp-card">
+          <div class="lp-output-header">
+            <h2 style="margin:0">Generated Plan</h2>
+            <div>
+              <button id="lp-printBtn" class="lp-btn-ghost" disabled>Export to PDF</button>
+            </div>
+          </div>
+          <div id="lp-output">
+            <div class="lp-placeholder">
+              <div style="font-size:40px; margin-bottom:10px">📝</div>
+              <strong>Your lesson will appear here</strong>
+              <p style="margin:6px 0 0; font-size:14px;">Fill in the details, then click Generate.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <style>@keyframes lpPulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }</style>
 </section>
+
+<script>
+(function(){
+  const lpTopic    = document.getElementById('lp-topic');
+  const lpSubject  = document.getElementById('lp-subject');
+  const lpGrade    = document.getElementById('lp-grade');
+  const lpDate     = document.getElementById('lp-date');
+  const lpTime     = document.getElementById('lp-time');
+  const lpObj      = document.getElementById('lp-objectives');
+  const lpGenBtn   = document.getElementById('lp-generateBtn');
+  const lpPrintBtn = document.getElementById('lp-printBtn');
+  const lpOutput   = document.getElementById('lp-output');
+  const lpCurriculum = 'Malawi Primary';
+  let lpLastPlan = null;
+
+  // Set today's date default
+  lpDate.value = new Date().toISOString().split('T')[0];
+
+  function lpGetDuration(grade){
+    const n = parseInt(grade.replace('Standard ',''), 10);
+    return n <= 2 ? 30 : 35;
+  }
+
+  const LP_BANK = {
+    photosynthesis: {
+      objectives: ["Define photosynthesis and state the word equation","Identify the role of chlorophyll, sunlight, water and carbon dioxide","Explain how the light-dependent and light-independent stages differ","Describe why photosynthesis is vital for humans and animals"],
+      materials: ["Fresh green leaves","Chart of leaf cross-section","Iodine solution (if available)","Torch or sunlight","Chalkboard markers"],
+      intro: "Show a green plant. Ask: 'Where does our food, and the plant's food, come from?' Elicit 'sun' and 'leaves'.",
+      activities: ["Teacher models leaf structure on board; learners draw and label chloroplasts","Mini-investigation: cover part of leaf with foil yesterday/today, test for starch conceptually","Think-Pair-Share: how do light, water, CO₂ affect rate? Link to local maize farming"],
+      assessment: "Ask learners to write the photosynthesis equation on their slates and state one way humans depend on it. Review answers as a class and summarise key points on the board.",
+      homework: "Observe a plant at home for 3 days. Note sunlight and changes."
+    },
+    fractions: {
+      objectives: ["Define numerator and denominator","Identify equivalent fractions using diagrams","Add and subtract fractions with the same denominator","Solve a real-life sharing problem using fractions"],
+      materials: ["Paper strips or fraction circles","Counters (maize seeds/stones)","Chalkboard"],
+      intro: "Share 2 nsima portions among 4 learners. Ask: how much does each get?",
+      activities: ["Paper folding to make halves, quarters, thirds; label them","Pair work: match equivalent fractions (1/2 = 2/4) with strips","Market problem: 3/4 kg of beans shared equally"],
+      assessment: "5 quick questions on board; peer marking.",
+      homework: "Find 3 fractions at home (cooking, time, money)."
+    },
+    watercycle: {
+      objectives: ["Name the four main stages of the water cycle","Explain how the sun drives evaporation","Describe condensation and precipitation","Link the water cycle to local rainfall and rivers"],
+      materials: ["Clear cup, hot water, plastic wrap, ice cubes","Water cycle diagram","Chalk"],
+      intro: "Ask: Where does rain come from? Where does it go after falling?",
+      activities: ["Demonstration: mini water cycle in a cup (evaporation/condensation)","Learners draw and label their own cycle with arrows","Group discussion: how does the Shire River connect?"],
+      assessment: "Label blank diagram correctly in 3 minutes.",
+      homework: "Observe morning dew or drying clothes; explain stage."
+    }
+  };
+
+  function lpGetBank(topic){
+    const t = topic.toLowerCase();
+    if(t.includes('photosyn')) return LP_BANK.photosynthesis;
+    if(t.includes('fraction')) return LP_BANK.fractions;
+    if(t.includes('water cycle')||t.includes('evaporation')||t.includes('condensation')) return LP_BANK.watercycle;
+    return null;
+  }
+  function lpGetLevel(grade){
+    return parseInt(grade.replace('Standard ',''),10) <= 4 ? 'lower_primary' : 'upper_primary';
+  }
+  function lpSplitTimes(d){
+    const intro = d<=35?4:5, concl = d<=35?4:5, main = d-intro-concl;
+    const a1=Math.round(main*0.18),a2=Math.round(main*0.20),a3=Math.round(main*0.22),a4=Math.round(main*0.20),a5=main-a1-a2-a3-a4;
+    return {intro,a1,a2,a3,a4,a5,concl};
+  }
+  function lpFormatDate(s){
+    if(!s) return '_______________';
+    return new Date(s+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  }
+  function lpFormatTimeRange(s,dur){
+    if(!s) return '_______________';
+    const [h,m]=s.split(':').map(Number);
+    const start=new Date(2000,0,1,h,m), end=new Date(start.getTime()+dur*60000);
+    const fmt=t=>`${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
+    return `${fmt(start)} to ${fmt(end)}`;
+  }
+  function lpEsc(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+  function lpGenerate(){
+    const topic = lpTopic.value.trim();
+    if(!topic){ alert('Please enter a topic'); lpTopic.focus(); return; }
+    const grade = lpGrade.value, subject = lpSubject.value;
+    const duration = lpGetDuration(grade);
+    const level = lpGetLevel(grade);
+    const bank = lpGetBank(topic);
+    const times = lpSplitTimes(duration);
+    const T = topic;
+
+    let objectives = [];
+    const userObj = lpObj.value.trim();
+    if(userObj){ objectives = userObj.split('\n').map(s=>s.trim()).filter(Boolean); }
+    else if(bank){ objectives = bank.objectives; }
+    else {
+      objectives = level==='lower_primary'
+        ? [`Name key words about ${T}`,`Identify examples of ${T}`,`Describe ${T} in simple terms`,`Show ${T} with a drawing`]
+        : [`Define ${T}`,`Explain the main parts of ${T}`,`Give examples of ${T} in daily life`,`Demonstrate understanding through a short task`];
+    }
+
+    const materials = bank?.materials || (level==='lower_primary'
+      ? ["Chalkboard","Picture cards","Local objects (stones, leaves)","Exercise books"]
+      : ["Whiteboard & markers","Worksheets","Chart paper","Textbook reference"]);
+
+    const introTeacher = bank?.intro ||
+      (level==='lower_primary' ? `Ask learners a simple question related to ${T} to activate prior knowledge. Use a picture or object to spark curiosity.`
+      : `Pose a thought-provoking question about ${T}. Invite 2–3 learners to share what they already know.`);
+    const introLearner = level==='lower_primary'
+      ? `Listen to the teacher and respond to the question. Look at the picture/object and share ideas with a neighbour.`
+      : `Think about the question, share prior knowledge and make a connection to everyday life.`;
+
+    const rawActs = bank?.activities ? [
+      bank.activities[0], bank.activities[1], bank.activities[2],
+      `Guide learners to connect what they have learned about ${T} to real-life examples in their community. Ask probing questions.`,
+      `Facilitate a brief written or oral practice activity where learners independently demonstrate understanding of ${T}.`
+    ] : (level==='lower_primary' ? [
+      `Introduce key vocabulary for ${T} using pictures on the board. Say each word clearly; learners repeat chorally.`,
+      `Demonstrate an example of ${T} using a local object or drawing. Explain each step aloud.`,
+      `Learners work in pairs: sort objects or draw and label examples of ${T} in their exercise books.`,
+      `Ask each pair to share one finding with the class. Write correct answers on the board and praise responses.`,
+      `Give a short guided practice: learners complete 2–3 simple sentences or fill-in-the-blank items about ${T} on their slates.`
+    ] : [
+      `Introduce the concept of ${T} with a clear explanation and labelled diagram on the board. Highlight key terms.`,
+      `Work through a detailed example of ${T} step by step. Ask comprehension questions after each step.`,
+      `Divide learners into groups. Each group completes a structured activity or worksheet on ${T}.`,
+      `Groups present their answers. Teacher provides corrective feedback, clarifies misconceptions and reinforces key ideas on the board.`,
+      `Learners individually attempt 2–3 practice questions on ${T}. Teacher circulates to check understanding and offer support.`
+    ]);
+
+    const devLearner = level==='lower_primary' ? [
+      `Listen attentively, repeat vocabulary chorally and write the new words in their exercise books.`,
+      `Observe the demonstration, ask questions and copy the example into their exercise books.`,
+      `Work with a partner to sort objects or draw and label examples of ${T}.`,
+      `Share findings with the class; listen to peers' responses and correct their own notes.`,
+      `Individually complete the short practice task on slates or in exercise books.`
+    ] : [
+      `Copy the diagram and key terms into exercise books; answer the teacher's comprehension questions orally.`,
+      `Follow each step, take notes and respond to the teacher's questions.`,
+      `Work in groups to complete the activity; discuss and agree on answers within the group.`,
+      `Listen to other groups' presentations; note corrections and ask one follow-up question.`,
+      `Independently attempt the practice questions; raise hand if help is needed.`
+    ];
+
+    const devSteps = [
+      {time:times.a1,teacher:rawActs[0],learner:devLearner[0]},
+      {time:times.a2,teacher:rawActs[1],learner:devLearner[1]},
+      {time:times.a3,teacher:rawActs[2],learner:devLearner[2]},
+      {time:times.a4,teacher:rawActs[3],learner:devLearner[3]},
+      {time:times.a5,teacher:rawActs[4],learner:devLearner[4]}
+    ];
+
+    const conclTeacher = level==='lower_primary'
+      ? `Ask 3–4 oral review questions about ${T} to check understanding. Write 2–3 key summary points on the board. Assign homework and dismiss learners.`
+      : `Ask learners to state one thing they learned about ${T} today. Write key summary points on the board. Assign homework and close the lesson.`;
+    const conclLearner = level==='lower_primary'
+      ? `Answer review questions orally or on slates. Copy the summary points from the board into exercise books.`
+      : `Share one key learning point. Copy the summary from the board into exercise books and note the homework.`;
+
+    return {
+      topic, grade, subject, duration, curriculum: lpCurriculum,
+      lessonDate: lpDate.value, startTime: lpTime.value,
+      objectives, materials,
+      intro: {time:times.intro, teacher:introTeacher, learner:introLearner},
+      development: devSteps,
+      conclusion: {time:times.concl, teacher:conclTeacher, learner:conclLearner}
+    };
+  }
+
+  function lpRender(plan){
+    lpLastPlan = plan;
+    const dateStr = lpFormatDate(plan.lessonDate);
+    const timeStr = lpFormatTimeRange(plan.startTime, plan.duration);
+    const devTotal = plan.development.reduce((s,d)=>s+d.time,0);
+    lpOutput.innerHTML = `
+      <div class="lp-section">
+        <table class="lp-header-table">
+          <tr><td>CLASS</td><td>${lpEsc(plan.grade)}</td></tr>
+          <tr><td>SUBJECT</td><td>${lpEsc(plan.subject)}</td></tr>
+          <tr><td>TOPIC</td><td>${lpEsc(plan.topic)}</td></tr>
+          <tr><td>DATE</td><td>${lpEsc(dateStr)}</td></tr>
+          <tr><td>TIME</td><td>${lpEsc(timeStr)}</td></tr>
+        </table>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">🎯 SUCCESS CRITERIA</div>
+        <ul class="lp-sc-list">${plan.objectives.map(o=>`<li>${lpEsc(o)}</li>`).join('')}</ul>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">🧰 MATERIALS / RESOURCES</div>
+        <ul class="lp-materials-list">${plan.materials.map(m=>`<li>${lpEsc(m)}</li>`).join('')}</ul>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">▶ INTRODUCTION <span class="lp-time-pill">${plan.intro.time} min</span></div>
+        <table class="lp-activities-table">
+          <thead><tr><th style="width:50%">Teacher's Activities</th><th style="width:50%">Learners' Activities</th></tr></thead>
+          <tbody><tr><td>${lpEsc(plan.intro.teacher)}</td><td>${lpEsc(plan.intro.learner)}</td></tr></tbody>
+        </table>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">⚙️ DEVELOPMENT <span class="lp-time-pill">${devTotal} min</span></div>
+        <table class="lp-activities-table">
+          <thead><tr><th style="width:8%">Step</th><th style="width:46%">Teacher's Activities</th><th style="width:46%">Learners' Activities</th></tr></thead>
+          <tbody>${plan.development.map((d,i)=>`<tr>
+            <td style="text-align:center"><span class="lp-step-num">${i+1}</span><br><span style="font-size:11px;color:#6b7280">${d.time} min</span></td>
+            <td>${lpEsc(d.teacher)}</td><td>${lpEsc(d.learner)}</td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">🏁 CONCLUSION <span class="lp-time-pill">${plan.conclusion.time} min</span></div>
+        <table class="lp-activities-table">
+          <thead><tr><th style="width:50%">Teacher's Activities</th><th style="width:50%">Learners' Activities</th></tr></thead>
+          <tbody><tr><td>${lpEsc(plan.conclusion.teacher)}</td><td>${lpEsc(plan.conclusion.learner)}</td></tr></tbody>
+        </table>
+      </div>
+      <div class="lp-section">
+        <div class="lp-section-title">📝 REMARKS</div>
+        <div class="lp-remarks-box">Teacher's remarks about the lesson...</div>
+      </div>
+    `;
+    lpPrintBtn.disabled = false;
+    if(window.innerWidth < 920){ lpOutput.scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
+
+  lpGenBtn.addEventListener('click', async ()=>{
+    const orig = lpGenBtn.innerHTML;
+    lpGenBtn.disabled = true;
+    lpGenBtn.innerHTML = '<span class="lp-spinner"></span> Generating...';
+    await new Promise(r=>setTimeout(r,1100));
+    const plan = lpGenerate();
+    if(plan) lpRender(plan);
+    lpGenBtn.disabled = false;
+    lpGenBtn.innerHTML = orig;
+  });
+
+  lpPrintBtn.addEventListener('click', async ()=>{
+    if(!lpLastPlan){ alert('Please generate a lesson plan first.'); return; }
+    const orig = lpPrintBtn.innerHTML;
+    lpPrintBtn.disabled = true;
+    lpPrintBtn.innerHTML = '<span class="lp-spinner" style="display:inline-block;width:12px;height:12px;border:2px solid #aaa;border-top-color:#374151;border-radius:50%;animation:lpSpin 0.8s linear infinite;vertical-align:middle;margin-right:5px"></span>Exporting...';
+    if(!window.jspdf){
+      await new Promise((res,rej)=>{
+        const s=document.createElement('script');
+        s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        s.onload=res; s.onerror=rej; document.head.appendChild(s);
+      });
+    }
+    const {jsPDF}=window.jspdf;
+    const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    const pageW=210,pageH=297,mL=14,mR=14,mT=16,cW=pageW-mL-mR;
+    let y=mT;
+    const plan=lpLastPlan;
+    const dateStr=lpFormatDate(plan.lessonDate);
+    const timeStr=lpFormatTimeRange(plan.startTime,plan.duration);
+
+    function chk(n){ if(y+n>pageH-14){doc.addPage();y=mT;} }
+    function pgHdr(){
+      doc.setFillColor(27,67,50); doc.rect(0,0,pageW,12,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(255,255,255);
+      doc.text('EASY LESSON PLAN',pageW/2,8,{align:'center'});
+      doc.setFontSize(7); doc.setTextColor(180,220,200);
+      doc.text('Developed By Juma Ali',pageW/2,11,{align:'center'}); y=18;
+    }
+    pgHdr();
+    const infoRows=[['CLASS',plan.grade],['SUBJECT',plan.subject],['TOPIC',plan.topic],['DATE',dateStr],['TIME',timeStr]];
+    const c1=40,c2=cW-c1;
+    doc.setFontSize(9);
+    infoRows.forEach((row,i)=>{
+      const bg=i%2===0?[248,250,252]:[255,255,255];
+      doc.setFillColor(...bg);
+      doc.rect(mL,y,c1,7,'F'); doc.rect(mL+c1,y,c2,7,'F');
+      doc.setDrawColor(200,210,220); doc.rect(mL,y,cW,7,'S');
+      doc.setFont('helvetica','bold'); doc.setTextColor(15,23,42); doc.text(row[0],mL+3,y+4.8);
+      doc.setFont('helvetica','normal'); doc.setTextColor(55,65,81); doc.text(String(row[1]),mL+c1+3,y+4.8);
+      y+=7;
+    }); y+=5;
+
+    function secTitle(t){
+      chk(12);
+      doc.setFillColor(232,245,233); doc.setDrawColor(27,67,50); doc.setLineWidth(0.8);
+      doc.line(mL,y+4,mL,y+10);
+      doc.rect(mL+2,y+1,cW-2,9,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(15,23,42);
+      doc.text(t,mL+6,y+7); y+=12;
+    }
+    function tblHdr(hasStep){
+      const sW=hasStep?18:0, colW=(cW-sW)/2; chk(10);
+      doc.setFillColor(27,67,50);
+      if(hasStep) doc.rect(mL,y,sW,8,'F');
+      doc.rect(mL+sW,y,colW,8,'F'); doc.rect(mL+sW+colW,y,colW,8,'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(8.5); doc.setTextColor(255,255,255);
+      if(hasStep) doc.text('Step',mL+sW/2,y+5.5,{align:'center'});
+      doc.text("Teacher's Activities",mL+sW+3,y+5.5);
+      doc.text("Learners' Activities",mL+sW+colW+3,y+5.5); y+=8;
+    }
+    function actRow(tTxt,lTxt,step){
+      const sW=step?18:0, colW=(cW-sW)/2;
+      doc.setFontSize(8.5);
+      const tL=doc.splitTextToSize(String(tTxt),colW-6);
+      const lL=doc.splitTextToSize(String(lTxt),colW-6);
+      const rH=Math.max(tL.length,lL.length,1)*4.8+6; chk(rH+2);
+      doc.setFillColor(252,253,252); doc.setDrawColor(200,210,220); doc.setLineWidth(0.3);
+      if(step){
+        doc.rect(mL,y,sW,rH,'FD');
+        doc.setFillColor(255,255,255);
+        doc.rect(mL+sW,y,colW,rH,'FD'); doc.rect(mL+sW+colW,y,colW,rH,'FD');
+        doc.setFillColor(45,106,79); doc.circle(mL+sW/2,y+rH/2,4,'F');
+        doc.setFont('helvetica','bold'); doc.setFontSize(8); doc.setTextColor(255,255,255);
+        doc.text(String(step),mL+sW/2,y+rH/2+2.5,{align:'center'});
+      } else {
+        doc.setFillColor(255,255,255);
+        doc.rect(mL,y,colW,rH,'FD'); doc.rect(mL+colW,y,colW,rH,'FD');
+      }
+      doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(55,65,81);
+      let ty=y+4.5; tL.forEach(l=>{doc.text(l,mL+sW+3,ty);ty+=4.8;});
+      let ly2=y+4.5; lL.forEach(l=>{doc.text(l,mL+sW+colW+3,ly2);ly2+=4.8;});
+      y+=rH;
+    }
+
+    secTitle('SUCCESS CRITERIA');
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(55,65,81);
+    plan.objectives.forEach((o,i)=>{ chk(8); const ls=doc.splitTextToSize(`${i+1}.  ${o}`,cW-8); ls.forEach(l=>{doc.text(l,mL+4,y);y+=5;}); y+=1; }); y+=4;
+
+    secTitle('MATERIALS / RESOURCES');
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(55,65,81);
+    plan.materials.forEach(m=>{ chk(7); const ls=doc.splitTextToSize(`•  ${m}`,cW-8); ls.forEach(l=>{doc.text(l,mL+4,y);y+=5;}); }); y+=4;
+
+    secTitle(`INTRODUCTION  (${plan.intro.time} min)`); tblHdr(false); actRow(plan.intro.teacher,plan.intro.learner,null); y+=4;
+    const devTot=plan.development.reduce((s,d)=>s+d.time,0);
+    secTitle(`DEVELOPMENT  (${devTot} min)`); tblHdr(true); plan.development.forEach((d,i)=>actRow(d.teacher,d.learner,i+1)); y+=4;
+    secTitle(`CONCLUSION  (${plan.conclusion.time} min)`); tblHdr(false); actRow(plan.conclusion.teacher,plan.conclusion.learner,null); y+=4;
+
+    secTitle('REMARKS'); chk(40);
+    doc.setDrawColor(200,210,220); doc.setLineWidth(0.4); doc.setFillColor(250,250,250);
+    doc.rect(mL,y,cW,38,'FD');
+    doc.setDrawColor(220,225,235); doc.setLineWidth(0.25);
+    for(let i=1;i<=5;i++){ const ly=y+(38/6)*i; doc.line(mL+4,ly,mL+cW-4,ly); }
+    doc.setFont('helvetica','italic'); doc.setFontSize(8.5); doc.setTextColor(180,188,200);
+    doc.text("Teacher's remarks about the lesson...",mL+5,y+7); y+=42;
+
+    const pc=doc.internal.getNumberOfPages();
+    for(let p=1;p<=pc;p++){
+      doc.setPage(p);
+      doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(156,163,175);
+      doc.text(`Page ${p} of ${pc}`,pageW/2,pageH-6,{align:'center'});
+      doc.text('EASY LESSON PLAN — Developed By Juma Ali',mL,pageH-6);
+    }
+    const safeTopic=plan.topic.replace(/[^a-z0-9]/gi,'_').substring(0,30);
+    const safeClass=plan.grade.replace(/\s+/g,'_');
+    doc.save(`LessonPlan_${safeClass}_${safeTopic}.pdf`);
+    lpPrintBtn.disabled=false; lpPrintBtn.innerHTML=orig;
+  });
+
+  // Demo prefill
+  lpTopic.value = 'Photosynthesis';
+})();
+</script>
 
 <section id="contact">
   <div class="container">
