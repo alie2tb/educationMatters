@@ -6115,7 +6115,23 @@ document.addEventListener('keydown', function(e) {
   };
 
   window.dlOpen = function(){
-    if (dlFileUrl) window.open(dlFileUrl, '_blank');
+    if (!dlFileUrl) { dlCancel(); return; }
+    /* Detect Android WebView — window.open is blocked there */
+    var ua = navigator.userAgent || '';
+    var isWebView = /wv\b/.test(ua) ||
+                    (/android/i.test(ua) && !/chrome/i.test(ua)) ||
+                    (typeof Android !== 'undefined');
+    if (isWebView) {
+      /* WebView: navigate in same window — the app handles the PDF intent */
+      window.location.href = dlFileUrl;
+    } else {
+      /* Normal browser: open in new tab */
+      var w = window.open(dlFileUrl, '_blank');
+      /* If popup was blocked, fall back to same-window navigation */
+      if (!w || w.closed || typeof w.closed === 'undefined') {
+        window.location.href = dlFileUrl;
+      }
+    }
     dlCancel();
   };
 
