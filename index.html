@@ -4106,20 +4106,16 @@ function loadVideosFromJSON() {
         return m ? m[1] : null;
       }
 
-      // Build rows of 2 cards
-      var cards = '';
-      videos.forEach(function(v) {
-        var vid = getYTid(v.url);
-        var thumb = vid
-          ? 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg'
-          : '';
-        var displayUrl = v.url.replace(/^https?:\/\/(www\.)?/, '');
-        cards +=
-          '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" ' +
+      // Build one card per row (stacked vertically)
+      function buildCard(v) {
+        var vid2 = getYTid(v.url);
+        var thumb2 = vid2 ? 'https://img.youtube.com/vi/' + vid2 + '/hqdefault.jpg' : '';
+        var du = v.url.replace(/^https?:\/\/(www\.)?/, '');
+        return '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;margin-bottom:1.5rem;" ' +
           'onmouseover="this.style.transform=\'translateY(-4px)\';this.style.borderColor=\'var(--sage)\';" ' +
           'onmouseout="this.style.transform=\'translateY(0)\';this.style.borderColor=\'rgba(255,255,255,0.15)\'">' +
-            '<div style="position:relative;padding-bottom:56.25%;background:#000;overflow:hidden;">' +
-              (thumb ? '<img src="' + thumb + '" alt="' + (v.title || '') + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">' : '') +
+            '<div style="position:relative;padding-bottom:56.25%;background:#111;overflow:hidden;">' +
+              (thumb2 ? '<img src="' + thumb2 + '" alt="' + (v.title||'') + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">' : '') +
               '<a href="' + v.url + '" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;">' +
                 '<div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);transition:transform 0.2s;" ' +
                 'onmouseover="this.style.transform=\'scale(1.12)\'" onmouseout="this.style.transform=\'scale(1)\'">' +
@@ -4129,49 +4125,16 @@ function loadVideosFromJSON() {
             '</div>' +
             '<div style="padding:1rem 1.25rem 1.25rem;">' +
               (v.category ? '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.4rem;">' + v.category + '</div>' : '') +
-              '<div style="font-family:\'Playfair Display\',serif;font-size:1rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.5rem;">' + (v.title || '') + '</div>' +
+              '<div style="font-family:\'Playfair Display\',serif;font-size:1rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.5rem;">' + (v.title||'') + '</div>' +
               '<a href="' + v.url + '" target="_blank" rel="noopener" style="font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;word-break:break-all;transition:color 0.2s;" ' +
-              'onmouseover="this.style.color=\'var(--sage)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.45)\'">' + displayUrl + '</a>' +
+              'onmouseover="this.style.color=\'var(--sage)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.45)\'">' + du + '</a>' +
             '</div>' +
           '</div>';
-      });
+      }
 
-      // Wrap every pair of cards in a 2-column row
-      var rows = '';
-      var cardEls = cards.match(/<div style="background[^]*?<\/div>\s*<\/div>\s*<\/div>/g) || [];
-
-      // Re-split cleanly: build rows directly from videos array
       var rowsHtml = '';
-      for (var i = 0; i < videos.length; i += 2) {
-        rowsHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">';
-        // card i
-        var buildCard = function(v) {
-          var vid2 = getYTid(v.url);
-          var thumb2 = vid2 ? 'https://img.youtube.com/vi/' + vid2 + '/hqdefault.jpg' : '';
-          var du = v.url.replace(/^https?:\/\/(www\.)?/, '');
-          return '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" ' +
-            'onmouseover="this.style.transform=\'translateY(-4px)\';this.style.borderColor=\'var(--sage)\';" ' +
-            'onmouseout="this.style.transform=\'translateY(0)\';this.style.borderColor=\'rgba(255,255,255,0.15)\'">' +
-              '<div style="position:relative;padding-bottom:56.25%;background:#111;overflow:hidden;">' +
-                (thumb2 ? '<img src="' + thumb2 + '" alt="' + (v.title||'') + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">' : '') +
-                '<a href="' + v.url + '" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;">' +
-                  '<div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);transition:transform 0.2s;" ' +
-                  'onmouseover="this.style.transform=\'scale(1.12)\'" onmouseout="this.style.transform=\'scale(1)\'">' +
-                    '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>' +
-                  '</div>' +
-                '</a>' +
-              '</div>' +
-              '<div style="padding:1rem 1.25rem 1.25rem;">' +
-                (v.category ? '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.4rem;">' + v.category + '</div>' : '') +
-                '<div style="font-family:\'Playfair Display\',serif;font-size:1rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.5rem;">' + (v.title||'') + '</div>' +
-                '<a href="' + v.url + '" target="_blank" rel="noopener" style="font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;word-break:break-all;transition:color 0.2s;" ' +
-                'onmouseover="this.style.color=\'var(--sage)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.45)\'">' + du + '</a>' +
-              '</div>' +
-            '</div>';
-        };
+      for (var i = 0; i < videos.length; i++) {
         rowsHtml += buildCard(videos[i]);
-        if (videos[i + 1]) rowsHtml += buildCard(videos[i + 1]);
-        rowsHtml += '</div>';
       }
 
       container.innerHTML = rowsHtml;
