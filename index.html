@@ -1237,6 +1237,11 @@ footer {
 .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity:1; transform:none; }
 
+/* ── TEACHING TECHNIQUES responsive ── */
+@media (max-width: 768px) {
+  #teaching-techniques .tt-row { grid-template-columns: 1fr !important; }
+}
+
 /* ── MOBILE NAV ── */
 /* ── SIDE DRAWER OVERLAY ── */
 .drawer-backdrop {
@@ -2237,7 +2242,7 @@ body.em-locked { overflow: hidden; }
   <div class="hero-pattern"></div>
   <div class="hero-content">
     <div>
-      <div class="hero-eyebrow">📚 Kuphunzitsa Ndi Ulemu — Teaching with Dignity</div>
+      <div class="hero-eyebrow">📚 Teaching is a calling</div>
       <h1 class="hero-title">
         Education<br><em>Matters</em>
       </h1>
@@ -2280,7 +2285,7 @@ body.em-locked { overflow: hidden; }
   <div class="ticker-label">🔔 LIVE NOTICES</div>
   <div class="ticker-track">
     <div class="ticker-inner">
-      📅 Schools have opened today 20 April 2026 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Schools have opened today 20 April 2026 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Schools have opened today 20 April 2026
+      📅 Effective planning results in effective results &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Effective planning results in effective results &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📅 Effective planning results in effective results
     </div>
   </div>
 </div>
@@ -2353,7 +2358,7 @@ body.em-locked { overflow: hidden; }
               <option>Professional Development</option>
               <option>Special Needs Education</option>
               <option>Early Childhood Education</option>
-              <option>MSCE / Examinations</option>
+              <option>Examinations</option>
               <option>General Discussion</option>
             </select>
           </div>
@@ -2416,23 +2421,23 @@ body.em-locked { overflow: hidden; }
           <div class="sw-body">
             <div class="member-item">
               <div class="mi-av">TM</div>
-              <div><div class="mi-name">Thandiwe Mwale</div><div class="mi-district">Dedza · 312 posts</div></div>
+              <div><div class="mi-name">Elina Mwale</div><div class="mi-district">Mzuzu · 31 posts</div></div>
             </div>
             <div class="member-item">
               <div class="mi-av" style="background:var(--rust);">JB</div>
-              <div><div class="mi-name">James Banda</div><div class="mi-district">Blantyre · 287 posts</div></div>
+              <div><div class="mi-name">Biliati Banda</div><div class="mi-district">Nsanje · 28 posts</div></div>
             </div>
             <div class="member-item">
               <div class="mi-av" style="background:#7B5EA7;">GN</div>
-              <div><div class="mi-name">Grace Njobvu</div><div class="mi-district">Mzimba · 265 posts</div></div>
+              <div><div class="mi-name">Anna Njobvu</div><div class="mi-district">Likoma Island · 65 posts</div></div>
             </div>
             <div class="member-item">
               <div class="mi-av" style="background:#1A6B8A;">PM</div>
-              <div><div class="mi-name">Patrick Msowoya</div><div class="mi-district">Nkhotakota · 241 posts</div></div>
+              <div><div class="mi-name">Jacob Msowoya</div><div class="mi-district">Chitipa · 41 posts</div></div>
             </div>
             <div class="member-item">
               <div class="mi-av">LK</div>
-              <div><div class="mi-name">Lyness Kachingwe</div><div class="mi-district">Zomba · 218 posts</div></div>
+              <div><div class="mi-name">Lyness Kachingwe</div><div class="mi-district">Zomba · 18 posts</div></div>
             </div>
           </div>
         </div>
@@ -2527,7 +2532,7 @@ body.em-locked { overflow: hidden; }
     <div class="section-header text-center reveal">
       <div class="section-kicker">Teaching Materials</div>
       <h2 class="section-title">Resources for Every Teacher</h2>
-      <p class="section-sub">Free downloadable materials, past papers, notes, Syllabuses and Teachers guides for Malawian teachers from Standard 1 to Standard 8.</p>
+      <p class="section-sub">Free downloadable materials for every Malawian teacher at primary level. You are NOT allowed to print and sell these resources</p>
     </div>
 
     <div class="resources-grid">
@@ -2647,16 +2652,8 @@ body.em-locked { overflow: hidden; }
       <div class="subjects-panel" id="panel-qa">
         <div class="sp-title">📋 Q &amp; A Booklets — Select a Subject</div>
         <div class="subjects-list">
-          <a href="MATHEMATICS_PSLCE_2010-2021_QUESTIONS_&_MODEL_ANSWERS.pdf" target="_blank" class="subject-item"><div class="si-icon">📐</div><div class="si-name">Maths</div></a>
-          <a href="Q&A English.pdf" target="_blank" class="subject-item"><div class="si-icon">🔤</div><div class="si-name">English</div></a>
-          <a href="Q&A Chichewa.pdf" target="_blank" class="subject-item"><div class="si-icon">🗣️</div><div class="si-name">Chichewa</div></a>
-          <a href="Q&A Agriculture.pdf" target="_blank" class="subject-item"><div class="si-icon">🌱</div><div class="si-name">Agriculture</div></a>
-          <a href="Q&A Science.pdf" target="_blank" class="subject-item"><div class="si-icon">🔬</div><div class="si-name">Science</div></a>
-          <a href="Q&A Religious Education.pdf" target="_blank" class="subject-item"><div class="si-icon">🕊️</div><div class="si-name">Religious Education</div></a>
-          <a href="Q&A Bible Knowledge.pdf" target="_blank" class="subject-item"><div class="si-icon">✝️</div><div class="si-name">Bible Knowledge</div></a>
-          <a href="Q&A Life Skills.pdf" target="_blank" class="subject-item"><div class="si-icon">💡</div><div class="si-name">Life Skills</div></a>
-          <a href="Q&A Social Studies.pdf" target="_blank" class="subject-item"><div class="si-icon">🌍</div><div class="si-name">Social Studies</div></a>
-          <a href="Q&A Expressive Arts.pdf" target="_blank" class="subject-item"><div class="si-icon">🎨</div><div class="si-name">Expressive Arts</div></a>
+          <a href="MATHEMATICS_PSLCE_2010-2021_QUESTIONS_&_MODEL_ANSWERS.pdf" target="_blank" class="subject-item"><div class="si-icon">📐</div><div class="si-name">Maths</div>
+          </a>
         </div>
       </div>
 
@@ -2894,6 +2891,21 @@ body.em-locked { overflow: hidden; }
   </div>
 </section>
 
+<!-- TEACHING TECHNIQUES -->
+<section id="teaching-techniques" style="background: var(--forest); padding: 5.5rem 0;">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-kicker">For Teachers</div>
+      <h2 class="section-title" style="color:var(--white);">Teaching Techniques</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6);">Watch these short videos to discover effective classroom strategies and methods.</p>
+    </div>
+    <!-- Dynamic video grid — populated from videos.json -->
+    <div id="tt-video-container" style="margin-top:2.5rem;">
+      <div style="text-align:center;padding:2rem;color:rgba(255,255,255,0.45);font-size:0.9rem;">Loading videos…</div>
+    </div>
+  </div>
+</section>
+
 <!-- NEWS -->
 
 <!-- COMING SOON POPUP -->
@@ -3004,8 +3016,8 @@ body.em-locked { overflow: hidden; }
         <div style="font-size:3rem; margin-bottom:1rem;">&#x1F6E0;&#xFE0F;</div>
         <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--forest); margin-bottom:0.75rem;">Currently Out of Service</h3>
         <p style="font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--muted); line-height:1.7; max-width:380px; margin:0 auto;">
-          The Schemes of Work generator is temporarily unavailable while we make improvements.<br><br>
-          We apologise for any inconvenience. Please check back soon.
+          Schemes of Work generator are temporarily unavailable while i make improvements.<br><br>
+          I apologise for any inconvenience. Please check back soon.
         </p>
         <div style="margin-top:1.75rem; display:inline-flex; align-items:center; gap:0.5rem; background:var(--warm); border:1px solid var(--border); border-radius:20px; padding:0.5rem 1.25rem;">
           <span style="width:8px; height:8px; background:#e07b00; border-radius:50%; display:inline-block; animation:sowPulse 1.4s ease-in-out infinite;"></span>
@@ -3024,7 +3036,7 @@ body.em-locked { overflow: hidden; }
     <div class="section-header text-center reveal">
       <div class="section-kicker">Teaching Materials</div>
       <h2 class="section-title">Lesson Plans</h2>
-      <p class="section-sub" style="margin-top:0.5rem; color:var(--muted); font-size:0.93rem;">Developed By Juma Ali &nbsp;·&nbsp; Malawi Primary Curriculum</p>
+
     </div>
 
     <div class="lp-wrap">
@@ -3034,7 +3046,7 @@ body.em-locked { overflow: hidden; }
           <h2>Build your lesson</h2>
           <div class="lp-form-group">
             <label class="lp-label" for="lp-grade">Class</label>
-            <select class="lp-select" id="lp-grade">
+            <select class="lp-select" id="lp-grade" onchange="lpUpdateSubjects()">
               <option>Standard 1</option>
               <option>Standard 2</option>
               <option>Standard 3</option>
@@ -3050,16 +3062,13 @@ body.em-locked { overflow: hidden; }
             <select class="lp-select" id="lp-subject">
               <option>Mathematics</option>
               <option>English</option>
-              <option>Chichewa</option>
               <option>Science and Technology</option>
               <option>Social Studies</option>
               <option>Religious and Moral Education</option>
+              <option>Bible Knowledge</option>
               <option>Life Skills</option>
               <option>Expressive Arts</option>
               <option>Agriculture</option>
-              <option>Chemistry</option>
-              <option>Physics</option>
-              <option>Computer Studies</option>
             </select>
           </div>
           <div class="lp-form-group">
@@ -3118,6 +3127,26 @@ body.em-locked { overflow: hidden; }
 
   // Set today's date default
   lpDate.value = new Date().toISOString().split('T')[0];
+
+  // Subject lists per class (mirrors Malawi primary curriculum)
+  var LP_SUBJECTS = {
+    'Standard 1': ['English','Chichewa','Mathematics','Religious Education','Expressive Arts'],
+    'Standard 2': ['English','Chichewa','Mathematics','Life Skills','Religious Education','Expressive Arts'],
+    'Standard 3': ['English','Chichewa','Mathematics','Life Skills','Social Studies','Religious Education','Expressive Arts'],
+    'Standard 4': ['English','Chichewa','Mathematics','Life Skills','Social Studies','Agriculture','Religious Education','Expressive Arts'],
+    'Standard 5': ['English','Chichewa','Mathematics','Science and Technology','Social Studies','Agriculture','Life Skills','Bible Knowledge','Religious and Moral Education','Expressive Arts'],
+    'Standard 6': ['English','Chichewa','Mathematics','Science and Technology','Social Studies','Agriculture','Life Skills','Bible Knowledge','Religious and Moral Education','Expressive Arts'],
+    'Standard 7': ['English','Chichewa','Mathematics','Science and Technology','Social Studies','Agriculture','Life Skills','Bible Knowledge','Religious and Moral Education','Expressive Arts'],
+    'Standard 8': ['English','Chichewa','Mathematics','Science and Technology','Social Studies','Agriculture','Life Skills','Bible Knowledge','Religious and Moral Education','Expressive Arts']
+  };
+
+  window.lpUpdateSubjects = function() {
+    var grade = lpGrade.value;
+    var subjects = LP_SUBJECTS[grade] || [];
+    lpSubject.innerHTML = subjects.map(function(s){ return '<option>'+s+'</option>'; }).join('');
+  };
+  // Populate on load
+  lpUpdateSubjects();
 
   function lpGetDuration(grade){
     const n = parseInt(grade.replace('Standard ',''), 10);
@@ -3358,9 +3387,8 @@ body.em-locked { overflow: hidden; }
     function pgHdr(){
       doc.setFillColor(27,67,50); doc.rect(0,0,pageW,12,'F');
       doc.setFont('helvetica','bold'); doc.setFontSize(13); doc.setTextColor(255,255,255);
-      doc.text('EASY LESSON PLAN',pageW/2,8,{align:'center'});
+      doc.text('LESSON PLAN',pageW/2,8,{align:'center'});
       doc.setFontSize(7); doc.setTextColor(180,220,200);
-      doc.text('Developed By Juma Ali',pageW/2,11,{align:'center'}); y=18;
     }
     pgHdr();
     const infoRows=[['CLASS',plan.grade],['SUBJECT',plan.subject],['TOPIC',plan.topic],['DATE',dateStr],['TIME',timeStr]];
@@ -3497,7 +3525,7 @@ body.em-locked { overflow: hidden; }
             <div class="contact-card-value">
               <a href="tel:+265995818600">+265 995 818 600</a>
             </div>
-            <div class="contact-card-note">Calls and SMS welcome during business hours.</div>
+            <div class="contact-card-note">SMS only</div>
           </div>
         </div>
 
@@ -3601,7 +3629,7 @@ body.em-locked { overflow: hidden; }
       <ul>
         <li><a href="https://web.facebook.com/MalawiEducation" target="_blank" rel="noopener">Ministry of Education</a></li>
         <li><a href="https://web.facebook.com/MANEBMalawi" target="_blank" rel="noopener">MANEB</a></li>
-        <li><a href="https://apkpure.com/easy-assess/com.jumaali.seniorclasseseasyassess/download/28.0" target="_blank" rel="noopener">⬇️ Easy Assess 28</a></li>
+        <li><a href="https://apkpure.com/easy-assess/com.jumaali.seniorclasseseasyassess/download/28.0" target="_blank" rel="noopener">⬇️ Easy Assess 28 Android Application</a></li>
       </ul>
     </div>
 
@@ -4061,6 +4089,99 @@ var revealIO  = new IntersectionObserver(function(entries) {
 }, { threshold: 0.08 });
 reveals.forEach(function(r) { revealIO.observe(r); });
 
+// ── VIDEOS.JSON LOADER ────────────────────────────────────────────────────────
+function loadVideosFromJSON() {
+  var container = document.getElementById('tt-video-container');
+  fetch('videos.json')
+    .then(function(res) { return res.json(); })
+    .then(function(videos) {
+      if (!container || !videos.length) {
+        if (container) container.innerHTML = '';
+        return;
+      }
+
+      // Extract YouTube video ID from any youtube.com or youtu.be URL
+      function getYTid(url) {
+        var m = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{11})/);
+        return m ? m[1] : null;
+      }
+
+      // Build rows of 2 cards
+      var cards = '';
+      videos.forEach(function(v) {
+        var vid = getYTid(v.url);
+        var thumb = vid
+          ? 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg'
+          : '';
+        var displayUrl = v.url.replace(/^https?:\/\/(www\.)?/, '');
+        cards +=
+          '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" ' +
+          'onmouseover="this.style.transform=\'translateY(-4px)\';this.style.borderColor=\'var(--sage)\';" ' +
+          'onmouseout="this.style.transform=\'translateY(0)\';this.style.borderColor=\'rgba(255,255,255,0.15)\'">' +
+            '<div style="position:relative;padding-bottom:56.25%;background:#000;overflow:hidden;">' +
+              (thumb ? '<img src="' + thumb + '" alt="' + (v.title || '') + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">' : '') +
+              '<a href="' + v.url + '" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;">' +
+                '<div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);transition:transform 0.2s;" ' +
+                'onmouseover="this.style.transform=\'scale(1.12)\'" onmouseout="this.style.transform=\'scale(1)\'">' +
+                  '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>' +
+                '</div>' +
+              '</a>' +
+            '</div>' +
+            '<div style="padding:1rem 1.25rem 1.25rem;">' +
+              (v.category ? '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.4rem;">' + v.category + '</div>' : '') +
+              '<div style="font-family:\'Playfair Display\',serif;font-size:1rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.5rem;">' + (v.title || '') + '</div>' +
+              '<a href="' + v.url + '" target="_blank" rel="noopener" style="font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;word-break:break-all;transition:color 0.2s;" ' +
+              'onmouseover="this.style.color=\'var(--sage)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.45)\'">' + displayUrl + '</a>' +
+            '</div>' +
+          '</div>';
+      });
+
+      // Wrap every pair of cards in a 2-column row
+      var rows = '';
+      var cardEls = cards.match(/<div style="background[^]*?<\/div>\s*<\/div>\s*<\/div>/g) || [];
+
+      // Re-split cleanly: build rows directly from videos array
+      var rowsHtml = '';
+      for (var i = 0; i < videos.length; i += 2) {
+        rowsHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">';
+        // card i
+        var buildCard = function(v) {
+          var vid2 = getYTid(v.url);
+          var thumb2 = vid2 ? 'https://img.youtube.com/vi/' + vid2 + '/hqdefault.jpg' : '';
+          var du = v.url.replace(/^https?:\/\/(www\.)?/, '');
+          return '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" ' +
+            'onmouseover="this.style.transform=\'translateY(-4px)\';this.style.borderColor=\'var(--sage)\';" ' +
+            'onmouseout="this.style.transform=\'translateY(0)\';this.style.borderColor=\'rgba(255,255,255,0.15)\'">' +
+              '<div style="position:relative;padding-bottom:56.25%;background:#111;overflow:hidden;">' +
+                (thumb2 ? '<img src="' + thumb2 + '" alt="' + (v.title||'') + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;">' : '') +
+                '<a href="' + v.url + '" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none;">' +
+                  '<div style="width:56px;height:56px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);transition:transform 0.2s;" ' +
+                  'onmouseover="this.style.transform=\'scale(1.12)\'" onmouseout="this.style.transform=\'scale(1)\'">' +
+                    '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>' +
+                  '</div>' +
+                '</a>' +
+              '</div>' +
+              '<div style="padding:1rem 1.25rem 1.25rem;">' +
+                (v.category ? '<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--sage);margin-bottom:0.4rem;">' + v.category + '</div>' : '') +
+                '<div style="font-family:\'Playfair Display\',serif;font-size:1rem;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:0.5rem;">' + (v.title||'') + '</div>' +
+                '<a href="' + v.url + '" target="_blank" rel="noopener" style="font-size:0.75rem;color:rgba(255,255,255,0.45);text-decoration:none;word-break:break-all;transition:color 0.2s;" ' +
+                'onmouseover="this.style.color=\'var(--sage)\'" onmouseout="this.style.color=\'rgba(255,255,255,0.45)\'">' + du + '</a>' +
+              '</div>' +
+            '</div>';
+        };
+        rowsHtml += buildCard(videos[i]);
+        if (videos[i + 1]) rowsHtml += buildCard(videos[i + 1]);
+        rowsHtml += '</div>';
+      }
+
+      container.innerHTML = rowsHtml;
+    })
+    .catch(function() {
+      // videos.json not found or invalid — hide the loading message
+      if (container) container.innerHTML = '';
+    });
+}
+
 // ── NEWS.JSON LOADER ──────────────────────────────────────────────────────────
 function loadNewsFromJSON() {
   fetch('news.json')
@@ -4144,6 +4265,7 @@ function loadTickerFromJSON() {
 
 // ── BOOT ──────────────────────────────────────────────────────────────────────
 startListening();
+loadVideosFromJSON();
 loadNewsFromJSON();
 loadTickerFromJSON();
 </script>
@@ -5000,11 +5122,11 @@ function eaGenerateCode(fingerprint) {
 // -------------------------------------------------------
 //  CODE VALIDATION & SESSION
 //  Once a valid code is entered the device clock is noted.
-//  The code remains valid for exactly 5 minutes from that
+//  The code remains valid for exactly 3 minutes from that
 //  moment. After that it is burned and can never be reused.
 // -------------------------------------------------------
 var EA_CODE_SESSION_KEY = 'ea_code_session';
-var EA_CODE_WINDOW_MS   = 5 * 60 * 1000; // 5 minutes
+var EA_CODE_WINDOW_MS   = 3 * 60 * 1000; // 3 minutes
 
 function eaGetSession() {
   try { return JSON.parse(localStorage.getItem(EA_CODE_SESSION_KEY) || 'null'); } catch(e) { return null; }
@@ -5379,7 +5501,7 @@ function eaDeleteStudent(id) {
           </div>
           <div style="font-size:12.5px;color:#1e1a14;line-height:1.9;">
             <strong>Step 1:</strong> Note your <strong>Device ID</strong> above.<br>
-            <strong>Step 2:</strong> Pay <strong style="color:#2d5a3d;font-size:14px;">K 1,000</strong> via any option below — confirm name is <strong style="color:#2d5a3d;">JUMA ALI</strong> before paying.<br>
+            <strong>Step 2:</strong> Pay <strong style="color:#2d5a3d;font-size:14px;">K 500</strong> via any option below — confirm name is <strong style="color:#2d5a3d;">JUMA ALI</strong> before paying.<br>
             <strong>Step 3:</strong> Send your <strong>Device ID</strong> + payment screenshot via SMS/WhatsApp to receive your code.
           </div>
           <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
@@ -5401,7 +5523,7 @@ function eaDeleteStudent(id) {
             </div>
           </div>
         </div>
-        Code is valid for <strong>5 minutes</strong> after first use &amp; works on this device only.
+        Code is valid for <strong>3 minutes</strong> after first use &amp; works on this device only.
       </div>
     </div>
   </div>
@@ -5445,7 +5567,7 @@ function eaDeleteStudent(id) {
 
 <script>
 // Admin panel
-var EA_ADMIN_PASSWORD = 'JumaAdmin2025'; // Change this to your own password
+var EA_ADMIN_PASSWORD = '00745387'; // Change this to your own password
 
 function eaOpenAdmin() {
   document.getElementById('ea-admin-pass').value = '';
