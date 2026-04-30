@@ -704,6 +704,35 @@ section { padding: 5.5rem 0; }
 .standard-badge.active .sb-arrow { transform: rotate(180deg); }
 
 /* Subject Panel */
+/* ── PAST PAPERS ── */
+.pp-group-label {
+  grid-column: 1 / -1;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest3);
+  padding: 0.5rem 0 0.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.25rem;
+}
+.pp-year {
+  font-size: 0.7rem;
+  background: var(--warm);
+  color: var(--forest);
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+.pp-dl {
+  margin-left: auto;
+  font-size: 1rem;
+  opacity: 0.6;
+}
+.subject-item:hover .pp-dl { opacity: 1; }
+
 .subjects-panel {
   grid-column: 1 / -1;
   display: none;
@@ -2458,15 +2487,15 @@ body.em-locked { overflow: hidden; }
             <div style="display:flex;flex-direction:column;gap:0.75rem;">
               <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
                 <span style="color:var(--muted)">Total Discussions</span>
-                <strong id="statTotal">4,218</strong>
+                <strong id="statTotal">18</strong>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
                 <span style="color:var(--muted)">Total Replies</span>
-                <strong id="statReplies">31,847</strong>
+                <strong id="statReplies">31</strong>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
                 <span style="color:var(--muted)">Active Today</span>
-                <strong style="color:var(--forest3)">847 teachers</strong>
+                <strong style="color:var(--forest3)">84 teachers</strong>
               </div>
               <div style="display:flex;justify-content:space-between;font-size:0.84rem;">
                 <span style="color:var(--muted)">Districts Active</span>
@@ -2542,7 +2571,7 @@ body.em-locked { overflow: hidden; }
     <div class="section-header text-center reveal">
       <div class="section-kicker">Teaching Materials</div>
       <h2 class="section-title">Resources for Every Teacher</h2>
-      <p class="section-sub">Free downloadable materials for every Malawian teacher at primary level. You are NOT allowed to print and sell these resources</p>
+      <p class="section-sub">Free downloadable materials for every Malawian teacher at primary level. Dont print and sell these resources</p>
     </div>
 
     <div class="resources-grid">
@@ -2668,12 +2697,68 @@ body.em-locked { overflow: hidden; }
       </div>
 
       <!-- PAST PAPERS -->
-      <div class="standard-badge" onclick="showComingSoon(this)">
+      <div class="standard-badge reveal" onclick="toggleStandard('pastpapers', this)">
         <div class="sb-icon">📄</div>
         <div class="sb-label">Past Papers</div>
         <div class="sb-sub">Examinations</div>
         <div class="sb-arrow">▼ VIEW</div>
       </div>
+      <div class="subjects-panel" id="panel-pastpapers">
+        <div class="sp-title">📄 Past Papers — Select to Download</div>
+        <div id="pastpapers-loading" style="padding:1rem;color:var(--muted);font-size:0.85rem;">Loading past papers…</div>
+        <div id="pastpapers-list" class="subjects-list" style="display:none;"></div>
+      </div>
+
+      <script>
+      (function(){
+        var loaded = false;
+        var origToggle = window.toggleStandard;
+        window.toggleStandard = function(key, el) {
+          if (key === 'pastpapers' && !loaded) {
+            loaded = true;
+            fetch('pastpapers.json')
+              .then(function(r){ return r.json(); })
+              .then(function(papers){
+                var list = document.getElementById('pastpapers-list');
+                var loading = document.getElementById('pastpapers-loading');
+
+                if (!papers || papers.length === 0) {
+                  loading.textContent = 'No past papers available yet.';
+                  return;
+                }
+
+                // Group by level
+                var groups = {};
+                papers.forEach(function(p){
+                  var lvl = p.level || 'General';
+                  if (!groups[lvl]) groups[lvl] = [];
+                  groups[lvl].push(p);
+                });
+
+                var html = '';
+                Object.keys(groups).forEach(function(level){
+                  html += '<div class="pp-group-label">' + level + '</div>';
+                  groups[level].forEach(function(p){
+                    html += '<a href="' + p.file + '" download class="subject-item">' +
+                      '<div class="si-icon">' + (p.icon || '📄') + '</div>' +
+                      '<div class="si-name">' + p.subject + ' <span class="pp-year">' + p.year + '</span></div>' +
+                      '<div class="pp-dl">⬇️</div>' +
+                    '</a>';
+                  });
+                });
+
+                list.innerHTML = html;
+                list.style.display = '';
+                loading.style.display = 'none';
+              })
+              .catch(function(){
+                document.getElementById('pastpapers-loading').textContent = 'Could not load past papers. Please check that pastpapers.json is in the same folder as this page.';
+              });
+          }
+          if (origToggle) origToggle(key, el);
+        };
+      })();
+      </script>
 
       <!-- TEACHERS GUIDES -->
       <div class="standard-badge" onclick="toggleStandard('tg', this)">
