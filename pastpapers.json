@@ -4,35 +4,6 @@
     "subject": "Chichewa",
     "level": "PSLCE",
     "icon": "📐",
-    "file": "2026 BUMBA ZONE MOCK - CHICHEWA.pdf"
-  },
-  {
-    "year": "2026",
-    "subject": "Mathematics",
-    "level": "PSLCE",
-    "icon": "📐",
-    "file": "2026 BUMBA ZONE MOCK - MATHEMATICS.pdf"
-  },
-  {
-    "year": "2026",
-    "subject": "Arts",
-    "level": "PSLCE",
-    "icon": "🔤",
-    "file": "2026 MZIMBA NORTH MOCK - ARTS.pdf"
-  },
-  {
-    "year": "2026",
-    "subject": "Maths",
-    "level": "PSLCE",
-    "icon": "🔤",
-    "file": "2026 NGODZI ZONE MOCK - MATHEMATICS.pdf"
-  },
-  {
-    "year": "2026",
-    "subject": "Social",
-    "level": "PSLCE",
-    "icon": "🗣️",
-    "file": "2026 NGODZI ZONE MOCK - SOCIAL.pdf"
-  }
-  
+    "file": "Bumba.pdf"
+  }  
 ]
