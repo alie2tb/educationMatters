@@ -1,65 +1,38 @@
 [
   {
-    "year": "2023",
-    "subject": "Mathematics",
-    "level": "PSLCE",
-    "icon": "📐",
-    "file": "PSLCE_Mathematics_2023.pdf"
-  },
-  {
-    "year": "2022",
-    "subject": "Mathematics",
-    "level": "PSLCE",
-    "icon": "📐",
-    "file": "PSLCE_Mathematics_2022.pdf"
-  },
-  {
-    "year": "2023",
-    "subject": "English",
-    "level": "PSLCE",
-    "icon": "🔤",
-    "file": "PSLCE_English_2023.pdf"
-  },
-  {
-    "year": "2022",
-    "subject": "English",
-    "level": "PSLCE",
-    "icon": "🔤",
-    "file": "PSLCE_English_2022.pdf"
-  },
-  {
-    "year": "2023",
+    "year": "2026",
     "subject": "Chichewa",
     "level": "PSLCE",
-    "icon": "🗣️",
-    "file": "PSLCE_Chichewa_2023.pdf"
-  },
-  {
-    "year": "2023",
-    "subject": "Social Studies",
-    "level": "PSLCE",
-    "icon": "🌍",
-    "file": "PSLCE_Social_Studies_2023.pdf"
-  },
-  {
-    "year": "2023",
-    "subject": "Primary Science",
-    "level": "PSLCE",
-    "icon": "🔬",
-    "file": "PSLCE_Science_2023.pdf"
-  },
-  {
-    "year": "2021",
-    "subject": "Mathematics",
-    "level": "JCE",
     "icon": "📐",
-    "file": "JCE_Mathematics_2021.pdf"
+    "file": "2026 BUMBA ZONE MOCK - CHICHEWA.pdf"
   },
   {
-    "year": "2021",
-    "subject": "English",
-    "level": "JCE",
+    "year": "2026",
+    "subject": "Mathematics",
+    "level": "PSLCE",
+    "icon": "📐",
+    "file": "2026 BUMBA ZONE - MATHEMATICS.pdf"
+  },
+  {
+    "year": "2026",
+    "subject": "Arts",
+    "level": "PSLCE",
     "icon": "🔤",
-    "file": "JCE_English_2021.pdf"
+    "file": "2026 BUMBA ZONE - MOCK ARTS.pdf"
+  },
+  {
+    "year": "2026",
+    "subject": "Maths",
+    "level": "PSLCE",
+    "icon": "🔤",
+    "file": "2026 NGODZI ZONE MOCK - MATHEMATICS.pdf"
+  },
+  {
+    "year": "2026",
+    "subject": "Social",
+    "level": "PSLCE",
+    "icon": "🗣️",
+    "file": "2026 NGODZI ZONE MOCK - SOCIAL.pdf"
   }
+  
 ]
