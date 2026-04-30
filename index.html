@@ -649,7 +649,7 @@ section { padding: 5.5rem 0; }
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
 }
@@ -663,6 +663,7 @@ section { padding: 5.5rem 0; }
   cursor: pointer;
   color: var(--white);
   text-align: center;
+  display: block;
   transition: background 0.3s, transform 0.3s, border-color 0.3s;
   position: relative;
   user-select: none;
@@ -706,7 +707,6 @@ section { padding: 5.5rem 0; }
 /* Subject Panel */
 /* ── PAST PAPERS ── */
 .pp-group-label {
-  grid-column: 1 / -1;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -733,9 +733,38 @@ section { padding: 5.5rem 0; }
 }
 .subject-item:hover .pp-dl { opacity: 1; }
 
+/* ── PAST PAPERS LIST ── */
+.pp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+.pp-subject-group { display: flex; flex-direction: column; }
+.pp-subject-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan);
+  padding: 0.4rem 0 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 0.25rem;
+}
+.pp-list-item {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.pp-list-item:hover { background: rgba(116,198,157,0.12); }
+.pp-list-name {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
 .subjects-panel {
   grid-column: 1 / -1;
-  display: none;
+  display: none !important;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 8px;
@@ -743,7 +772,7 @@ section { padding: 5.5rem 0; }
   animation: fadeUp 0.4s ease forwards;
   margin-top: -0.5rem;
 }
-.subjects-panel.show { display: block; }
+.subjects-panel.show { display: block !important; }
 .sp-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
@@ -1465,9 +1494,9 @@ footer {
   .schemes-btn { width: 100%; justify-content: center; }
 }
 
+@media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; gap: 3rem; }
   .hero-right { display: none; }
-  .resources-grid { grid-template-columns: repeat(2, 1fr); }
   .article-thumb { width: 160px; min-width: 160px; }
   .article-card.lead .article-thumb { width: 100%; height: 200px; }
   .article-card { flex-direction: column; }
@@ -1539,7 +1568,6 @@ footer {
   #replyOverlay > div { border-radius: 12px 12px 0 0; max-height: 90vh; overflow-y: auto; }
 
   /* ── RESOURCES ── */
-  .resources-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .standard-badge { padding: 1.25rem 1rem; }
   .sb-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
   .sb-label { font-size: 0.9rem; }
@@ -1564,7 +1592,6 @@ footer {
   .hero-tagline { font-size: 0.88rem; }
   .hero-actions { flex-direction: column; }
   .btn-forest, .btn-outline-light { width: 100%; text-align: center; }
-  .resources-grid { grid-template-columns: repeat(2, 1fr); }
   .subjects-list { grid-template-columns: repeat(2, 1fr); }
   .notices-grid { grid-template-columns: 1fr; }
   .forum-tabs { gap: 0; }
@@ -1629,7 +1656,6 @@ footer {
   .post-tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
 
   /* ── RESOURCES ── */
-  .resources-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
   .standard-badge { padding: 1.1rem 0.85rem; }
   .sb-icon { font-size: 1.6rem; }
   .sb-label { font-size: 0.82rem; }
@@ -1683,7 +1709,6 @@ footer {
 
   /* ── SECTIONS ── */
   .section-title { font-size: 1.3rem; }
-  .resources-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; }
   .subjects-list { grid-template-columns: repeat(2,1fr); }
   .cpd-grid { grid-template-columns: 1fr; }
 
@@ -1695,7 +1720,6 @@ footer {
   .hero-title { font-size: 1.6rem; }
   .hero-actions { flex-direction: column; }
   .btn-forest, .btn-outline-light { width: 100%; text-align: center; }
-  .resources-grid { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: repeat(3,1fr); }
   .hero-stat { padding: 0.75rem 0.4rem; }
   .hero-stat .sn { font-size: 1.1rem; }
@@ -2296,26 +2320,6 @@ body.em-locked { overflow: hidden; }
       </div>
     </div>
 
-    <div class="hero-right">
-      <div class="featured-post">
-        <div class="fp-thumb">
-          📖
-          <div class="fp-thumb-label">Featured Discussion</div>
-        </div>
-        <div class="fp-body">
-          <div class="fp-category">Professional Development</div>
-          <div class="fp-title">How are you adapting teaching methods for overcrowded classrooms in Standard 1–4?</div>
-          <div class="fp-excerpt">Teachers from Dedza, Ntchisi, and Mchinji share practical strategies that work even with 80+ pupils per class...</div>
-          <div class="fp-meta">
-            <div class="fp-author">
-              <div class="fp-avatar">TM</div>
-              <span>Thandiwe Mwale · Dedza</span>
-            </div>
-            <span>💬 47 replies</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2704,63 +2708,59 @@ body.em-locked { overflow: hidden; }
         <div class="sb-arrow">▼ VIEW</div>
       </div>
       <div class="subjects-panel" id="panel-pastpapers">
-        <div class="sp-title">📄 Past Papers — Select to Download</div>
-        <div id="pastpapers-loading" style="padding:1rem;color:var(--muted);font-size:0.85rem;">Loading past papers…</div>
-        <div id="pastpapers-list" class="subjects-list" style="display:none;"></div>
+        <div class="sp-title">📄 Past Papers — Select to Open</div>
+        <div class="pp-list">
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">📐 Mathematics</div>
+            <a href="2026 MATHS BUMBA ZONE MOCK - MATHEMATICS.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Maths Bumba Zone Mock</span></a>
+            <a href="2026 NGODZI ZONE MOCK - MATHEMATICS.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Maths Ngodzi Zone Mock</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">🔤 English</div>
+            <a href="2026 Eng Mock Sherasongwe-1.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 English Mock — Sherasongwe</span></a>
+            <a href="2026 ENGLISH STD 8, CHITAKALE MOCK.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 English Std 8 — Chitakale Mock</span></a>
+            <a href="2026 STD 8 English Mock.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Std 8 English Mock</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">🗣️ Chichewa</div>
+            <a href="2026 Chich Mock Nampeya.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Chichewa Mock — Nampeya</span></a>
+            <a href="2026 CHICHEWA BUMBA ZONE MOCK - CHICHEWA.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Chichewa Bumba Zone Mock</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">🔬 Primary Science</div>
+            <a href="2026 Pri Scie Mock Folopensi.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Primary Science Mock — Folopensi</span></a>
+            <a href="2026 Pri Scie Mock Sherasongwe-1.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Primary Science Mock — Sherasongwe</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">🌍 Social Studies</div>
+            <a href="2026 NGODZI ZONE MOCK - SOCIAL.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Social Studies Ngodzi Zone Mock</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">🎨 Arts</div>
+            <a href="2026 JAN ARTS STD 8.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Jan Arts Standard 8</span></a>
+            <a href="ARTS MOCK 1 nsiya-2026.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Arts Mock 1 — Nsiya</span></a>
+            <a href="2026 MZIMBA NORTH MOCK - ARTS.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Arts Mock — Mzimba North</span></a>
+            <a href="2026 SWED MOCK HIS I.PDF" target="_blank" class="pp-list-item"><span class="pp-list-name">2026 Swed Mock His I</span></a>
+          </div>
+
+          <div class="pp-subject-group">
+            <div class="pp-subject-heading">📄 Other Documents</div>
+            <a href="Bumba.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">Bumba</span></a>
+            <a href="DOC-20260123-WA0017.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">DOC-20260123-WA0017</span></a>
+            <a href="DOC-20260329-WA0036.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">DOC-20260329-WA0036</span></a>
+            <a href="DOC-20260402-WA0008.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">DOC-20260402-WA0008</span></a>
+            <a href="DOC-20260403-WA0005.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">DOC-20260403-WA0005</span></a>
+            <a href="DOC-20260403-WA0007.pdf" target="_blank" class="pp-list-item"><span class="pp-list-name">DOC-20260403-WA0007</span></a>
+          </div>
+
+        </div>
       </div>
-
-      <script>
-      (function(){
-        var loaded = false;
-        var REPO_RAW = 'https://raw.githubusercontent.com/alie2tb/educationMatters/main/';
-        var origToggle = window.toggleStandard;
-        window.toggleStandard = function(key, el) {
-          if (key === 'pastpapers' && !loaded) {
-            loaded = true;
-            fetch(REPO_RAW + 'pastpapers.json')
-              .then(function(r){ return r.json(); })
-              .then(function(papers){
-                var list = document.getElementById('pastpapers-list');
-                var loading = document.getElementById('pastpapers-loading');
-
-                if (!papers || papers.length === 0) {
-                  loading.textContent = 'No past papers available yet.';
-                  return;
-                }
-
-                // Group by level
-                var groups = {};
-                papers.forEach(function(p){
-                  var lvl = p.level || 'General';
-                  if (!groups[lvl]) groups[lvl] = [];
-                  groups[lvl].push(p);
-                });
-
-                var html = '';
-                Object.keys(groups).forEach(function(level){
-                  html += '<div class="pp-group-label">' + level + '</div>';
-                  groups[level].forEach(function(p){
-                    var fileUrl = p.file.startsWith('http') ? p.file : REPO_RAW + encodeURIComponent(p.file);
-                    html += '<a href="' + fileUrl + '" target="_blank" class="subject-item">' +
-                      '<div class="si-icon">' + (p.icon || '📄') + '</div>' +
-                      '<div class="si-name">' + p.subject + ' <span class="pp-year">' + p.year + '</span></div>' +
-                      '<div class="pp-dl">⬇️</div>' +
-                    '</a>';
-                  });
-                });
-
-                list.innerHTML = html;
-                list.style.display = '';
-                loading.style.display = 'none';
-              })
-              .catch(function(err){
-                document.getElementById('pastpapers-loading').textContent = 'Could not load past papers. Please check your internet connection and try again.';
-              });
-          }
-          if (origToggle) origToggle(key, el);
-        };
-      })();
-      </script>
 
       <!-- TEACHERS GUIDES -->
       <div class="standard-badge" onclick="toggleStandard('tg', this)">
