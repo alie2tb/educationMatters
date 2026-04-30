@@ -2712,11 +2712,12 @@ body.em-locked { overflow: hidden; }
       <script>
       (function(){
         var loaded = false;
+        var REPO_RAW = 'https://raw.githubusercontent.com/alie2tb/educationMatters/main/';
         var origToggle = window.toggleStandard;
         window.toggleStandard = function(key, el) {
           if (key === 'pastpapers' && !loaded) {
             loaded = true;
-            fetch('pastpapers.json')
+            fetch(REPO_RAW + 'pastpapers.json')
               .then(function(r){ return r.json(); })
               .then(function(papers){
                 var list = document.getElementById('pastpapers-list');
@@ -2739,7 +2740,8 @@ body.em-locked { overflow: hidden; }
                 Object.keys(groups).forEach(function(level){
                   html += '<div class="pp-group-label">' + level + '</div>';
                   groups[level].forEach(function(p){
-                    html += '<a href="' + p.file + '" download class="subject-item">' +
+                    var fileUrl = p.file.startsWith('http') ? p.file : REPO_RAW + encodeURIComponent(p.file);
+                    html += '<a href="' + fileUrl + '" target="_blank" class="subject-item">' +
                       '<div class="si-icon">' + (p.icon || '📄') + '</div>' +
                       '<div class="si-name">' + p.subject + ' <span class="pp-year">' + p.year + '</span></div>' +
                       '<div class="pp-dl">⬇️</div>' +
@@ -2751,8 +2753,8 @@ body.em-locked { overflow: hidden; }
                 list.style.display = '';
                 loading.style.display = 'none';
               })
-              .catch(function(){
-                document.getElementById('pastpapers-loading').textContent = 'Could not load past papers. Please check that pastpapers.json is in the same folder as this page.';
+              .catch(function(err){
+                document.getElementById('pastpapers-loading').textContent = 'Could not load past papers. Please check your internet connection and try again.';
               });
           }
           if (origToggle) origToggle(key, el);
